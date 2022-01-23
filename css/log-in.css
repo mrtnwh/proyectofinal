@@ -1,0 +1,76 @@
+body, h3, p {
+    margin: 0;
+}
+
+h3 {
+    font-size: 35px;
+    margin-bottom: 23px;
+}
+
+p {
+    max-width: 200px;
+    font-size: 20px;
+    margin-bottom: 36px;
+}
+
+.container {
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+.cont-log-in {
+    display: flex;
+    border: solid 3px red;
+}
+
+.izquierda-log-in {
+    width: 220px;
+    min-width: 45%;
+    height: auto;
+    background-image: url(https://image.freepik.com/free-vector/cinema-film-festival-movie-poster-background_1017-33461.jpg);
+    background-size: auto;
+}
+
+/* FORMULARIO */
+.form-log-in {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 35px;
+}
+
+.cont-input {
+    margin-bottom: 20px;
+}
+
+input {
+    min-width: 270px;
+    padding: 20px;
+    height: 50px;
+    border: none;
+    border-bottom: solid 2px rgb(173, 173, 173);
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: 0;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 6px;
+    margin-left: auto;
+    border-radius: 30px;
+    background-color: #270856;
+    color: white;
+    font-size: 15px;
+}
+
+button:hover {
+    transform: translateY(-4px);
+}
+
+a {
+    margin-left: auto;
+    margin-top: 45px;
+}
