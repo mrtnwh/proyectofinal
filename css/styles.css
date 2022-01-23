@@ -14,15 +14,15 @@
 }
 
 .linea_horizontal {
-  margin-top: 50px;
+  margin-top: 70px;
 }
 
 .linea_vertical {
-  height: 770px;
+  height: 600px;
   width: 1px;
   float: left;
   margin-left: 400px;
-  margin-top: -60px;
+  margin-top: -604px;
 }
 
 .titulo {
@@ -44,7 +44,7 @@
   border-color: red;
 }
 
-.contorno_grande {
+.carrousel_peliculas {
   margin-left: 440px;
   margin-top: -550px;
   height: 500px;
