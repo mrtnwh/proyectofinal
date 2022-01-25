@@ -8,9 +8,26 @@
 }
 
 .form-buscador {
-  margin-top: 10px;
-  margin-right: 10px;
+  margin-top: 23px;
   float: right;
+  margin-right: 50px;
+}
+
+.buscador {
+  height: 20px;
+}
+
+.boton {
+  height: 25px;
+}
+
+.fa-file-upload {
+  margin-left: 1600px;
+  margin-top: 13px;
+}
+
+.fa-sign-out-alt {
+  margin-left: 10px;
 }
 
 .linea_horizontal {
@@ -57,6 +74,7 @@
   margin-top: 70px;
   margin-left: 50px;
 }
+
 .contorno_circular {
   border-radius: 20px;
   margin-left: 20px;
