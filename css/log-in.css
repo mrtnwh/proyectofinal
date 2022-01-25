@@ -14,18 +14,25 @@ p {
 }
 
 .container {
-    max-width: 50%;
-    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f3f2f2;
 }
 
 .cont-log-in {
     display: flex;
-    border: solid 3px red;
+    justify-content: space-evenly;
+    width: auto;
+    height: auto;
+    background-color: white;
 }
 
 .izquierda-log-in {
-    width: 220px;
-    min-width: 45%;
+    width: 300px;
     height: auto;
     background-image: url(https://image.freepik.com/free-vector/cinema-film-festival-movie-poster-background_1017-33461.jpg);
     background-size: auto;
@@ -36,7 +43,7 @@ p {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 20px 35px;
+    margin: 20px;
 }
 
 .cont-input {
@@ -73,4 +80,5 @@ button:hover {
 a {
     margin-left: auto;
     margin-top: 45px;
+    color: darkslateblue;
 }
