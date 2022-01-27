@@ -8,21 +8,38 @@
 }
 
 .form-buscador {
-  margin-top: 10px;
-  margin-right: 10px;
+  margin-top: 23px;
   float: right;
+  margin-right: 50px;
+}
+
+.buscador {
+  height: 20px;
+}
+
+.boton {
+  height: 25px;
+}
+
+.fa-file-upload {
+  margin-left: 1600px;
+  margin-top: 13px;
+}
+
+.fa-sign-out-alt {
+  margin-left: 10px;
 }
 
 .linea_horizontal {
-  margin-top: 50px;
+  margin-top: 70px;
 }
 
 .linea_vertical {
-  height: 770px;
+  height: 600px;
   width: 1px;
   float: left;
   margin-left: 400px;
-  margin-top: -60px;
+  margin-top: -604px;
 }
 
 .titulo {
@@ -44,7 +61,7 @@
   border-color: red;
 }
 
-.contorno_grande {
+.carrousel_peliculas {
   margin-left: 440px;
   margin-top: -550px;
   height: 500px;
@@ -57,6 +74,7 @@
   margin-top: 70px;
   margin-left: 50px;
 }
+
 .contorno_circular {
   border-radius: 20px;
   margin-left: 20px;
