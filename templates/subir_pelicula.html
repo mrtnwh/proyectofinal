@@ -16,49 +16,56 @@
 
     <main>
         <div class="container">
-            <div class="row">
-                <div class="col-1">
+            <!-- Formulario -->
+            <form action="" class="formulario">
+
+                <!-- Cargar imagen  -->
+                <div class="row-1">
+                    <img src="https://incubaweb.com/wp-content/uploads/2016/09/upload.png" alt="">
+
+                    <p>Sube el poster de la pelicula (opcional)</p>
+
                     <label for="imagen" class="btn-img">Subir Foto</label>
                     <input id="imagen" type="file" accept="image/*">
                 </div>
-                <div class="col-2">
-                    <label for="titulo">Tiulo</label>
-                    <input id="titulo" type="text">  
-                </div>
-            </div>
 
-            <div class="row">
-                <div class="col-1">
-                    <!-- director y anio -->
-                    <div class="directores" onclick="">
-                        <select name="nombre-directores">
-                            <option>Seleccionar un director</option>
-                        </select>
-                    </div>
+                <!-- FILA 1: TITULO Y GENEROS -->
+                <div class="row-2">
                     <div>
-                        <label for="anio">Año</label>
-                        <input id="anio" type="date">
+                        <label for="titulo">Tiulo</label>
+                        <input id="titulo" type="text">
                     </div>
-                </div>
-                <!-- derecha -->
-                <div class="col-2">
+
                     <div class="generos" onclick="">
                         <select name="nombre-generos" multiple="multiple">
                             <option>Seleccionar generos (max. 3)</option>
                         </select>
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div>
+                <!-- FILA 2: ANIO Y DIRECTORES -->
+                <div class="row-2">
+                    <div>
+                        <label for="anio">Año</label>
+                        <input id="anio" type="date">
+                    </div>
+
+                    <div class="directores" onclick="">
+                        <select name="nombre-directores">
+                            <option>Seleccionar un director</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- FILA 1: SINOPSIS -->
+                <div class="row-3">
                     <label for="sinopsis">Sinopsis</label>
                     <input id="sinopsis" type="text">
                 </div>
-            </div>
 
-            <button class="btn-subir" type="submit">Subir</button>
-        </div>
+                <!-- ENVIAR FORMULARIO  -->
+                <button type="submit">Subir</button>
+            </form>
     </main>
 </body>
 </html>
