@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/subir_pelicula.css">
+    <link rel="stylesheet" href="../static/css/subir_pelicula.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Subir pelicula</title>
 </head>
-<body>
+<body onload="cargarGeneros()">
 
     <header>
         <!-- Copiar header de index -->
@@ -33,11 +33,11 @@
                 <div class="row-2">
                     <div>
                         <label for="titulo">Tiulo</label>
-                        <input id="titulo" type="text">
+                        <input id="titulo" type="text" required>
                     </div>
 
-                    <div class="generos" onclick="">
-                        <select name="nombre-generos" multiple="multiple">
+                    <div class="generos">
+                        <select name="nombre-generos" multiple="multiple" id="nombre-generos">
                             <option>Seleccionar generos (max. 3)</option>
                         </select>
                     </div>
@@ -47,7 +47,7 @@
                 <div class="row-2">
                     <div>
                         <label for="anio">Año</label>
-                        <input id="anio" type="date">
+                        <input id="anio" type="date" required>
                     </div>
 
                     <div class="directores" onclick="">
@@ -60,12 +60,17 @@
                 <!-- FILA 1: SINOPSIS -->
                 <div class="row-3">
                     <label for="sinopsis">Sinopsis</label>
-                    <input id="sinopsis" type="text">
+                    <input id="sinopsis" type="text" required>
                 </div>
 
                 <!-- ENVIAR FORMULARIO  -->
-                <button type="submit">Subir</button>
+                <div class="cont-btn">
+                    <button type="submit">Subir</button>
+                </div>
+                
             </form>
     </main>
+
+    <script src="../static/js/subir_pelicula.js"></script>
 </body>
 </html>
