@@ -37,6 +37,11 @@
 
 .fa-sign-out-alt {
   margin-left: 10px;
+  font-size: 24px;
+}
+
+.fa-file-upload {
+  font-size: 24px;
 }
 
 .linea_horizontal {
@@ -57,6 +62,10 @@
   margin-left: 120px;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
 .plantilla_contornos {
   display: flex;
   flex-direction: column;
@@ -93,11 +102,14 @@
 }
 
 .btn-default {
-  color: palevioletred;
+  color: white;
+  border-radius: 15px;
+  background-color: palevioletred;
   float: right;
-  margin-top: -15px;
+  margin-top: -20px;
   margin-right: 10px;
-  border-radius: 7px;
+  font-size: 14px;
+  height: 43px;
 }
 
 .genre {

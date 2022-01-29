@@ -1,90 +1,102 @@
-body, h3, p {
-    margin: 0;
+body,
+h3,
+p {
+  margin: 0;
 }
 
 h3 {
-    font-size: 35px;
-    margin-bottom: 23px;
+  font-size: 35px;
+  margin-bottom: 23px;
 }
 
 p {
-    max-width: 200px;
-    font-size: 20px;
-    margin-bottom: 36px;
+  max-width: 200px;
+  font-size: 20px;
+  margin-bottom: 36px;
 }
 
 .container {
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background-color: #f3f2f2;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f2f2;
 }
 
 .cont-log-in {
-    display: flex;
-    width: auto;
-    height: 398px;
-    background-color: white;
-    border-radius: 12px;
-    overflow: hidden;
+  display: flex;
+  width: auto;
+  height: 450px;
+  background-color: white;
+  border-radius: 12px;
+  width: 620px;
+  overflow: hidden;
 }
 
 .izquierda-log-in {
-    width: 300px;
-    background-image: url(https://image.freepik.com/free-vector/cinema-film-festival-movie-poster-background_1017-33461.jpg);
-    background-size: auto;
+  width: 300px;
+  background-image: url(https://image.freepik.com/free-vector/cinema-film-festival-movie-poster-background_1017-33461.jpg);
+  background-size: auto;
 }
 
 /* FORMULARIO */
 .form-log-in {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 20px;
 }
 
 .cont-input {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 input {
-    min-width: 270px;
-    padding: 20px;
-    height: 50px;
-    border: none;
-    border-bottom: solid 2px rgb(173, 173, 173);
-    box-sizing: border-box;
-    border-radius: 6px;
+  min-width: 270px;
+  padding: 20px;
+  height: 50px;
+  border: none;
+  border-bottom: solid 2px rgb(173, 173, 173);
+  box-sizing: border-box;
+  border-radius: 6px;
 }
 
 input:hover {
-    border: 2px solid rgb(104, 103, 103);
+  border: 2px solid rgb(104, 103, 103);
 }
 
-button {
-    padding: 10px 20px;
-    margin-top: 6px;
-    margin-left: auto;
-    border-radius: 30px;
-    background-color: #270856;
-    color: white;
-    font-size: 15px;
+.ingresar {
+  padding: 10px 20px;
+  margin-top: 6px;
+  margin-left: auto;
+  border-radius: 30px;
+  background-color: #270856;
+  color: white;
+  font-size: 15px;
+}
+
+.guest {
+  border-radius: 30px;
+  background-color: #270856;
+  color: white;
+  padding: 10px 17px;
+  font-size: 15px;
+  margin-left: -200px;
+  margin-top: 385px;
 }
 
 button:hover {
-    transform: translateY(-4px);
+  transform: translateY(-4px);
 }
 
 @media (max-width: 655px) {
+  .izquierda-log-in {
+    display: none;
+  }
 
-    .izquierda-log-in {
-        display: none;
-    }
-
-    .form-log-in {
-        margin: 0px;
-        padding: 10px;
-    }   
+  .form-log-in {
+    margin: 0px;
+    padding: 10px;
+  }
 }
