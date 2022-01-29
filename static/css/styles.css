@@ -7,22 +7,48 @@
   background-color: pink;
 }
 
-.form-buscador {
-  margin-top: 10px;
-  margin-right: 10px;
-  float: right;
+.buscar-container {
+  margin-top: -25px;
+  margin-left: 10px;
+  float: left;
+  background: #fff;
+  height: 30px;
+  border-radius: 30px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.8s;
+}
+
+.buscar-container:hover > .buscar-input {
+  width: 230px;
+}
+
+.buscar-container .buscar-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 0px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: 0.8s;
+}
+
+.fa-sign-out-alt {
+  margin-left: 10px;
 }
 
 .linea_horizontal {
-  margin-top: 50px;
+  margin-top: 70px;
 }
 
 .linea_vertical {
-  height: 770px;
+  height: 600px;
   width: 1px;
   float: left;
   margin-left: 400px;
-  margin-top: -60px;
+  margin-top: -604px;
 }
 
 .titulo {
@@ -44,7 +70,7 @@
   border-color: red;
 }
 
-.contorno_grande {
+.carrousel_peliculas {
   margin-left: 440px;
   margin-top: -550px;
   height: 500px;
@@ -57,11 +83,46 @@
   margin-top: 70px;
   margin-left: 50px;
 }
+
 .contorno_circular {
-  border-radius: 20px;
   margin-left: 20px;
   height: 170px;
   width: 250px;
   float: left;
   border-color: red;
+}
+
+.btn-default {
+  color: palevioletred;
+  float: right;
+  margin-top: -15px;
+  margin-right: 10px;
+  border-radius: 7px;
+}
+
+.genre {
+  width: 13%;
+  float: left;
+  margin-left: -245px;
+  margin-top: 15px;
+}
+
+.actiongenre {
+  height: 160px;
+}
+
+.comedygenre {
+  height: 160px;
+}
+
+.wargenre {
+  height: 160px;
+}
+
+.scifigenre {
+  height: 160px;
+}
+
+.adventuregenre {
+  height: 160px;
 }
