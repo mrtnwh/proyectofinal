@@ -1,0 +1,131 @@
+body {
+    margin: 0px;
+    background-color: #f3f2f2;
+}
+
+/* Header de referencia */
+header {
+    background-color: coral;
+    height: 70px;
+}
+
+.container {
+    width: 85%;
+    /* height: 100vh ; */
+    margin: 0 auto;
+    background-color: white;
+}
+
+
+/* Imagen */
+
+.row-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+}
+
+img {
+    width: 100px;
+    height: auto;
+}
+
+#imagen {
+    display: none;
+}
+
+.btn-img {
+    padding: 10px 20px;
+    background-color: #1c4ec2;
+    color: white;
+    cursor: pointer;
+}
+
+/*  1- TITULO Y GENEROS 2- ANIO Y DIRECTORES */
+.row-2 {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0px;
+}
+
+#nombre-generos {
+    margin-right: 14px;
+}
+
+#titulo, #anio {
+    margin-left: 10px;
+}
+
+/*  <!-- 3- SINOPSIS --> */
+.row-3 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 4%;
+}
+
+#sinopsis {
+    width: 90%;
+    height: auto;
+    min-height: 100px;
+    margin-top: 10px;
+    padding: 10px;
+    resize: vertical;
+    overflow: auto;
+}
+
+.cont-btn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 20px 0px;
+    margin-right: 40px;
+    border-radius: 15px;
+    background-color: #270856;
+    color: white;
+    font-size: 15px;
+}
+
+/* Inputs */
+#titulo, #anio, #sinopsis, #nombre-directores, #nombre-generos {
+    outline: none;
+    box-sizing: border-box;
+    border:2px solid #aaa;
+    border-radius:4px;
+    height: 35px;
+}
+
+#titulo:focus, #anio:focus, #sinopsis:focus, #nombre-directores:focus, #nombre-generos:focus {
+    border-color: dodgerBlue;
+    box-shadow: 0 0 5px 0 dodgerBlue;
+}
+
+@media (max-width: 560px) {
+
+    .container {
+        width: 100%;
+    }
+
+    .row-2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .label-text {
+        display: none;
+    }
+
+    #anio, #nombre-directores {
+        margin-left: 0px;
+        margin-right: 10px;
+    }
+
+    p {
+        text-align: center;
+    }
+}

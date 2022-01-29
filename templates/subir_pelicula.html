@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/subir_pelicula.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Subir pelicula</title>
+</head>
+<body onload="cargarGeneros(), cargarDirectores()">
+
+    <header>
+        <!-- Copiar header de index -->
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Formulario -->
+            <form action="" class="formulario">
+
+                <!-- Cargar imagen  -->
+                <div class="row-1">
+                    <img src="https://incubaweb.com/wp-content/uploads/2016/09/upload.png" alt="">
+
+                    <p>Sube el poster de la pelicula (opcional)</p>
+
+                    <label for="imagen" class="btn-img">Subir Foto</label>
+                    <input id="imagen" type="file" accept="image/*">
+                </div>
+
+                <!-- FILA 1: TITULO Y GENEROS -->
+                <div class="row-2">
+                    <div>
+                        <label for="titulo" class="label-text">Tiulo</label>
+                        <input id="titulo" type="text" required placeholder="Titulo original">
+                    </div>
+
+                    <div>
+                        <select name="nombre-generos" id="nombre-generos" required>
+                            <option>Seleccionar genero</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- FILA 2: ANIO Y DIRECTORES -->
+                <div class="row-2">
+                    <div>
+                        <label for="anio" class="label-text">Año</label>
+                        <input id="anio" type="date" required>
+                    </div>
+
+                    <div>
+                        <select name="nombre-directores" id="nombre-directores" required>
+                            <option>Seleccionar director</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- FILA 1: SINOPSIS -->
+                <div class="row-3">
+                    <label for="sinopsis">Sinopsis</label>
+                    <!-- <input id="sinopsis" type="text" required> -->
+                    <textarea name="sinopsis" id="sinopsis"></textarea>
+                </div>
+
+                <!-- ENVIAR FORMULARIO  -->
+                <div class="cont-btn">
+                    <button type="submit">Subir</button>
+                </div>
+                
+            </form>
+    </main>
+
+    <script src="../static/js/subir_pelicula.js"></script>
+</body>
+</html>
