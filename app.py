@@ -2,15 +2,16 @@ from flask import Flask, jsonify, render_template, request
 import json, urllib.request
 
 # API MOCKACHINO
+api = "https://www.mockachino.com/e87585d1-9630-4f"
 
-    #Usuarios
-handlerApiUsuarios = urllib.request.urlopen("https://www.mockachino.com/e87585d1-9630-4f/usuarios")
-response = ''
+def getResponse(api, endpoint='/'):
+    handler = urllib.request.urlopen(api + endpoint)
+    response = ''
 
-for linea in handlerApiUsuarios:    # OPTIMIZAR
-    response += linea.decode()
+    for linea in handler:
+        response += linea.decode()
 
-listaUsuarios = json.loads(response)["usuarios"]
+    return json.loads(response)
 
 # FLASK
 app = Flask(__name__, static_url_path='/static')
@@ -21,37 +22,23 @@ def index():
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
+    listaUsuarios = getResponse(api, "/usuarios")["usuarios"]
 
     if request.method == "POST":
-        email = request.form["email"]
-        password = request.form["password"]
-
         for usr in listaUsuarios:
-            if email == usr["email"]:
-                if password == usr["password"]:
+            if request.form["email"] == usr["email"]:
+                if request.form["password"] == usr["password"]:
                     return render_template("index.html")
     
     return render_template("login.html")
 
 @app.route("/directores")
 def getDirectores():
-    response = ''
-    handler = urllib.request.urlopen("https://www.mockachino.com/e87585d1-9630-4f/directores")
-    
-    for linea in handler:
-        response += linea.decode()
-
-    return json.loads(response)
+    return getResponse(api, "/directores")
 
 @app.route("/generos")
 def getGeneros():
-    response = ''
-    handler = urllib.request.urlopen("https://www.mockachino.com/e87585d1-9630-4f/generos")
-    
-    for linea in handler:
-        response += linea.decode()
-
-    return json.loads(response)
+    return getResponse(api, "/generos")
 
 
 """ @app.route("/subir_pelicula", methods=["POST", "GET"])
