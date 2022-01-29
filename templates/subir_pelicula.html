@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Subir pelicula</title>
 </head>
-<body onload="cargarGeneros()">
+<body onload="cargarGeneros(), cargarDirectores()">
 
     <header>
         <!-- Copiar header de index -->
@@ -32,13 +32,13 @@
                 <!-- FILA 1: TITULO Y GENEROS -->
                 <div class="row-2">
                     <div>
-                        <label for="titulo">Tiulo</label>
-                        <input id="titulo" type="text" required>
+                        <label for="titulo" class="label-text">Tiulo</label>
+                        <input id="titulo" type="text" required placeholder="Titulo original">
                     </div>
 
-                    <div class="generos">
-                        <select name="nombre-generos" multiple="multiple" id="nombre-generos">
-                            <option>Seleccionar generos (max. 3)</option>
+                    <div>
+                        <select name="nombre-generos" id="nombre-generos" required>
+                            <option>Seleccionar genero</option>
                         </select>
                     </div>
                 </div>
@@ -46,13 +46,13 @@
                 <!-- FILA 2: ANIO Y DIRECTORES -->
                 <div class="row-2">
                     <div>
-                        <label for="anio">Año</label>
+                        <label for="anio" class="label-text">Año</label>
                         <input id="anio" type="date" required>
                     </div>
 
-                    <div class="directores" onclick="">
-                        <select name="nombre-directores">
-                            <option>Seleccionar un director</option>
+                    <div>
+                        <select name="nombre-directores" id="nombre-directores" required>
+                            <option>Seleccionar director</option>
                         </select>
                     </div>
                 </div>
@@ -60,7 +60,8 @@
                 <!-- FILA 1: SINOPSIS -->
                 <div class="row-3">
                     <label for="sinopsis">Sinopsis</label>
-                    <input id="sinopsis" type="text" required>
+                    <!-- <input id="sinopsis" type="text" required> -->
+                    <textarea name="sinopsis" id="sinopsis"></textarea>
                 </div>
 
                 <!-- ENVIAR FORMULARIO  -->
