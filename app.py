@@ -1,4 +1,5 @@
-from flask import Flask, jsonify, render_template, request
+from distutils.log import debug
+from flask import Flask, render_template, request
 import json, urllib.request
 
 # API MOCKACHINO
@@ -40,14 +41,17 @@ def getDirectores():
 def getGeneros():
     return getResponse(api, "/generos")
 
-
-""" @app.route("/subir_pelicula", methods=["POST", "GET"])
+@app.route("/subir_pelicula", methods=["POST", "GET"])
 def subir_pelicula():
-    if request.method == "POST":
-        ultimoId = listaPeliculas[-1]['id']
 
-        data = jsonify({
-            "id": ultimoId, 
+    with open('json/peliculas.json', 'r') as file:
+        data = json.load(file)
+
+    if request.method == "POST":
+        ultimoId = data["peliculas"][-1]["id"]
+
+        pelicula = {
+            "id": ultimoId + 1,
             "title": request.form["title"],
             "director": request.form["director"],
             "date": request.form["date"],
@@ -59,14 +63,21 @@ def subir_pelicula():
                         "name": request.form["genre"]
                     }
             ],
-        })
-    else:
-        return render_template("subir_pelicula.html")
+            "vote_average": 0,
+            "vote_count": 0
+        }
 
-    return render_template("subir_pelicula.html") """
+        data["peliculas"].append(pelicula)
+
+        with open('json/peliculas.json', 'w') as file:
+            json.dump(data, file, indent=4)
+
+        return render_template("index.html")
+
+    return render_template("subir_pelicula.html")
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
 
 
 
