@@ -17,8 +17,7 @@
     <main>
         <div class="container">
             <!-- Formulario -->
-            <form action="" class="formulario">
-
+            <form action="/subir_pelicula" method="POST" class="formulario">
                 <!-- Cargar imagen  -->
                 <div class="row-1">
                     <img src="https://incubaweb.com/wp-content/uploads/2016/09/upload.png" alt="">
@@ -26,18 +25,18 @@
                     <p>Sube el poster de la pelicula (opcional)</p>
 
                     <label for="imagen" class="btn-img">Subir Foto</label>
-                    <input id="imagen" type="file" accept="image/*">
+                    <input name="poster" id="imagen" type="file" accept="image/*">
                 </div>
 
                 <!-- FILA 1: TITULO Y GENEROS -->
                 <div class="row-2">
                     <div>
                         <label for="titulo" class="label-text">Tiulo</label>
-                        <input id="titulo" type="text" required placeholder="Titulo original">
+                        <input name="title" id="titulo" type="text" required placeholder="Titulo original">
                     </div>
 
                     <div>
-                        <select name="nombre-generos" id="nombre-generos" required>
+                        <select name="genre" id="nombre-generos" required>
                             <option>Seleccionar genero</option>
                         </select>
                     </div>
@@ -47,11 +46,11 @@
                 <div class="row-2">
                     <div>
                         <label for="anio" class="label-text">Año</label>
-                        <input id="anio" type="date" required>
+                        <input name="date" id="anio" type="date" required>
                     </div>
 
                     <div>
-                        <select name="nombre-directores" id="nombre-directores" required>
+                        <select name="director" id="nombre-directores" required>
                             <option>Seleccionar director</option>
                         </select>
                     </div>
@@ -61,7 +60,7 @@
                 <div class="row-3">
                     <label for="sinopsis">Sinopsis</label>
                     <!-- <input id="sinopsis" type="text" required> -->
-                    <textarea name="sinopsis" id="sinopsis"></textarea>
+                    <textarea name="overview" id="sinopsis"></textarea>
                 </div>
 
                 <!-- ENVIAR FORMULARIO  -->
