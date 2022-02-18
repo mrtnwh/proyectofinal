@@ -146,19 +146,6 @@ a {
   width: 100%;
 }
 
-.generos {
-  margin-top: 70px;
-  margin-left: 50px;
-}
-
-.contorno_circular {
-  margin-left: 20px;
-  height: 170px;
-  width: 250px;
-  float: left;
-  border-color: red;
-}
-
 .btn-default {
   color: white;
   border-radius: 15px;
@@ -170,29 +157,55 @@ a {
   height: 43px;
 }
 
-.genre {
-  width: 13%;
-  float: left;
-  margin-left: -245px;
-  margin-top: 15px;
+/* GENEROS */
+
+.generos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
-.actiongenre {
-  height: 160px;
+.genero-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  width: 280px;
+  border-radius: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; 
+  filter: drop-shadow(2px 4px 6px black);
+  margin: 10px;
 }
 
-.comedygenre {
-  height: 160px;
+.genero-accion {
+  background-image: url(/img/actiongenre.jpg);
 }
 
-.wargenre {
-  height: 160px;
+.genero-terror {
+  background-image: url(/img/horrorgenre.jpg);
 }
 
-.scifigenre {
-  height: 160px;
+.genero-ficcion {
+  background-image: url(/img/scifigenre.jpg);
 }
 
-.adventuregenre {
-  height: 160px;
+.genero-comedia {
+  background-image: url(/img/comedygenre.jpg);
+}
+
+.genero-guerra {
+  background-image: url(/img/wargenre.png);
+}
+
+.genero-aventura {
+  background-image: url(/img/adventuregenre.jpg);
+}
+
+.genero-titulo {
+  color: white;
+  background: rgba(0,0,0,.4);
+  font-size: 30px;
+  text-shadow: 2px 2px 0 #000;
 }
