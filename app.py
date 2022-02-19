@@ -14,6 +14,11 @@ def getResponse(api, endpoint='/'):
 
     return json.loads(response)
 
+def getJsonPeliculas():
+    with open('json/peliculas.json', 'r') as file:
+        data = json.load(file)
+        return data
+
 # FLASK
 app = Flask(__name__, static_url_path='/static')
 
@@ -37,6 +42,18 @@ def login():
 def getDirectores():
     return getResponse(api, "/directores")
 
+@app.route("/directores/<nombre>")
+def peliculasXDirector(nombre):
+
+    data = getJsonPeliculas()
+    listaFiltradas = list()
+
+    for pelicula in data["peliculas"]:
+        if nombre == pelicula["director"]:
+            listaFiltradas.append(pelicula)
+
+    return {"peliculas": listaFiltradas}
+
 @app.route("/generos")
 def getGeneros():
     return getResponse(api, "/generos")
@@ -44,8 +61,7 @@ def getGeneros():
 @app.route("/subir_pelicula", methods=["POST", "GET"])
 def subir_pelicula():
 
-    with open('json/peliculas.json', 'r') as file:
-        data = json.load(file)
+    data = getJsonPeliculas()
 
     if request.method == "POST":
         ultimoId = data["peliculas"][-1]["id"]
