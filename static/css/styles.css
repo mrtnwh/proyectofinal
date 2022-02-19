@@ -187,32 +187,32 @@ a {
 }
 
 .genero-accion {
-  background-image: url(/img/actiongenre.jpg);
+  background-image: url(../img/actiongenre.jpg);
 }
 
 .genero-terror {
-  background-image: url(/img/horrorgenre.jpg);
+  background-image: url(../img/horrorgenre.jpg);
 }
 
 .genero-ficcion {
-  background-image: url(/img/scifigenre.jpg);
+  background-image: url(../img/scifigenre.jpg);
 }
 
 .genero-comedia {
-  background-image: url(/img/comedygenre.jpg);
+  background-image: url(../img/comedygenre.jpg);
 }
 
 .genero-guerra {
-  background-image: url(/img/wargenre.png);
+  background-image: url(../img/wargenre.png);
 }
 
 .genero-aventura {
-  background-image: url(/img/adventuregenre.jpg);
+  background-image: url(../img/adventuregenre.jpg);
 }
 
 .genero-titulo {
   color: white;
   background: rgba(0,0,0,.4);
-  font-size: 30px;
+  font-size: 25px;
   text-shadow: 2px 2px 0 #000;
 }
