@@ -19,6 +19,8 @@ def getJsonPeliculas():
         data = json.load(file)
         return data
 
+data = getJsonPeliculas()
+
 # FLASK
 app = Flask(__name__, static_url_path='/static')
 
@@ -42,10 +44,13 @@ def login():
 def getDirectores():
     return getResponse(api, "/directores")
 
+@app.route("/generos")
+def getGeneros():
+    return getResponse(api, "/generos")
+
 @app.route("/directores/<nombre>")
 def peliculasXDirector(nombre):
 
-    data = getJsonPeliculas()
     listaFiltradas = list()
 
     for pelicula in data["peliculas"]:
@@ -54,14 +59,19 @@ def peliculasXDirector(nombre):
 
     return {"peliculas": listaFiltradas}
 
-@app.route("/generos")
-def getGeneros():
-    return getResponse(api, "/generos")
+@app.route("/portadas")
+def peliculasConPortada():
+
+    listaFiltradas = list()
+
+    for pelicula in data["peliculas"]:
+        if pelicula["poster"] != "":
+            listaFiltradas.append(pelicula)
+    
+    return {"peliculas": listaFiltradas}
 
 @app.route("/subir_pelicula", methods=["POST", "GET"])
 def subir_pelicula():
-
-    data = getJsonPeliculas()
 
     if request.method == "POST":
         ultimoId = data["peliculas"][-1]["id"]
