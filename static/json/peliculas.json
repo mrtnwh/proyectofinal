@@ -4,15 +4,10 @@
             "id": 1,
             "title": "Eternals",
             "director": "Chlo\u00c3\u00a9 Zhao",
-            "release_date": "2021-11-03",
+            "date": "2021-11-03",
             "poster": "https://image.tmdb.org/t/p/w500/b6qUu00iIIkXX13szFy7d0CyNcg.jpg",
             "overview": "Hace millones de a\u00c3\u00b1os, los seres c\u00c3\u00b3smicos conocidos como los Celestiales comenzaron a experimentar gen\u00c3\u00a9ticamente con los humanos. Su intenci\u00c3\u00b3n era crear individuos superpoderosos que hicieran \u00c3\u00banicamente el bien, pero algo sali\u00c3\u00b3 mal y aparecieron los Desviantes, destruyendo y creando el caos a su paso. Ambas razas se han enfrentado en una eterna lucha de poder a lo largo de la historia. En medio de esta guerra, Ikaris y Sersi tratar\u00c3\u00a1n de vivir su propia historia de amor.",
-            "genre": [
-                {
-                    "id": 1,
-                    "name": "Action"
-                }
-            ],
+            "genre": "Accion",
             "vote_average": 0,
             "vote_count": 0
         },
@@ -20,15 +15,10 @@
             "id": 2,
             "title": "Spider-Man: No Way Home",
             "director": "Jon Watts",
-            "release_date": "2021-12-15",
+            "date": "2021-12-15",
             "poster": "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
             "overview": "Por primera vez en la historia cinematogr\u00c3\u00a1fica de Spider-Man, nuestro h\u00c3\u00a9roe, vecino y amigo es desenmascarado, y por tanto, ya no es capaz de separar su vida normal de los enormes riesgos que conlleva ser un superh\u00c3\u00a9roe. Cuando pide ayuda al Doctor Strange, los riesgos pasan a ser a\u00c3\u00ban m\u00c3\u00a1s peligrosos, oblig\u00c3\u00a1ndole a descubrir lo que realmente significa ser \u00c3\u00a9l.",
-            "genres": [
-                {
-                    "id": 1,
-                    "name": "Action"
-                }
-            ],
+            "genre": "Accion",
             "vote_average": 0,
             "vote_count": 0
         },
@@ -36,47 +26,28 @@
             "id": 3,
             "title": "Dune",
             "director": "Denis Villeneuve",
-            "release_date": "2021-09-15",
+            "date": "2021-09-15",
             "poster": "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
             "overview": "En un lejano futuro, la galaxia conocida es gobernada mediante un sistema feudal de casas nobles bajo el mandato del Emperador. Las alianzas y la pol\u00c3\u00adtica giran entorno a un peque\u00c3\u00b1o planeta, Dune, del que extrae la 'especia melange', la materia prima que permite los viajes espaciales. La Casa Atreides, bajo el mandato del Duque Leto Atreides recibe el encargo de custodiar el planeta, relevando en la encomienda a sus hist\u00c3\u00b3ricos enemigos, los Harkonnen. Paul Atreides, hijo del duque, se ver\u00c3\u00a1 atrapado en las intrigas pol\u00c3\u00adticas mientras descubre el destino que le deparan los desiertos de Dune. Nueva adaptaci\u00c3\u00b3n al cine de las novelas de Frank Herbert, que ya fueron trasladadas a la gran pantalla por David Lynch en 1984.",
-            "genres": [
-                {
-                    "id": 15,
-                    "name": "Science Fiction"
-                }
-            ],
-            "vote_average": 0,
-            "vote_count": 0
+            "genre": "Science Fiction"
         },
         {
             "id": 4,
             "title": "Interstellar",
             "director": "Christopher Nolan",
-            "release_date": "2014-11-05",
+            "date": "2014-11-05",
             "poster": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
             "overview": "Narra las aventuras de un grupo de exploradores que hacen uso de un agujero de gusano recientemente descubierto para superar las limitaciones de los viajes espaciales tripulados y vencer las inmensas distancias que tiene un viaje interestelar.",
-            "genres": [
-                {
-                    "id": 15,
-                    "name": "Science Fiction"
-                }
-            ],
-            "vote_average": 0,
-            "vote_count": 0
+            "genre": "Science Fiction"
         },
         {
             "id": 5,
             "title": "Don't Look Up",
             "director": "Adam McKay",
-            "release_date": "2021-12-07",
+            "date": "2021-12-07",
             "poster": "https://image.tmdb.org/t/p/w500/th4E1yqsE8DGpAseLiUrI60Hf8V.jpg",
             "overview": "Kate Dibiasky, una estudiante de posgrado de Astronom\u00c3\u00ada, y su profesor, el doctor Randall Mindy acaban de descubrir algo tan asombroso como peligroso. Un cometa en \u00c3\u00b3rbita se encuentra en el sistema solar y va directo a colisionar en la Tierra. A pesar de todos sus intentos por advertir al gobierno y la poblaci\u00c3\u00b3n, parece que la humanidad est\u00c3\u00a1 dispuesta a tom\u00c3\u00a1rselo a broma. Con la ayuda del doctor Oglethorpe, Kate y Randall emprender\u00c3\u00a1n una gira medi\u00c3\u00a1tica que les llevar\u00c3\u00a1 desde la Casa Blanca hasta el programa matinal m\u00c3\u00a1s loco de la televisi\u00c3\u00b3n para tratar de concienciar al mundo que est\u00c3\u00a1 a punto de morir.",
-            "genres": [
-                {
-                    "id": 4,
-                    "name": "Comedy"
-                }
-            ],
+            "genre": "Comedy",
             "vote_average": 0,
             "vote_count": 0
         },
@@ -84,15 +55,10 @@
             "id": 6,
             "title": "The Matrix Resurrections",
             "director": "Lana Wachowski",
-            "release_date": "2021-12-16",
+            "date": "2021-12-16",
             "poster": "https://image.tmdb.org/t/p/w500/8c4a8kE7PizaGQQnditMmI1xbRp.jpg",
             "overview": "En un mundo compuesto por dos realidades, lo cotidiano y lo oculto tras ella, Thomas Anderson se ve obligado de nuevo a ir tras el conejo blanco. Dicha elecci\u00c3\u00b3n contin\u00c3\u00baa siendo la v\u00c3\u00ada de acceso a Matrix, que esta vez es m\u00c3\u00a1s poderosa e intrincada que en ocasiones anteriores.",
-            "genres": [
-                {
-                    "id": 15,
-                    "name": "Science Fiction"
-                }
-            ],
+            "genre": "Science Fiction",
             "vote_average": 0,
             "vote_count": 0
         },
@@ -100,15 +66,10 @@
             "id": 7,
             "title": "The Last Duel",
             "director": "Ridley Scott",
-            "release_date": "2021-10-13",
+            "date": "2021-10-13",
             "poster": "https://image.tmdb.org/t/p/w500/zjrJE0fpzPvX8saJXj8VNfcjBoU.jpg",
             "overview": "Ambientada en Francia, en 1386, cuenta el enfrentamiento entre el caballero Jean de Carrouges y el escudero Jacques LeGris , al acusar el primero al segundo de abusar de su esposa, Marguerite de Carrouges. El Rey Carlos VI decide que la mejor forma de solucionar el conflicto es un duelo a muerte. El que venza ser\u00c3\u00a1 el ganador, sin embargo, si lo hace el escudero, la esposa del caballero ser\u00c3\u00a1 quemada como castigo por falsas acusaciones.",
-            "genres": [
-                {
-                    "id": 7,
-                    "name": "Drama"
-                }
-            ],
+            "genre": "Drama",
             "vote_average": 0,
             "vote_count": 0
         },
@@ -116,15 +77,10 @@
             "id": 8,
             "title": "The Dark Knight",
             "director": "Christopher Nolan",
-            "release_date": "2021-10-13",
+            "date": "2008-07-18",
             "poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
             "overview": "Batman/Bruce Wayne regresa para continuar su guerra contra el crimen. Con la ayuda del teniente Jim Gordon y del Fiscal del Distrito Harvey Dent, Batman se propone destruir el crimen organizado en la ciudad de Gotham. El triunvirato demuestra su eficacia, pero, de repente, aparece Joker, un nuevo criminal que desencadena el caos y tiene aterrados a los ciudadanos.",
-            "genres": [
-                {
-                    "id": 1,
-                    "name": "Action"
-                }
-            ],
+            "genre": "Accion",
             "vote_average": 0,
             "vote_count": 0
         },
@@ -132,15 +88,10 @@
             "id": 9,
             "title": "A Quiet Place Part II",
             "director": "John Krasinski",
-            "release_date": "2021-05-21",
+            "date": "2021-05-21",
             "poster": "https://image.tmdb.org/t/p/w500/4q2hz2m8hubgvijz8Ez0T2Os2Yv.jpg",
             "overview": "Tras los fatales acontecimientos sucedidos en la primera parte, la familia Abbot debe enfrentarse a los peligros del mundo exterior mientras luchan en silencio por sobrevivir. Forzados a aventurarse en lo desconocido, pronto se dan cuenta de que las criaturas que cazan orientadas por el sonido no son la \u00c3\u00banica amenaza que acecha m\u00c3\u00a1s all\u00c3\u00a1 del camino de arena. Secuela de la exitosa producci\u00c3\u00b3n 'Un lugar tranquilo' (A Quiet Place, 2018).",
-            "genres": [
-                {
-                    "id": 11,
-                    "name": "Horror"
-                }
-            ],
+            "genre": "Horror",
             "vote_average": 0,
             "vote_count": 0
         },
@@ -148,15 +99,10 @@
             "id": 10,
             "title": "Soul",
             "director": "Pete Docter",
-            "release_date": "2020-12-25",
+            "date": "2020-12-25",
             "poster": "https://image.tmdb.org/t/p/w500/hm58Jw4Lw8OIeECIq5qyPYhAeRJ.jpg",
             "overview": "\u00c2\u00bfAlguna vez te has preguntado de d\u00c3\u00b3nde provienen tu pasi\u00c3\u00b3n, tus sue\u00c3\u00b1os y tus intereses? \u00c2\u00bfQu\u00c3\u00a9 es lo que te hace ser... t\u00c3\u00ba? Viaja desde las calles de Nueva York a los reinos c\u00c3\u00b3smicos para descubrir las respuestas a las preguntas m\u00c3\u00a1s importantes de la vida",
-            "genres": [
-                {
-                    "id": 16,
-                    "name": "Animation"
-                }
-            ],
+            "genre": "Animation",
             "vote_average": 0,
             "vote_count": 0
         }
