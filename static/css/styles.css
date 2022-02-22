@@ -1,6 +1,7 @@
-body, h1 {
+body,
+h1 {
   margin: 0;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 /******** 
@@ -22,7 +23,7 @@ header {
   height: 135px;
 }
 
-  /* Nav */
+/* Nav */
 .nav-lista {
   display: flex;
   list-style: none;
@@ -41,7 +42,6 @@ header {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
-  
 }
 
 .icono {
@@ -76,8 +76,9 @@ header {
 
 .titulo {
   height: 5px;
-  width: 100px;
-  margin-left: 120px;
+  margin-bottom: -10px;
+  width: 170px;
+  margin-left: 90px;
 }
 
 a {
@@ -88,23 +89,6 @@ a {
 .plantilla_contornos {
   display: flex;
   flex-direction: column;
-}
-
-.contorno {
-  margin-left: 20px;
-  height: 170px;
-  width: 300px;
-  float: left;
-  border-color: red;
-}
-
-.carrousel_peliculas {
-  margin-left: 440px;
-  margin-top: -550px;
-  height: 500px;
-  width: 1300px;
-  float: left;
-  border-color: red;
 }
 
 .peliculas-recomendadas .contenedor-principal {
@@ -132,14 +116,14 @@ a {
 }
 
 .peliculas-recomendadas .contenedor-principal .flecha-izquierda {
-  left: 479px;
-  margin-top: 100px;
+  left: 469px;
+  margin-top: 200px;
 }
 
 .peliculas-recomendadas .contenedor-principal .flecha-derecha {
   right: 0;
-  margin-right: 39px;
-  margin-top: 100px;
+  margin-right: 29px;
+  margin-top: 200px;
 }
 
 .peliculas-recomendadas .contenedor-carousel {
@@ -147,7 +131,7 @@ a {
   height: 800px;
   margin-left: 470px;
   margin-right: 30px;
-  margin-top: -550px;
+  margin-top: -750px;
   overflow: hidden;
 }
 
@@ -181,7 +165,7 @@ a {
   border-radius: 20px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center; 
+  background-position: center;
   filter: drop-shadow(2px 4px 6px black);
   margin: 10px;
 }
@@ -212,7 +196,31 @@ a {
 
 .genero-titulo {
   color: white;
-  background: rgba(0,0,0,.4);
+  background: rgba(0, 0, 0, 0.4);
   font-size: 25px;
   text-shadow: 2px 2px 0 #000;
+}
+
+.plantilla_contornos > a {
+  width: 100px;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
+.plantilla_contornos > h2 {
+  margin-top: 30px;
+  margin-bottom: -40px;
+}
+
+.plantilla_contornos > #batman {
+  margin-top: 60px;
+  margin-left: 130px;
+}
+
+.plantilla_contornos > #jackass {
+  margin-left: 60px;
+}
+
+.plantilla_contornos > #sonic {
+  margin-left: 140px;
 }
