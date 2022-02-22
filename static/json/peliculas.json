@@ -29,7 +29,7 @@
             "date": "2021-09-15",
             "poster": "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
             "overview": "En un lejano futuro, la galaxia conocida es gobernada mediante un sistema feudal de casas nobles bajo el mandato del Emperador. Las alianzas y la pol\u00c3\u00adtica giran entorno a un peque\u00c3\u00b1o planeta, Dune, del que extrae la 'especia melange', la materia prima que permite los viajes espaciales. La Casa Atreides, bajo el mandato del Duque Leto Atreides recibe el encargo de custodiar el planeta, relevando en la encomienda a sus hist\u00c3\u00b3ricos enemigos, los Harkonnen. Paul Atreides, hijo del duque, se ver\u00c3\u00a1 atrapado en las intrigas pol\u00c3\u00adticas mientras descubre el destino que le deparan los desiertos de Dune. Nueva adaptaci\u00c3\u00b3n al cine de las novelas de Frank Herbert, que ya fueron trasladadas a la gran pantalla por David Lynch en 1984.",
-            "genre": "Science Fiction"
+            "genre": "Ciencia Ficcion"
         },
         {
             "id": 4,
@@ -38,7 +38,7 @@
             "date": "2014-11-05",
             "poster": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
             "overview": "Narra las aventuras de un grupo de exploradores que hacen uso de un agujero de gusano recientemente descubierto para superar las limitaciones de los viajes espaciales tripulados y vencer las inmensas distancias que tiene un viaje interestelar.",
-            "genre": "Science Fiction"
+            "genre": "Ciencia Ficcion"
         },
         {
             "id": 5,
@@ -47,7 +47,7 @@
             "date": "2021-12-07",
             "poster": "https://image.tmdb.org/t/p/w500/th4E1yqsE8DGpAseLiUrI60Hf8V.jpg",
             "overview": "Kate Dibiasky, una estudiante de posgrado de Astronom\u00c3\u00ada, y su profesor, el doctor Randall Mindy acaban de descubrir algo tan asombroso como peligroso. Un cometa en \u00c3\u00b3rbita se encuentra en el sistema solar y va directo a colisionar en la Tierra. A pesar de todos sus intentos por advertir al gobierno y la poblaci\u00c3\u00b3n, parece que la humanidad est\u00c3\u00a1 dispuesta a tom\u00c3\u00a1rselo a broma. Con la ayuda del doctor Oglethorpe, Kate y Randall emprender\u00c3\u00a1n una gira medi\u00c3\u00a1tica que les llevar\u00c3\u00a1 desde la Casa Blanca hasta el programa matinal m\u00c3\u00a1s loco de la televisi\u00c3\u00b3n para tratar de concienciar al mundo que est\u00c3\u00a1 a punto de morir.",
-            "genre": "Comedy",
+            "genre": "Comedia",
             "vote_average": 0,
             "vote_count": 0
         },
@@ -58,7 +58,7 @@
             "date": "2021-12-16",
             "poster": "https://image.tmdb.org/t/p/w500/8c4a8kE7PizaGQQnditMmI1xbRp.jpg",
             "overview": "En un mundo compuesto por dos realidades, lo cotidiano y lo oculto tras ella, Thomas Anderson se ve obligado de nuevo a ir tras el conejo blanco. Dicha elecci\u00c3\u00b3n contin\u00c3\u00baa siendo la v\u00c3\u00ada de acceso a Matrix, que esta vez es m\u00c3\u00a1s poderosa e intrincada que en ocasiones anteriores.",
-            "genre": "Science Fiction",
+            "genre": "Ciencia Ficcion",
             "vote_average": 0,
             "vote_count": 0
         },
@@ -102,7 +102,7 @@
             "date": "2020-12-25",
             "poster": "https://image.tmdb.org/t/p/w500/hm58Jw4Lw8OIeECIq5qyPYhAeRJ.jpg",
             "overview": "\u00c2\u00bfAlguna vez te has preguntado de d\u00c3\u00b3nde provienen tu pasi\u00c3\u00b3n, tus sue\u00c3\u00b1os y tus intereses? \u00c2\u00bfQu\u00c3\u00a9 es lo que te hace ser... t\u00c3\u00ba? Viaja desde las calles de Nueva York a los reinos c\u00c3\u00b3smicos para descubrir las respuestas a las preguntas m\u00c3\u00a1s importantes de la vida",
-            "genre": "Animation",
+            "genre": "Animacion",
             "vote_average": 0,
             "vote_count": 0
         }
