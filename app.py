@@ -43,7 +43,7 @@ def login():
 def getDirectores():
     return getResponse(api, "/directores")
 
-@app.route("/generos")
+@app.route("/get-generos")
 def getGeneros():
     return getResponse(api, "/generos")
 
@@ -105,6 +105,22 @@ def subir_pelicula():
 @app.route("/peliculas")
 def peliculas():
     return render_template("peliculas.html")
+
+@app.route("/generos")
+def generos():
+    return render_template("generos.html")
+
+@app.route("/generos/<genero>")
+def peliPorGenero(genero):
+    genero = genero.capitalize()
+
+    """ listaFiltradas = list()
+
+    for pelicula in data["peliculas"]:
+        if genero == pelicula["genre"]:
+            listaFiltradas.append(pelicula) """
+
+    return render_template("peliculas_genero.html", genero = genero)
 
 if __name__ == "__main__":
     app.run()
