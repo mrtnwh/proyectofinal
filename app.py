@@ -1,4 +1,3 @@
-from distutils.log import debug
 from flask import Flask, render_template, request
 import json, urllib.request
 
@@ -13,6 +12,13 @@ def getResponse(api, endpoint='/'):
         response += linea.decode()
 
     return json.loads(response)
+
+def getJsonPeliculas():
+    with open('static/json/peliculas.json', 'r') as file:
+        data = json.load(file)
+        return data
+
+data = getJsonPeliculas()
 
 # FLASK
 app = Flask(__name__, static_url_path='/static')
@@ -41,43 +47,67 @@ def getDirectores():
 def getGeneros():
     return getResponse(api, "/generos")
 
+@app.route("/directores/<nombre>")
+def peliculasXDirector(nombre):
+
+    listaFiltradas = list()
+
+    for pelicula in data["peliculas"]:
+        if nombre == pelicula["director"]:
+            listaFiltradas.append(pelicula)
+
+    return {"peliculas": listaFiltradas}
+
+@app.route("/portadas")
+def peliculasConPortada():
+
+    listaFiltradas = list()
+
+    for pelicula in data["peliculas"]:
+        if pelicula["poster"] != "":
+            listaFiltradas.append(pelicula)
+    
+    return {"peliculas": listaFiltradas}
+
 @app.route("/subir_pelicula", methods=["POST", "GET"])
 def subir_pelicula():
 
-    with open('json/peliculas.json', 'r') as file:
-        data = json.load(file)
-
     if request.method == "POST":
         ultimoId = data["peliculas"][-1]["id"]
+
+        # Crear if en caso de que no se haya adjuntado un poster, subir img por default
+        if request.form["poster"] == "" :
+            poster = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
+        else:
+            poster = request.form["poster"]
 
         pelicula = {
             "id": ultimoId + 1,
             "title": request.form["title"],
             "director": request.form["director"],
             "date": request.form["date"],
-            "poster": request.form["poster"],
+            "poster": poster,
             "overview": request.form["overview"],
-            "genre": [
-                    {
-                        "id":0,
-                        "name": request.form["genre"]
-                    }
-            ],
+            "genre": request.form["genre"],
             "vote_average": 0,
             "vote_count": 0
         }
 
         data["peliculas"].append(pelicula)
 
-        with open('json/peliculas.json', 'w') as file:
+        with open('static/json/peliculas.json', 'w') as file:
             json.dump(data, file, indent=4)
 
-        return render_template("index.html")
+        return render_template("peliculas.html")
 
     return render_template("subir_pelicula.html")
 
+@app.route("/peliculas")
+def peliculas():
+    return render_template("peliculas.html")
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
 
 
 

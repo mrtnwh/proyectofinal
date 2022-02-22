@@ -1,20 +1,59 @@
-.nav-principal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 70px;
-  background-color: pink;
+body, h1 {
+  margin: 0;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+/******** 
+  Header 
+*********/
+
+header {
+  background-color: #121111;
+  display: flex;
+  justify-content: space-around;
+}
+
+.cont-header-izq {
+  align-items: center;
+  display: flex;
+}
+
+.img-logo {
+  height: 135px;
+}
+
+  /* Nav */
+.nav-lista {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+
+.nav-item {
+  margin-left: 15px;
+}
+
+.nav-links:hover {
+  color: #fea47e;
+}
+
+.cont-iconos {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  
+}
+
+.icono {
+  font-size: 30px;
+  margin-left: 16px;
 }
 
 .buscar-container {
-  margin-top: -25px;
-  margin-left: 10px;
-  float: left;
   background: #fff;
-  height: 30px;
+  height: 20px;
   border-radius: 30px;
-  padding: 10px 20px;
+  padding: 10px 14px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,27 +72,6 @@
   font-weight: 500;
   font-size: 16px;
   transition: 0.8s;
-}
-
-.fa-sign-out-alt {
-  margin-left: 10px;
-  font-size: 24px;
-}
-
-.fa-file-upload {
-  font-size: 24px;
-}
-
-.linea_horizontal {
-  margin-top: 70px;
-}
-
-.linea_vertical {
-  height: 900px;
-  width: 1px;
-  float: left;
-  margin-left: 400px;
-  margin-top: -904px;
 }
 
 .titulo {
@@ -146,53 +164,55 @@ a {
   width: 100%;
 }
 
+/* GENEROS */
+
 .generos {
-  margin-top: 70px;
-  margin-left: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
-.contorno_circular {
-  margin-left: 20px;
-  height: 170px;
-  width: 250px;
-  float: left;
-  border-color: red;
+.genero-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  width: 280px;
+  border-radius: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; 
+  filter: drop-shadow(2px 4px 6px black);
+  margin: 10px;
 }
 
-.btn-default {
+.genero-accion {
+  background-image: url(../img/actiongenre.jpg);
+}
+
+.genero-terror {
+  background-image: url(../img/horrorgenre.jpg);
+}
+
+.genero-ficcion {
+  background-image: url(../img/scifigenre.jpg);
+}
+
+.genero-comedia {
+  background-image: url(../img/comedygenre.jpg);
+}
+
+.genero-guerra {
+  background-image: url(../img/wargenre.png);
+}
+
+.genero-aventura {
+  background-image: url(../img/adventuregenre.jpg);
+}
+
+.genero-titulo {
   color: white;
-  border-radius: 15px;
-  background-color: palevioletred;
-  float: right;
-  margin-top: -20px;
-  margin-right: 10px;
-  font-size: 14px;
-  height: 43px;
-}
-
-.genre {
-  width: 13%;
-  float: left;
-  margin-left: -245px;
-  margin-top: 15px;
-}
-
-.actiongenre {
-  height: 160px;
-}
-
-.comedygenre {
-  height: 160px;
-}
-
-.wargenre {
-  height: 160px;
-}
-
-.scifigenre {
-  height: 160px;
-}
-
-.adventuregenre {
-  height: 160px;
+  background: rgba(0,0,0,.4);
+  font-size: 25px;
+  text-shadow: 2px 2px 0 #000;
 }
