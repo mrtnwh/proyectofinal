@@ -224,3 +224,9 @@ a {
 .plantilla_contornos > #sonic {
   margin-left: 140px;
 }
+
+.pelicula-titulo {
+  margin-top: -5px;
+  color: black;
+  font-size: 25px;
+}
