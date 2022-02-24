@@ -117,6 +117,10 @@ def generos():
 @app.route("/generos/<genero>")
 def peliPorGenero(genero):
     genero = genero.capitalize()
+
+    if genero == "Ciencia%20ficcion":
+        genero = "Ciencia ficcion"
+
     return render_template("peliculas_genero.html", genero = genero)
 
 if __name__ == "__main__":

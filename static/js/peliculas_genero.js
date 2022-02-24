@@ -1,14 +1,15 @@
 var genero = document.getElementsByClassName('titulo')[0].id;
-var container = document.getElementById('cont-cards-peli-generos');
-
-// ERROR NO RECONOCE CIENCIA FICCION POR EL ESPACIO
+var container = document.getElementById('container-peli-generos')
+var containerCards = document.getElementById('cont-cards-peli-generos');
+var resultado = false
 
 fetch('http://127.0.0.1:5000/static/json/peliculas.json')
     .then(response => response.json())
-    .then(data =>
+    .then(data => {
         data.peliculas.slice().reverse().forEach(peli => {
             if (peli.genre == genero) {
-                container.innerHTML += 
+                resultado = true
+                containerCards.innerHTML += 
                 `
                     <div class="card-container">
                     <div class="card-img" style="background-image: url(${peli.poster});"></div>
@@ -40,6 +41,14 @@ fetch('http://127.0.0.1:5000/static/json/peliculas.json')
                     </div>
                 </div>
                 ` 
-            }   
-        })    
-    )
+            }
+        })
+
+        if (resultado === false) {
+            container.innerHTML += 
+            `
+                <h1 style="color: black;">No se encontró ningun resultado :(</h1>
+            `
+        }
+    }    
+)
