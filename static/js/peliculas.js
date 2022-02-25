@@ -14,7 +14,7 @@ fetch('http://127.0.0.1:5000/static/json/peliculas.json')
                     <div class="col1">
                         <h1>${peli.title}</h1>
                         <ul>
-                            <li>${peli.release_date} /</li>
+                            <li>${peli.date} /</li>
                             <li>${peli.genre}</li>
                         </ul>
                     </div>

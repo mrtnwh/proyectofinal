@@ -18,16 +18,16 @@
 
             <nav>
                 <ul class="nav-lista">
-                    <li class="nav-item"><a href="#" class="nav-links">INICIO</a></li>
-                    <li class="nav-item"><a href="#" class="nav-links">GENEROS</a></li>
-                    <li class="nav-item"><a href="#" class="nav-links">CATEGORIA3</a></li>
+                    <li class="nav-item"><a href="index" class="nav-links">INICIO</a></li>
+                    <li class="nav-item"><a href="peliculas" class="nav-links">PELICULAS</a></li>
+                    <li class="nav-item"><a href="generos" class="nav-links">GENEROS</a></li>
                 </ul>
             </nav>
         </div>
 
         <div class="cont-iconos">
-            <a href="/templates/login.html"><i class="fas fa-sign-out-alt icono"></i></a>
-            <a href="/templates/subir_pelicula.html"><i class="fas fa-file-upload icono"></i></a>
+            <a href="login"><i class="fas fa-sign-out-alt icono"></i></a>
+            <a href="subir_pelicula"><i class="fas fa-file-upload icono"></i></a>
 
             <div class="buscar-container">
                 <input type="text" name="buscar" placeholder="Buscar..." class="buscar-input">
@@ -88,42 +88,30 @@
         <h2>Generos Populares</h2>
         <div class="generos">
             <div class="genero-card genero-accion">
-                <a href="#">
-                    <p class="genero-titulo">Accion</p>
-                </a>
+                <a href="generos/Accion"><p class="genero-titulo">Accion</p></a>
             </div>
-            <div class="genero-card genero-terror">
-                <a href="#">
-                    <p class="genero-titulo">Terror</p>
-                </a>
+            <div class="genero-card genero-horror">
+                <a href="generos/Horror"><p class="genero-titulo">Horror</p></a>
             </div>
             <div class="genero-card genero-ficcion">
-                <a href="#">
+                <a href="generos/Ciencia ficcion">
                     <p class="genero-titulo">Ciencia ficción</p>
                 </a>
             </div>
             <div class="genero-card genero-comedia">
-                <a href="#">
-                    <p class="genero-titulo">Comedia</p>
-                </a>
+                <a href="generos/Comedia"><p class="genero-titulo">Comedia</p></a>
             </div>
             <div class="genero-card genero-guerra">
-                <a href="#">
-                    <p class="genero-titulo">Guerra</p>
-                </a>
-            </div>
+                <a href="generos/Guerra"><p class="genero-titulo">Guerra</p></a>
+            </div> 
             <div class="genero-card genero-aventura">
-                <a href="#">
-                    <p class="genero-titulo">Aventura</p>
-                </a>
-            </div>
+                <a href="generos/Aventura"><p class="genero-titulo">Aventura</p></a>
+            </div>  
         </div>
     </section>
 
+    <script src="../static/js/carrousel.js"></script>
+    <script src="/static/js/carrousel.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
-
 </html>
-
-<script src="/json/peliculas.json"></script>
-<script src="/static/js/carrousel.js"></script>
-<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
