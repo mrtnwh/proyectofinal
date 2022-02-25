@@ -101,8 +101,8 @@ a {
   border: none;
   background: rgba(0, 0, 0, 0.3);
   font-size: 40px;
-  height: 50%;
-  top: 20%;
+  height: 40%;
+  top: 15%;
   line-height: 40px;
   width: 50px;
   color: #fff;
@@ -112,25 +112,27 @@ a {
 
 .peliculas-recomendadas .contenedor-principal .flecha-izquierda:hover,
 .peliculas-recomendadas .contenedor-principal .flecha-derecha:hover {
-  background: rgba(0, 0, 0, 0.9);
+  background-color: #dbdbdb;
 }
 
 .peliculas-recomendadas .contenedor-principal .flecha-izquierda {
-  left: 469px;
-  margin-top: 200px;
+  left: 700px;
+  margin-top: 300px;
 }
 
+.image {
+  margin-right: 50px;
+}
 .peliculas-recomendadas .contenedor-principal .flecha-derecha {
   right: 0;
-  margin-right: 29px;
-  margin-top: 200px;
+  margin-right: 365px;
+  margin-top: 300px;
 }
 
 .peliculas-recomendadas .contenedor-carousel {
-  width: 100%;
+  width: 1100px;
   height: 800px;
-  margin-left: 470px;
-  margin-right: 30px;
+  margin-left: 700px;
   margin-top: -750px;
   overflow: hidden;
 }
@@ -138,14 +140,6 @@ a {
 .peliculas-recomendadas .contenedor-carousel .carousel {
   display: flex;
   flex-wrap: nowrap;
-}
-
-.peliculas-recomendadas .contenedor-carousel .carousel .pelicula {
-  min-width: 100%;
-}
-
-.peliculas-recomendadas .contenedor-carousel .carousel .pelicula img {
-  width: 100%;
 }
 
 /* GENEROS */
