@@ -8,17 +8,20 @@ const flechaDerecha = document.getElementById("flecha-derecha");
 function agregarPeliculas() {
   fetch("/static/json/peliculas.json")
     .then((respuesta) => respuesta.json()) // indicar el formato que queremos que se obtenga la informacion
-    .then((peliculas) => {
-      peliculas.forEach((pelicula) => {
-        const pelis = document.createElement("div");
-        pelis.innerHTML += `
+    .then((data) => {
+      data.peliculas
+        .slice()
+        .reverse()
+        .forEach((pelicula) => {
+          const pelis = document.createElement("div");
+          pelis.innerHTML += `
         <a href="#">
         <br>
         <p class="pelicula-titulo"> ${pelicula.title} </p> <img src="${pelicula.poster}" class="image">
         </a>
 `;
-        carousel.appendChild(pelis);
-      });
+          carousel.appendChild(pelis);
+        });
     })
     .catch((error) => console.log("Hubo un error : " + error.message));
 }
