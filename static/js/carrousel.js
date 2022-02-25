@@ -6,7 +6,7 @@ const flechaIzquierda = document.getElementById("flecha-izquierda");
 const flechaDerecha = document.getElementById("flecha-derecha");
 
 function agregarPeliculas() {
-  fetch("../json/peliculas.json")
+  fetch("/static/json/peliculas.json")
     .then((respuesta) => respuesta.json()) // indicar el formato que queremos que se obtenga la informacion
     .then((peliculas) => {
       peliculas.forEach((pelicula) => {
