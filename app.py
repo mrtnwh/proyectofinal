@@ -1,3 +1,4 @@
+from distutils.log import debug
 from flask import Flask, render_template, request, session
 import json, urllib.request
 
@@ -110,6 +111,10 @@ def subir_pelicula():
 def peliculas():
     return render_template("peliculas.html")
 
+@app.route("/peliculas/<id>")
+def pelicula(id):
+    return render_template("pelicula_info.html", id = id)
+
 @app.route("/generos")
 def generos():
     return render_template("generos.html")
@@ -124,7 +129,7 @@ def peliPorGenero(genero):
     return render_template("peliculas_genero.html", genero = genero)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
 
 
 
