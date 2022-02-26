@@ -32,7 +32,7 @@ fetch('http://127.0.0.1:5000/static/json/peliculas.json')
                     </div>
 
                     <div class="col1">
-                        <button>Ver mas</button>
+                        <button><a href="peliculas/${peli.id}">Ver mas</a></button>
                     </div> 
                 </div>
             </div>
