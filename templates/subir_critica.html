@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/subir_critica.css">
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <form action="/subir_critica" method="POST">
+
+                <!-- queda a definir -->
+                <div class="row-1">
+                    <h3>Subi tu critica</h3>
+                </div>
+
+                <!-- Titulo de la critica -->
+                <div class="row-2">
+                    <div>
+                        <div>Titulo de la critica</div>
+                        <div>
+                            <br>
+                            <input name="title" id="titulo" type="text" class="barra">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Critica texto -->
+                <div class="row-2">
+                    <div>
+                        <br>
+                        <div>Tu critica</div>
+                        <div>
+                            <br>
+                            <textarea name="review" rows="10" class="critica"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOTON -->
+                <div class="cont-btn">
+                    <button type="submit" class="boton">Enviar critica</button>
+                </div>
+
+            </form>
+        </div>
+</body>
+
+</html>

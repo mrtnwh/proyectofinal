@@ -1,0 +1,48 @@
+.container {
+  background-color: white;
+  width: 380px;
+  margin-top: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.barra {
+  width: 250px;
+}
+
+.critica {
+  width: 250px;
+}
+
+.cont-btn {
+  margin-top: -40px;
+  width: 90px;
+  margin-left: 270px;
+}
+
+form {
+  font-size: 17px;
+  padding: 10px;
+}
+
+.barra:hover {
+  border-color: aqua;
+}
+
+.critica:hover {
+  border-color: aqua;
+}
+
+body {
+  background-color: #2e5b6b;
+}
+
+.boton {
+  color: white;
+  background-color: #2e5b6b;
+  border-color: #2e5b6b;
+}
+
+.boton:hover {
+  cursor: pointer;
+}
