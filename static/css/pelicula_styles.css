@@ -1,0 +1,25 @@
+#row1 {
+  margin-left: 600px;
+  margin-top: -750px;
+  margin-bottom: 770px;
+}
+
+#row2 {
+  margin-left: 600px;
+  margin-top: -750px;
+  margin-bottom: 770px;
+}
+
+#cont-critica {
+  margin-left: 600px;
+  margin-top: -750px;
+}
+
+.poster {
+  border-radius: 30px;
+}
+
+body {
+  background-color: #2e5b6b;
+  color: white;
+}
