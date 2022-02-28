@@ -1,4 +1,3 @@
-from distutils.log import debug
 from flask import Flask, render_template, request, session
 import json, urllib.request
 
@@ -14,12 +13,17 @@ def getResponse(api, endpoint='/'):
 
     return json.loads(response)
 
-def getJsonPeliculas():
-    with open('static/json/peliculas.json', 'r') as file:
+# JSON
+def getJson(url):
+    with open(url, 'r') as file:
         data = json.load(file)
         return data
 
-data = getJsonPeliculas()
+jsonPeliculas = getJson('static/json/peliculas.json')
+listaPeliculas = jsonPeliculas["peliculas"]
+
+jsonCriticas = getJson('static/json/criticas.json')
+
 
 # FLASK
 app = Flask(__name__, static_url_path='/static')
@@ -37,6 +41,7 @@ def login():
         for usr in listaUsuarios:
             if request.form["email"] == usr["email"] and request.form["password"] == usr["password"]:
                 session['logeado'] = True
+                session['user'] = request.form["email"]
                 return render_template("index.html")
     
     return render_template("login.html")
@@ -54,7 +59,7 @@ def peliculasXDirector(nombre):
 
     listaFiltradas = list()
 
-    for pelicula in data["peliculas"]:
+    for pelicula in listaPeliculas:
         if nombre == pelicula["director"]:
             listaFiltradas.append(pelicula)
 
@@ -65,7 +70,7 @@ def peliculasConPortada():
 
     listaFiltradas = list()
 
-    for pelicula in data["peliculas"]:
+    for pelicula in listaPeliculas:
         if pelicula["poster"] != "":
             listaFiltradas.append(pelicula)
     
@@ -79,7 +84,7 @@ def subir_pelicula():
     else:
 
         if request.method == "POST":
-            ultimoId = data["peliculas"][-1]["id"]
+            ultimoId = listaPeliculas[-1]["id"]
 
             if request.form["poster"] == "" :
                 poster = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
@@ -98,10 +103,10 @@ def subir_pelicula():
                 "vote_count": 0
             }
 
-            data["peliculas"].append(pelicula)
+            listaPeliculas.append(pelicula)
 
             with open('static/json/peliculas.json', 'w') as file:
-                json.dump(data, file, indent=4)
+                json.dump(jsonPeliculas, file, indent=4)
 
             return render_template("peliculas.html")
 
@@ -114,6 +119,69 @@ def peliculas():
 @app.route("/peliculas/<id>")
 def pelicula(id):
     return render_template("pelicula_info.html", id = id)
+
+""" @app.route("/peliculas/<id>/eliminar")
+def eliminarPelicula(id):
+
+    id = int(id)
+
+    if not session.get('logeado'):
+        return render_template("login.html")
+    
+    else:
+        for elemCritica in jsonCriticas["criticas"]:
+            if id == elemCritica["id"] and len(elemCritica["reviews"]) == 0:
+                for elemPelicula in listaPeliculas:
+                    if id == elemPelicula["id"]:
+                        listaPeliculas.remove(elemPelicula)
+
+        # Hacer funcion, se repite mucho en el codigo
+        with open('static/json/peliculas.json', 'w') as file:
+            json.dump(jsonPeliculas, file, indent=4)
+
+    return render_template("peliculas.html") """
+
+@app.route("/peliculas/<id>/subir_critica" , methods=["POST", "GET"])
+def subir_critica(id):
+
+    id = int(id)
+
+    if not session.get('logeado'):
+        return render_template("login.html") 
+    else:
+        if request.method == "POST":
+            dictPelicula = {
+                "id": id,
+                "reviews": []
+            } 
+
+            dictCritica = {
+                "user": session.get('user'),
+                "review_title": request.form["title"], 
+                "review_text": request.form["review"]
+            }
+
+            def agregarCritica():
+                existePelicula = False
+                for peli in jsonCriticas["criticas"]:
+                    if id == peli["id"]:
+                        peli["reviews"].append(dictCritica)
+                        existePelicula = True
+                        break
+                return (jsonCriticas["criticas"], existePelicula)
+            
+            jsonCriticas["criticas"], existePelicula = agregarCritica()
+
+            if existePelicula == False:
+                jsonCriticas["criticas"].append(dictPelicula)
+                agregarCritica()
+
+            with open('static/json/criticas.json', 'w') as file:
+                    json.dump(jsonCriticas, file, indent=4)
+            
+            return render_template("pelicula_info.html", id = id)
+
+        return render_template("subir_critica.html", id = id)       
 
 @app.route("/generos")
 def generos():

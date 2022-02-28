@@ -1,0 +1,29 @@
+{
+    "criticas": [
+        {
+            "id": 4,
+            "reviews": [
+                {
+                    "user": "anon@gmail.com",
+                    "review_title": "Opiniones divididas",
+                    "review_text": "Es una pelicula que: o bien te gusta mucho, o bien sales del cine diciendo que vaya perdida de tiempo, pero indiferente no te va a dejar. A mi particularmente me ha gustado mucho, m\u00c3\u00a1s que gravity. Trata de una emotiva historia de ciencia ficci\u00c3\u00b3n futurista sobre el fin del mundo. La pelicula es tranquila, sin apenas sobresaltos, no hay acci\u00c3\u00b3n, es larga (casi 3 horas), as\u00c3\u00ad que si vas a verla ten en cuenta todo esto!"
+                },
+                {
+                    "user": "admin@gmail.com",
+                    "review_title": "Super recomendada",
+                    "review_text": "Una obra maestra de la ciencia ficci\u00f3n. Me encanta Christopher Nolan en casi todo lo que hace y tambi\u00e9n me parece muy bueno el papel de Matthew McConaughey.\r\n\r\nEs una pel\u00edcula de ciencia ficci\u00f3n diferente, que te hace reflexionar sobre la naturaleza humana y sus diferentes instintos. (no a\u00f1ado m\u00e1s para no hacer spoiler).\r\n\r\nSin duda una pel\u00edcula muy recomendable e imprescindible en mi colecci\u00f3n."
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "reviews": [
+                {
+                    "user": "admin@gmail.com",
+                    "review_title": "Poca emoci\u00f3n",
+                    "review_text": "Eternals es una pel\u00edcula con la que me ha resultado imposible conectar. Demasiado confusa y deslabazada en los saltos de tiempo que plantea, se alarga innecesariamente. Actores insipidos, perdidos en un rol que no explota, En mi opini\u00f3n, es de las menos agradecidas de Marvel,. Mejora en las escenas de acci\u00f3n, aunque no emociona en ning\u00fan momento. Confiemos que mejore en las siguientes."
+                }
+            ]
+        }
+    ]
+}
