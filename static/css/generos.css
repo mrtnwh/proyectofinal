@@ -1,95 +1,111 @@
 a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
 .generos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .genero-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 180px;
-    width: 280px;
-    border-radius: 20px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center; 
-    filter: drop-shadow(2px 4px 6px black);
-    margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  width: 280px;
+  border-radius: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  filter: drop-shadow(2px 4px 6px black);
+  margin: 30px;
 }
 
 .genero-accion {
-    background-image: url(../img/actiongenre.jpg);
+  background-image: url(../img/actiongenre.jpg);
 }
 
 .genero-animacion {
-    background-image: url(../img/animationgenre.jpg);
+  background-image: url(../img/animationgenre.jpg);
 }
 
 .genero-aventura {
-    background-image: url(../img/adventuregenre.jpg);
+  background-image: url(../img/adventuregenre.jpg);
 }
 
 .genero-ficcion {
-    background-image: url(../img/scifigenre.jpg);
+  background-image: url(../img/scifigenre.jpg);
 }
 
 .genero-comedia {
-    background-image: url(../img/comedygenre.jpg);
+  background-image: url(../img/comedygenre.jpg);
 }
 
 .genero-crimen {
-    background-image: url(../img/crimegenre.jpg);
+  background-image: url(../img/crimegenre.jpg);
 }
 
 .genero-documental {
-    background-image: url(../img/documentarygenre.jpg);
+  background-image: url(../img/documentarygenre.jpg);
 }
 
 .genero-drama {
-    background-image: url(../img/dramagenre.jpg);
+  background-image: url(../img/dramagenre.jpg);
 }
 
 .genero-familia {
-    background-image: url(../img/familygenre.jpg);
+  background-image: url(../img/familygenre.jpg);
 }
 
 .genero-fantasia {
-    background-image: url(../img/fantasygenre.jpg);
+  background-image: url(../img/fantasygenre.jpg);
 }
 
 .genero-guerra {
-    background-image: url(../img/wargenre.png);
+  background-image: url(../img/wargenre.png);
 }
 
 .genero-horror {
-    background-image: url(../img/horrorgenre.jpg);
+  background-image: url(../img/horrorgenre.jpg);
 }
 
 .genero-misterio {
-    background-image: url(../img/mysterygenre.jpg);
+  background-image: url(../img/mysterygenre.jpg);
 }
 
 .genero-musical {
-    background-image: url(../img/musicgenre.jpg);
+  background-image: url(../img/musicgenre.jpg);
 }
 
 .genero-romance {
-    background-image: url(../img/romancegenre.jpg);
+  background-image: url(../img/romancegenre.jpg);
 }
 
 .genero-thriller {
-    background-image: url(../img/thrillergenre.jpg);
+  background-image: url(../img/thrillergenre.jpg);
 }
 
 .genero-titulo {
-    color: white;
-    background: rgba(0,0,0,.4);
-    font-size: 25px;
-    text-shadow: 2px 2px 0 #000;
+  color: white;
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 25px;
+  text-shadow: 2px 2px 0 #000;
+}
+
+body {
+  background-color: #2e5b6b;
+}
+
+#container > .titulo {
+  font-family: "Roboto", sans-serif;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.genero-card:hover {
+  transition: transform 0.2s;
+  transform: scale(1.5);
 }
