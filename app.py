@@ -82,7 +82,7 @@ def subir_pelicula():
             ultimoId = data["peliculas"][-1]["id"]
 
             if request.form["poster"] == "" :
-                poster = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png"
+                poster = "https://i.ibb.co/5jXxMJ1/image-not-found.jpg"
             else:
                 poster = request.form["poster"]
 
@@ -94,6 +94,7 @@ def subir_pelicula():
                 "poster": poster,
                 "overview": request.form["overview"],
                 "genre": request.form["genre"],
+                "trailer": request.form["trailer"],
                 "vote_average": 0,
                 "vote_count": 0
             }
