@@ -28,3 +28,25 @@ fetch("/static/json/peliculas.json")
       }
     })
   );
+
+var contCriticas = document.getElementById("cont-cards-criticas");
+
+fetch("/static/json/criticas.json")
+  .then((response) => response.json())
+  .then((data) =>
+    data.criticas.slice().reverse().forEach((peli) => {
+      if (peli.id == idPelicula) {
+        peli.reviews.forEach((critica) => {
+          contCriticas.innerHTML += `
+            <div class="card-criticas">
+              <h4 class="card-criticas-titulo">${critica.review_title}</h4>
+              <p>Escrito por ${critica.user}</p>
+              <div class="card-criticas-texto">
+                  <p>${critica.review_text}</p>
+              </div>
+              <p class="light-gray">Publicado el ${critica.date}</p>
+            </div> `
+        })
+      }
+    })
+  )

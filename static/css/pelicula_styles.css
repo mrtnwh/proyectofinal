@@ -1,3 +1,14 @@
+body {
+  font-family: Arial,Sans-Serif;
+  background-color: #2e5b6b;
+  color: white;
+}
+
+/* Colores */
+.light-gray {
+  color: #979797;
+}
+
 #row1 {
   margin-left: 600px;
   margin-top: -750px;
@@ -19,7 +30,48 @@
   border-radius: 30px;
 }
 
-body {
-  background-color: #2e5b6b;
-  color: white;
+/* CRITICAS */
+.section-criticas {
+  margin-left: 40px;
+}
+
+  /* Agregar critica */
+.cont-agregar-critica {
+  margin-top: 30px;
+  margin-bottom: 60px;
+}
+
+.agregar-critica-inner {
+  width: 40%; /* agregar MAX WIDTH */
+  padding: 10px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.agregar-critica-texto {
+  margin-bottom: 35px;
+}
+
+.agregar-critica-link {
+  text-decoration: none;
+  color: #005ea8;
+}
+
+.agregar-critica-link:hover{
+  color: #2c82c8;
+}
+
+  /* Criticas usuarios */
+.card-criticas {
+  background-color: white;
+  color: black;
+  max-width: 50%;
+  padding: 10px;
+  border-radius: 2px;
+  border-bottom: 3px solid #ededed;
+}
+
+.card-criticas-titulo {
+  margin: 10px 0px;
 }
