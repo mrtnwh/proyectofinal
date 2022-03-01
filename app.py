@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Flask, render_template, request, session
 import json, urllib.request
 
@@ -120,14 +121,13 @@ def peliculas():
 def pelicula(id):
     return render_template("pelicula_info.html", id = id)
 
-""" @app.route("/peliculas/<id>/eliminar")
+@app.route("/peliculas/<id>/eliminar")
 def eliminarPelicula(id):
 
     id = int(id)
 
     if not session.get('logeado'):
         return render_template("login.html")
-    
     else:
         for elemCritica in jsonCriticas["criticas"]:
             if id == elemCritica["id"] and len(elemCritica["reviews"]) == 0:
@@ -135,30 +135,38 @@ def eliminarPelicula(id):
                     if id == elemPelicula["id"]:
                         listaPeliculas.remove(elemPelicula)
 
-        # Hacer funcion, se repite mucho en el codigo
-        with open('static/json/peliculas.json', 'w') as file:
-            json.dump(jsonPeliculas, file, indent=4)
+                        # Hacer funcion, se repite mucho en el codigo
+                        with open('static/json/peliculas.json', 'w') as file:
+                            json.dump(jsonPeliculas, file, indent=4)
 
-    return render_template("peliculas.html") """
+    return render_template("peliculas.html", id = id)
 
 @app.route("/peliculas/<id>/subir_critica" , methods=["POST", "GET"])
 def subir_critica(id):
 
     id = int(id)
+    dia = datetime.today().strftime('%d-%m-%Y')
+    listaUsuarios = getResponse(api, "/usuarios")["usuarios"]
 
     if not session.get('logeado'):
         return render_template("login.html") 
     else:
         if request.method == "POST":
+
+            for usr in listaUsuarios:
+                if session.get('user') == usr["email"]:
+                    nombreUser = usr["user"]
+
             dictPelicula = {
                 "id": id,
                 "reviews": []
             } 
 
             dictCritica = {
-                "user": session.get('user'),
+                "user": nombreUser,
                 "review_title": request.form["title"], 
-                "review_text": request.form["review"]
+                "review_text": request.form["review"],
+                "date": dia
             }
 
             def agregarCritica():
