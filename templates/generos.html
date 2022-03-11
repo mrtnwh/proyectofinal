@@ -9,13 +9,36 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 
 <body>
 
+    <header>
+        <div class="cont-header-izq">
+            <img src="../static/img/logo.png" alt="" class="img-logo">
+
+            <nav>
+                <ul class="nav-lista">
+                    <li class="nav-item"><a href="/" class="nav-links">INICIO</a></li>
+                    <li class="nav-item"><a href="peliculas" class="nav-links">PELICULAS</a></li>
+                    <li class="nav-item"><a href="generos" class="nav-links">GENEROS</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="cont-iconos">
+            <a href="login"><i class="fas fa-sign-out-alt icono"></i></a>
+            <a href="subir_pelicula"><i class="fas fa-file-upload icono"></i></a>
+        </div>
+    </header>
+
+
+
     <div id="container">
-        <h1 class="titulo">Todos los generos</h1>
+
         <div class="generos">
             <div class="genero-card genero-accion">
                 <a href="generos/Accion">
@@ -99,6 +122,7 @@
             </div>
         </div>
     </div>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
