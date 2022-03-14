@@ -1,12 +1,77 @@
 body {
   margin: 0px;
-  background-color: #f3f2f2;
+  background-color: #2e5b6b;
 }
 
-/* Header de referencia */
 header {
-  background-color: coral;
-  height: 70px;
+  background-color: #121111;
+  display: flex;
+  justify-content: space-around;
+}
+
+.cont-header-izq {
+  align-items: center;
+  display: flex;
+}
+
+.img-logo {
+  height: 135px;
+}
+
+/* Nav */
+.nav-lista {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+
+.nav-item {
+  margin-left: 15px;
+}
+
+.nav-links:hover {
+  color: #fea47e;
+}
+
+.cont-iconos {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.icono {
+  font-size: 30px;
+  margin-left: 16px;
+}
+
+.buscar-container {
+  background: #fff;
+  height: 20px;
+  border-radius: 30px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.8s;
+}
+
+.buscar-container:hover > .buscar-input {
+  width: 230px;
+}
+
+.buscar-container .buscar-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 0px;
+  font-weight: 500;
+  font-size: 16px;
+  transition: 0.8s;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .container {
@@ -119,6 +184,27 @@ button {
   width: 1000px;
 }
 
+@media (max-width: 1430px) {
+  .row-trailer > #link_trailer {
+    width: 350px;
+  }
+}
+
+@media (max-width: 930px) {
+  .row-trailer > #link_trailer {
+    width: 250px;
+  }
+}
+
+@media (max-width: 760px) {
+  .row-trailer > #link_trailer {
+    width: 150px;
+  }
+  .row-trailer > .label-text {
+    margin-left: -100px;
+  }
+}
+
 @media (max-width: 560px) {
   .container {
     width: 100%;
@@ -143,6 +229,10 @@ button {
 
   p {
     text-align: center;
+  }
+
+  .row-trailer > #link_trailer {
+    margin-left: -10px;
   }
 }
 

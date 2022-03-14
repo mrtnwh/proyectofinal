@@ -3,19 +3,55 @@ body {
   background-color: #2e5b6b;
 }
 
-header {
-  margin-top: -40px;
-  height: 150px;
-  width: 100%;
-  background-color: whitesmoke;
+body,
+h1 {
+  margin: 0;
+  font-family: "Ubuntu", sans-serif;
 }
 
-header > h2 {
-  font-family: "Roboto", sans-serif;
-  font-size: 50px;
-  width: 250px;
-  margin-left: auto;
-  margin-right: auto;
+header {
+  background-color: #121111;
+  display: flex;
+  justify-content: space-around;
+}
+
+.cont-header-izq {
+  align-items: center;
+  display: flex;
+}
+
+.img-logo {
+  height: 135px;
+}
+
+.nav-lista {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+
+.nav-item {
+  margin-left: 15px;
+}
+
+.nav-links:hover {
+  color: #fea47e;
+}
+
+.cont-iconos {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.icono {
+  font-size: 30px;
+  margin-left: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
 }
 
 h1,
