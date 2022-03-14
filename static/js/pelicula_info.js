@@ -50,3 +50,20 @@ fetch("/static/json/criticas.json")
       }
     })
   )
+
+const btnDelete = document.getElementById('btn-delete');
+
+btnDelete.addEventListener('click', (e) => {
+  let clickDelete = e.target.id == "btn-delete"
+
+  if (clickDelete) {
+      fetch(`http://127.0.0.1:5000/peliculas/${idPelicula}`, {
+          method: 'DELETE'
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href= "http://127.0.0.1:5000/peliculas"
+        }
+      })
+  }
+})

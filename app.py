@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Flask, render_template, request, session
+from flask import Flask, jsonify, render_template, request, session, redirect, url_for
 import json, urllib.request
 
 # API MOCKACHINO
@@ -60,6 +60,7 @@ def peliculasXDirector(nombre):
 
     listaFiltradas = list()
 
+    # usar list comprehension
     for pelicula in listaPeliculas:
         if nombre == pelicula["director"]:
             listaFiltradas.append(pelicula)
@@ -70,9 +71,9 @@ def peliculasXDirector(nombre):
 def peliculasConPortada():
 
     listaFiltradas = list()
-
+    # usar list comprehension
     for pelicula in listaPeliculas:
-        if pelicula["poster"] != "":
+        if pelicula["poster"] != "": # agregar ruta a poster default
             listaFiltradas.append(pelicula)
     
     return {"peliculas": listaFiltradas}
@@ -107,6 +108,7 @@ def subir_pelicula():
 
             listaPeliculas.append(pelicula)
 
+            #crear funcion
             with open('static/json/peliculas.json', 'w') as file:
                 json.dump(jsonPeliculas, file, indent=4)
 
@@ -118,29 +120,34 @@ def subir_pelicula():
 def peliculas():
     return render_template("peliculas.html")
 
-@app.route("/peliculas/<id>")
+@app.route("/peliculas/<id>",  methods=["DELETE", "GET"])
 def pelicula(id):
-    return render_template("pelicula_info.html", id = id)
-
-@app.route("/peliculas/<id>/eliminar")
-def eliminarPelicula(id):
 
     id = int(id)
 
-    if not session.get('logeado'):
-        return render_template("login.html")
-    else:
-        for elemCritica in jsonCriticas["criticas"]:
-            if id == elemCritica["id"] and len(elemCritica["reviews"]) == 0:
-                for elemPelicula in listaPeliculas:
-                    if id == elemPelicula["id"]:
-                        listaPeliculas.remove(elemPelicula)
+    if request.method == "DELETE":
+        """ if not session.get('logeado'):
+            return render_template("login.html") 
+        else: """
+        
+        sePuedeBorrar = True
 
-                        # Hacer funcion, se repite mucho en el codigo
-                        with open('static/json/peliculas.json', 'w') as file:
-                            json.dump(jsonPeliculas, file, indent=4)
+        for elemPelicula in listaPeliculas:
+            if id == elemPelicula["id"]:
+                for elemCritica in jsonCriticas["criticas"]:
+                    if id == elemCritica["id"]:
+                        sePuedeBorrar = False
+                        break
+                break
 
-    return render_template("peliculas.html", id = id)
+        if sePuedeBorrar:
+            listaPeliculas.remove(elemPelicula)
+
+            #crear funcion
+            with open('static/json/peliculas.json', 'w') as file:
+                json.dump(jsonPeliculas, file, indent=4)
+    
+    return render_template("pelicula_info.html", id = id)
 
 @app.route("/peliculas/<id>/subir_critica" , methods=["POST", "GET"])
 def subir_critica(id):
@@ -185,6 +192,7 @@ def subir_critica(id):
                 jsonCriticas["criticas"].append(dictPelicula)
                 agregarCritica()
 
+            #crear funcion
             with open('static/json/criticas.json', 'w') as file:
                     json.dump(jsonCriticas, file, indent=4)
             
