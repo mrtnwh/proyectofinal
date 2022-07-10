@@ -9,21 +9,19 @@ body {
   color: #979797;
 }
 
-#row1 {
-  margin-left: 600px;
-  margin-top: -750px;
-  margin-bottom: 770px;
+/* MAIN */
+
+.cont-info {
+  display: flex;
+  justify-content: center;
 }
 
-#row2 {
-  margin-left: 600px;
-  margin-top: -750px;
-  margin-bottom: 770px;
+#cont-info-dcha {
+  width: 30%;
 }
 
-#cont-critica {
-  margin-left: 600px;
-  margin-top: -750px;
+#cont-info-izq {
+  width: 65%;
 }
 
 .poster {
@@ -35,6 +33,10 @@ body {
   margin-left: 40px;
 }
 
+.cont-critica-y-boton {
+  display: flex;
+}
+
   /* Agregar critica */
 .cont-agregar-critica {
   margin-top: 30px;
@@ -42,7 +44,6 @@ body {
 }
 
 .agregar-critica-inner {
-  width: 40%; /* agregar MAX WIDTH */
   padding: 10px;
   background-color: white;
   color: black;

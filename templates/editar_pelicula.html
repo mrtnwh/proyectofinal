@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/subir_pelicula.css">
+    <link rel="stylesheet" href="/static/css/subir_pelicula.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>Subir pelicula</title>
 </head>
@@ -14,7 +14,7 @@
 
     <header>
         <div class="cont-header-izq">
-            <img src="../static/img/logo.png" alt="" class="img-logo">
+            <img src="/static/img/logo.png" alt="" class="img-logo">
 
             <nav>
                 <ul class="nav-lista">
@@ -32,12 +32,13 @@
     </header>
 
     <main>
-        <div class="container">
+        <div class="container" data-pelicula="{{ pelicula }}">
             <!-- Formulario -->
-            <form action="/subir_pelicula" method="POST" class="formulario">
+
+            <form action="/peliculas/{{ id }}/editar" method="POST" class="formulario">
                 <!-- Cargar imagen  -->
                 <div class="row-1">
-                    <img src="https://incubaweb.com/wp-content/uploads/2016/09/upload.png" alt="">
+                    <img alt="" id="img-poster">
 
                     <p>Subir el poster de la pelicula (500x800)
                     </p>
@@ -51,7 +52,7 @@
                 <div class="row-2">
                     <div>
                         <label for="titulo" class="label-text">Tiulo</label>
-                        <input name="title" id="titulo" type="text" required placeholder="Titulo original">
+                        <input name="title" id="titulo" type="text" required>
                     </div>
 
                     <div>
@@ -78,31 +79,27 @@
 
                 <div class="row-trailer">
 
-                    <label for="trailer" class="label-text">Agregar trailer</label>
-                    <input name="trailer" id="link_trailer" type="text"
-                        placeholder="Link embed, ej: https://www.youtube.com/embed/fWQrd6cwJ0A"
-                        required>
+                    <label for="trailer" class="label-text">Agregar link</label>
+                    <input name="trailer" id="link_trailer" type="text" required>
 
                 </div>
 
                 <!-- FILA 1: SINOPSIS -->
                 <div class="row-3">
                     <label for="sinopsis">Sinopsis</label>
-                    <!-- <input id="sinopsis" type="text" required> -->
                     <textarea name="overview" id="sinopsis" required></textarea>
                 </div>
 
-
-
                 <!-- ENVIAR FORMULARIO  -->
                 <div class="cont-btn">
-                    <button type="submit">Subir</button>
+                    <button type="submit" id="btn-send">Subir</button>
                 </div>
 
             </form>
     </main>
 
-    <script src="../static/js/subir_pelicula.js"></script>
+    <script src="/static/js/subir_pelicula.js"></script>
+    <script src="/static/js/editar_pelicula.js"></script>
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 

@@ -20,11 +20,16 @@ def getJson(url):
         data = json.load(file)
         return data
 
-jsonPeliculas = getJson('static/json/peliculas.json')
+rutaPeliculas = 'static/json/peliculas.json'
+rutaCriticas = 'static/json/criticas.json'
+
+jsonPeliculas = getJson(rutaPeliculas)
 listaPeliculas = jsonPeliculas["peliculas"]
+jsonCriticas = getJson(rutaCriticas)
 
-jsonCriticas = getJson('static/json/criticas.json')
-
+def dumpData(ruta, jsonData):
+    with open(ruta, 'w') as file:
+        json.dump(jsonData, file, ensure_ascii= False, indent=4)
 
 # FLASK
 app = Flask(__name__, static_url_path='/static')
@@ -57,26 +62,16 @@ def getGeneros():
 
 @app.route("/directores/<nombre>")
 def peliculasXDirector(nombre):
+    listaFiltradas = [peli for peli in listaPeliculas if nombre == peli["director"]]
 
-    listaFiltradas = list()
-
-    # usar list comprehension
-    for pelicula in listaPeliculas:
-        if nombre == pelicula["director"]:
-            listaFiltradas.append(pelicula)
-
-    return {"peliculas": listaFiltradas}
+    return {"peliculas": listaFiltradas} #retornar jsonify????
 
 @app.route("/portadas")
 def peliculasConPortada():
-
-    listaFiltradas = list()
-    # usar list comprehension
-    for pelicula in listaPeliculas:
-        if pelicula["poster"] != "": # agregar ruta a poster default
-            listaFiltradas.append(pelicula)
+    posterDefault = "https://i.ibb.co/5jXxMJ1/image-not-found.jpg"
+    listaFiltradas = [peli for peli in listaPeliculas if posterDefault != peli["poster"]]
     
-    return {"peliculas": listaFiltradas}
+    return {"peliculas": listaFiltradas} #retornar jsonify????
 
 @app.route("/subir_pelicula", methods=["POST", "GET"])
 def subir_pelicula():
@@ -108,9 +103,7 @@ def subir_pelicula():
 
             listaPeliculas.append(pelicula)
 
-            #crear funcion
-            with open('static/json/peliculas.json', 'w') as file:
-                json.dump(jsonPeliculas, file, indent=4)
+            dumpData(rutaPeliculas, jsonPeliculas)
 
             return render_template("peliculas.html")
 
@@ -120,34 +113,68 @@ def subir_pelicula():
 def peliculas():
     return render_template("peliculas.html")
 
-@app.route("/peliculas/<id>",  methods=["DELETE", "GET"])
+@app.route("/peliculas/<id>",  methods=["GET","DELETE"])
 def pelicula(id):
 
     id = int(id)
 
     if request.method == "DELETE":
-        """ if not session.get('logeado'):
+        if not session.get('logeado'):
+            #redirect url ????
             return render_template("login.html") 
-        else: """
-        
-        sePuedeBorrar = True
+        else:
+            sePuedeBorrar = True
 
-        for elemPelicula in listaPeliculas:
-            if id == elemPelicula["id"]:
-                for elemCritica in jsonCriticas["criticas"]:
-                    if id == elemCritica["id"]:
-                        sePuedeBorrar = False
-                        break
-                break
+            for elemPelicula in listaPeliculas:
+                if id == elemPelicula["id"]:
+                    for elemCritica in jsonCriticas["criticas"]:
+                        if id == elemCritica["id"]:
+                            sePuedeBorrar = False
+                            break
+                    break
 
-        if sePuedeBorrar:
-            listaPeliculas.remove(elemPelicula)
+            if sePuedeBorrar:
+                listaPeliculas.remove(elemPelicula)
 
-            #crear funcion
-            with open('static/json/peliculas.json', 'w') as file:
-                json.dump(jsonPeliculas, file, indent=4)
-    
+                dumpData(rutaPeliculas, jsonPeliculas)
+
     return render_template("pelicula_info.html", id = id)
+
+@app.route("/peliculas/<id>/editar",  methods=["GET","POST"])
+def editarPelicula(id):
+
+    pelicula = [peli for peli in listaPeliculas if id == str(peli["id"])]
+
+    if request.method == "POST":
+
+        if request.form["poster"] == "" :
+            poster = "https://i.ibb.co/5jXxMJ1/image-not-found.jpg"
+        else:
+            poster = request.form["poster"]
+
+        peliculaMod = {
+                "id": int(id),
+                "title": request.form["title"],
+                "director": request.form["director"],
+                "date": request.form["date"],
+                "poster": poster,
+                "overview": request.form["overview"],
+                "genre": request.form["genre"],
+                "trailer": request.form["trailer"],
+                "vote_average": 0,
+                "vote_count": 0
+        }
+
+        for index, elem in enumerate(listaPeliculas):
+            if elem == pelicula[0]:
+                listaPeliculas[index] = peliculaMod
+
+        dumpData(rutaPeliculas, jsonPeliculas)
+        
+    pelicula = json.dumps(pelicula, ensure_ascii= False) #es necesario para convertir las comillas simples a dobles
+
+    return render_template("editar_pelicula.html", pelicula = pelicula, id = id)
+
 
 @app.route("/peliculas/<id>/subir_critica" , methods=["POST", "GET"])
 def subir_critica(id):
@@ -192,9 +219,7 @@ def subir_critica(id):
                 jsonCriticas["criticas"].append(dictPelicula)
                 agregarCritica()
 
-            #crear funcion
-            with open('static/json/criticas.json', 'w') as file:
-                    json.dump(jsonCriticas, file, indent=4)
+            dumpData(rutaCriticas, jsonCriticas)
             
             return render_template("pelicula_info.html", id = id)
 
