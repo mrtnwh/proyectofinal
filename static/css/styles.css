@@ -50,32 +50,6 @@ header {
   margin-left: 16px;
 }
 
-.buscar-container {
-  background: #fff;
-  height: 20px;
-  border-radius: 30px;
-  padding: 10px 14px;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  transition: 0.8s;
-}
-
-.buscar-container:hover > .buscar-input {
-  width: 230px;
-  display: block;
-}
-
-.buscar-container .buscar-input {
-  background: transparent;
-  border: none;
-  outline: none;
-  width: 0px;
-  font-weight: 500;
-  font-size: 16px;
-  transition: 0.8s;
-}
-
 .titulo {
   height: 5px;
   margin-bottom: -10px;
@@ -97,7 +71,20 @@ a {
   display: flex;
 }
 
-.peliculas-recomendadas .contenedor-principal .flecha-izquierda,
+.peliculas-recomendadas .contenedor-principal .flecha-izquierda {
+  position: absolute;
+  border: none;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 40px;
+  height: 40%;
+  top: 15%;
+  line-height: 40px;
+  width: 50px;
+  color: #fff;
+  cursor: pointer;
+  transition: 1s ease all;
+}
+
 .peliculas-recomendadas .contenedor-principal .flecha-derecha {
   position: absolute;
   border: none;
@@ -127,16 +114,15 @@ a {
 }
 
 .peliculas-recomendadas .contenedor-principal .flecha-derecha {
-  right: 0;
-  margin-right: 153px;
+  right: 114px;
   margin-top: 300px;
 }
 
 .peliculas-recomendadas .contenedor-carousel {
-  width: 1100px;
-  height: 800px;
-  margin-left: 700px;
-  margin-top: -750px;
+  width: 69em;
+  height: 50em;
+  margin-left: 43.7em;
+  margin-top: -47.2em;
   overflow: hidden;
 }
 
@@ -234,6 +220,12 @@ a {
 
 /* Responsive */
 
+@media (max-width: 1920px) {
+  .contenedor-carousel {
+    max-width: 1100px;
+  }
+}
+
 @media (max-width: 1669px) {
   .peliculas-recomendadas .contenedor-carousel {
     width: 550px;
@@ -291,9 +283,8 @@ a {
     right: 5px;
   }
 }
-
 @media (max-width: 559px) {
   #flecha-derecha {
-    right: -130px;
+    right: 10px;
   }
 }

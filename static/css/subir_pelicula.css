@@ -1,6 +1,8 @@
-body {
-  margin: 0px;
+body,
+h1 {
   background-color: #2e5b6b;
+  margin: 0;
+  font-family: "Ubuntu", sans-serif;
 }
 
 header {
@@ -44,31 +46,6 @@ header {
   margin-left: 16px;
 }
 
-.buscar-container {
-  background: #fff;
-  height: 20px;
-  border-radius: 30px;
-  padding: 10px 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.8s;
-}
-
-.buscar-container:hover > .buscar-input {
-  width: 230px;
-}
-
-.buscar-container .buscar-input {
-  background: transparent;
-  border: none;
-  outline: none;
-  width: 0px;
-  font-weight: 500;
-  font-size: 16px;
-  transition: 0.8s;
-}
-
 a {
   text-decoration: none;
   color: #fff;
@@ -91,7 +68,7 @@ a {
 }
 
 img {
-  width: 100px;
+  width: 135px;
   height: auto;
 }
 
