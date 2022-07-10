@@ -1,0 +1,49 @@
+{
+    "criticas": [
+        {
+            "id": 4,
+            "reviews": [
+                {
+                    "user": "Alvaro Novo",
+                    "review_title": "Opiniones divididas",
+                    "review_text": "Es una pelicula que: o bien te gusta mucho, o bien sales del cine diciendo que vaya perdida de tiempo, pero indiferente no te va a dejar. A mi particularmente me ha gustado mucho, mÃ¡s que gravity. Trata de una emotiva historia de ciencia ficciÃ³n futurista sobre el fin del mundo. La pelicula es tranquila, sin apenas sobresaltos, no hay acciÃ³n, es larga (casi 3 horas), asÃ­ que si vas a verla ten en cuenta todo esto!",
+                    "date": "27-02-2022"
+                },
+                {
+                    "user": "fernando12",
+                    "review_title": "Super recomendada",
+                    "review_text": "Una obra maestra de la ciencia ficción. Me encanta Christopher Nolan en casi todo lo que hace y también me parece muy bueno el papel de Matthew McConaughey.\r\n\r\nEs una película de ciencia ficción diferente, que te hace reflexionar sobre la naturaleza humana y sus diferentes instintos. (no añado más para no hacer spoiler).\r\n\r\nSin duda una película muy recomendable e imprescindible en mi colección.",
+                    "date": "01-03-2022"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "reviews": [
+                {
+                    "user": "Noelia Noguera",
+                    "review_title": "Poca emoción",
+                    "review_text": "Eternals es una película con la que me ha resultado imposible conectar. Demasiado confusa y deslabazada en los saltos de tiempo que plantea, se alarga innecesariamente. Actores insipidos, perdidos en un rol que no explota, En mi opinión, es de las menos agradecidas de Marvel,. Mejora en las escenas de acción, aunque no emociona en ningún momento. Confiemos que mejore en las siguientes.",
+                    "date": "25-02-2022"
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "reviews": [
+                {
+                    "user": "Admin",
+                    "review_title": "La chispa y el alma de PIXAR",
+                    "review_text": "En la línea de 'Del revés' (también de Pete Docter, uno de los nombres fundamentales de la compañía), el regalo navideño que nos ha hecho este año el imprescindible -desde hace 25 años- estudio de animación del flexo, es otra de esas de sus maravillosas obras concebidas para que gusten a los niños por su colorido, simpatía y diseño... y a sus acompañantes adultos por su contenido, mensaje y reflexión, a veces dolorosa y emocionante hasta el llanto.\r\n\r\n'Soul' habla sobre los propósitos en la vida, el quienes somos y lo que podemos aspirar a ser, las ilusiones, aspiraciones, frustraciones, éxitos y fracasos, lo que nos hace seguir adelante, lo que nos conecta con la vida y los demás... Casi nada.\r\n\r\nTan inteligente como emocionante, tan profunda como amena, tan reflexiva como disfrutable y entretenida... Otra maravillosa obra maestra de PIXAR.",
+                    "date": "16-03-2022"
+                },
+                {
+                    "user": "Admin",
+                    "review_title": "Ni emociona ni transmite",
+                    "review_text": "Creo que Pixar puede sacar cualquier cosa y los fans volverán a decir que es una obra maestra. Ni emociona ni transmite. De nuevo el mismo mensaje de siempre, que ya aburre. Coincido con otras críticas que he leído, ni siquiera la banda sonora es memorable ni digna de ser recordada.\r\n\r\nSe nota el presupuesto y la calidad técnica, pero, como en otros casos donde todo es cgi, el talento no se puede copiar ni se puede comprar, por mucho dinero que tengas. Por eso resultan los bodrios que luego se intentan salvar con marketing y vendiendo camisetas de la versión extendida.\r\n\r\n¿Es una película para adultos o para niños? Porque debería ser una cosa o la otra, ya que resulta un poco embarazoso, gags infantiles junto con guión trascendente y pretendidamente complejo...\r\n\r\nPor favor Disney, no me digas lo que debo hacer con mi vida, ni tampoco continues mandando mensajes a los niños sobre cómo deben ser o comportarse, dedícate a producir entretenimiento del bueno, si puedes.",
+                    "date": "16-03-2022"
+                }
+            ]
+        }
+    ]
+}

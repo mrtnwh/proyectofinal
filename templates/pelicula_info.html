@@ -14,44 +14,46 @@
     <header></header>
 
     <main>
-
-        <!-- NOTA: LAS ETIQUETAS COMENTADAS SON ILUSTRATIVAS. ESTAN IMPLEMENTADAS EN EL JS. SE PUEDE BORRAR  -->
         <div class="cont-info" id="{{ id }}">
             <div id="cont-info-dcha">
-                <!-- img -->
+                <!-- img class="poster"-->
             </div>
             <div id="cont-info-izq">
                 <div id="row1">
-                    <!--<h2>Titulo</h2>
-                    <div>
-                        <p></p> 
-                        <p></p> 
-                    </div> -->
                 </div>
                 <div id="row2">
-                    <!-- <h3>Sinopsis</h3>
-                    <p></p>
-                    <h3>Direccion</h3>
-                    <p></p> -->
                 </div>
             </div>
         </div>
-
-        <!-- NOTA: FALTA DEFINIR ESTRUCTURA Y FUNCIONAMIENTO. -->
-        <div id="cont-critica">
-            <div>
-                <!-- cont-critica-dcha -->
-                <h2>Comentarios</h2>
-            </div>
-            <div>
-                <!-- cont-critica-izq -->
-                <button>Editar pelicula</button>
-            </div>
-        </div>
-
     </main>
 
-    <script src="../static/js/pelicula_info.js"></script>
+    <section class="section-criticas">
+
+        <div class="cont-critica-y-boton">
+            <div class="cont-agregar-critica">
+                <h3>Tu critica</h3>
+                <div class="agregar-critica-inner">
+                    <div class="agregar-critica-texto">Escribe tu opinión y compartela con el resto de los usuarios.</div>
+                    <a href="/peliculas/{{ id }}/subir_critica" class="agregar-critica-link">Añadir crítica</a>
+                </div>
+            </div>
+    
+            <div id="cont-btn">
+                <button type="submit" id="btn-delete">Borrar</button>
+                <button type="submit" id="btn-edit"><a href="http://127.0.0.1:5000/peliculas/{{ id }}/editar">Editar</a></button>
+            </div>
+        </div>
+        
+        <div>
+            <h3>Critica de usuarios</h3>
+            <div id="cont-cards-criticas">
+            </div>
+        </div>
+    </section>
+
+    
+
+    <script src="/static/js/pelicula_info.js"></script>
 </body>
 
 </html>

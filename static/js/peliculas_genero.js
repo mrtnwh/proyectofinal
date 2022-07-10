@@ -3,7 +3,7 @@ var container = document.getElementById('container-peli-generos')
 var containerCards = document.getElementById('cont-cards-peli-generos');
 var resultado = false
 
-fetch('http://127.0.0.1:5000/static/json/peliculas.json')
+fetch('/static/json/peliculas.json')
     .then(response => response.json())
     .then(data => {
         data.peliculas.slice().reverse().forEach(peli => {

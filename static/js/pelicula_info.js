@@ -3,7 +3,7 @@ var contInfoDcha = document.getElementById("cont-info-dcha");
 var row1 = document.getElementById("row1");
 var row2 = document.getElementById("row2");
 
-fetch("http://127.0.0.1:5000/static/json/peliculas.json")
+fetch("/static/json/peliculas.json")
   .then((response) => response.json())
   .then((data) =>
     data.peliculas.forEach((peli) => {
@@ -28,3 +28,42 @@ fetch("http://127.0.0.1:5000/static/json/peliculas.json")
       }
     })
   );
+
+var contCriticas = document.getElementById("cont-cards-criticas");
+
+fetch("/static/json/criticas.json")
+  .then((response) => response.json())
+  .then((data) =>
+    data.criticas.slice().reverse().forEach((peli) => {
+      if (peli.id == idPelicula) {
+        peli.reviews.forEach((critica) => {
+          contCriticas.innerHTML += `
+            <div class="card-criticas">
+              <h4 class="card-criticas-titulo">${critica.review_title}</h4>
+              <p>Escrito por ${critica.user}</p>
+              <div class="card-criticas-texto">
+                  <p>${critica.review_text}</p>
+              </div>
+              <p class="light-gray">Publicado el ${critica.date}</p>
+            </div> `
+        })
+      }
+    })
+  )
+
+const btnDelete = document.getElementById('btn-delete');
+
+btnDelete.addEventListener('click', (e) => {
+  let clickDelete = e.target.id == "btn-delete"
+
+  if (clickDelete) {
+      fetch(`http://127.0.0.1:5000/peliculas/${idPelicula}`, {
+          method: 'DELETE'
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href= "http://127.0.0.1:5000/peliculas"
+        }
+      })
+  }
+})

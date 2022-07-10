@@ -1,7 +1,7 @@
 let container = document.getElementById('container');
 
 // No pude linkearlo de otra forma
-fetch('http://127.0.0.1:5000/static/json/peliculas.json')
+fetch('/static/json/peliculas.json')
     .then(response => response.json())
     .then(data => {
         // Hago una copia del array y lo recorro inversamente para mostrar las ultimas peliculas agregadas primero.
