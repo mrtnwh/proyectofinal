@@ -1,6 +1,8 @@
 from datetime import datetime
+from importlib.resources import path
 from flask import Flask, jsonify, render_template, request, session, redirect, url_for
-import json, urllib.request
+from werkzeug.utils import secure_filename
+import json, urllib.request, os
 
 # API MOCKACHINO
 api = "https://www.mockachino.com/e87585d1-9630-4f"
@@ -34,6 +36,7 @@ def dumpData(ruta, jsonData):
 # FLASK
 app = Flask(__name__, static_url_path='/static')
 app.secret_key = 'C52zMh3cmKb5UvPg'
+app.config['UPLOAD_FOLDER'] = 'static/img/posters_peliculas'
 
 @app.route("/")
 def index():
@@ -73,6 +76,18 @@ def peliculasConPortada():
     
     return {"peliculas": listaFiltradas} #retornar jsonify????
 
+def subir_poster():
+    poster = request.files["poster"]
+            
+    if poster.filename == "":
+        poster = "https://i.ibb.co/5jXxMJ1/image-not-found.jpg" 
+    else:
+        posterNombre = secure_filename(poster.filename)
+        poster.save(os.path.join(app.config['UPLOAD_FOLDER'], posterNombre))
+        poster = app.config['UPLOAD_FOLDER'] + '/' + poster.filename
+
+    return poster
+
 @app.route("/subir_pelicula", methods=["POST", "GET"])
 def subir_pelicula():
 
@@ -83,10 +98,7 @@ def subir_pelicula():
         if request.method == "POST":
             ultimoId = listaPeliculas[-1]["id"]
 
-            if request.form["poster"] == "" :
-                poster = "https://i.ibb.co/5jXxMJ1/image-not-found.jpg"
-            else:
-                poster = request.form["poster"]
+            poster = subir_poster()
 
             pelicula = {
                 "id": ultimoId + 1,
@@ -114,7 +126,7 @@ def peliculas():
     return render_template("peliculas.html")
 
 @app.route("/peliculas/<id>",  methods=["GET","DELETE"])
-def pelicula(id):
+def pelicula_info(id):
 
     id = int(id)
 
@@ -123,17 +135,28 @@ def pelicula(id):
             #redirect url ????
             return render_template("login.html") 
         else:
+
+            peliculaEncontrada = []
             sePuedeBorrar = True
 
             for elemPelicula in listaPeliculas:
                 if id == elemPelicula["id"]:
-                    for elemCritica in jsonCriticas["criticas"]:
-                        if id == elemCritica["id"]:
-                            sePuedeBorrar = False
-                            break
-                    break
+                    peliculaEncontrada = elemPelicula
+                    id = id
 
+            for elemCritica in jsonCriticas["criticas"]:
+                if id == elemCritica["id"]:
+                    sePuedeBorrar = False
+                    break
+            
             if sePuedeBorrar:
+
+                #Elimino el poster de la carpeta poster_peliculas
+                if "https://i.ibb.co/5jXxMJ1/image-not-found.jpg" != peliculaEncontrada["poster"]:
+                    print("entra al if para buscar el poster y borrarlo")
+                    print(peliculaEncontrada["poster"])
+                    os.remove(peliculaEncontrada["poster"])
+
                 listaPeliculas.remove(elemPelicula)
 
                 dumpData(rutaPeliculas, jsonPeliculas)
@@ -147,10 +170,7 @@ def editarPelicula(id):
 
     if request.method == "POST":
 
-        if request.form["poster"] == "" :
-            poster = "https://i.ibb.co/5jXxMJ1/image-not-found.jpg"
-        else:
-            poster = request.form["poster"]
+        poster = subir_poster()
 
         peliculaMod = {
                 "id": int(id),
