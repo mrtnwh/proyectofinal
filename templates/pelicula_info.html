@@ -33,25 +33,27 @@
             <div class="cont-agregar-critica">
                 <h3>Tu critica</h3>
                 <div class="agregar-critica-inner">
-                    <div class="agregar-critica-texto">Escribe tu opinión y compartela con el resto de los usuarios.</div>
+                    <div class="agregar-critica-texto">Escribe tu opinión y compartela con el resto de los usuarios.
+                    </div>
                     <a href="/peliculas/{{ id }}/subir_critica" class="agregar-critica-link">Añadir crítica</a>
                 </div>
             </div>
-    
+
             <div id="cont-btn">
                 <button type="submit" id="btn-delete">Borrar</button>
-                <button type="submit" id="btn-edit"><a href="http://127.0.0.1:5000/peliculas/{{ id }}/editar">Editar</a></button>
+                <button type="submit" id="btn-edit"><a
+                        href="http://127.0.0.1:5000/peliculas/{{ id }}/editar">Editar</a></button>
             </div>
         </div>
-        
-        <div>
+
+        <div class="cont-criticas">
             <h3>Critica de usuarios</h3>
             <div id="cont-cards-criticas">
             </div>
         </div>
     </section>
 
-    
+
 
     <script src="/static/js/pelicula_info.js"></script>
 </body>
