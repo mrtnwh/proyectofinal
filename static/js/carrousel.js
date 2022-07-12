@@ -17,7 +17,7 @@ function agregarPeliculas() {
           pelis.innerHTML += `
         <a href="#">
         <br>
-        <p class="pelicula-titulo"> ${pelicula.title} </p> <img src="${pelicula.poster}" class="image">
+        <p class="pelicula-titulo" style="text-align: center; color:white;"> ${pelicula.title} </p> <img src="${pelicula.poster}" class="image">
         </a>
 `;
           carousel.appendChild(pelis);
