@@ -88,6 +88,10 @@ img {
   width: 300px;
 }
 
+#poster-link {
+  width: 300px;
+}
+
 /*  1- TITULO Y GENEROS 2- ANIO Y DIRECTORES */
 .row-2 {
   display: flex;
@@ -141,7 +145,8 @@ button {
 #anio,
 #sinopsis,
 #nombre-directores,
-#nombre-generos {
+#nombre-generos, 
+#poster-link {
   outline: none;
   box-sizing: border-box;
   border: 2px solid #aaa;
@@ -153,7 +158,8 @@ button {
 #anio:focus,
 #sinopsis:focus,
 #nombre-directores:focus,
-#nombre-generos:focus {
+#nombre-generos:focus,
+#poster-link:focus {
   border-color: dodgerBlue;
   box-shadow: 0 0 5px 0 dodgerBlue;
 }

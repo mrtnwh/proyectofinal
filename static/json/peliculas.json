@@ -1,120 +1,104 @@
 {
-  "peliculas": [
-    {
-      "id": 1,
-      "title": "Eternals",
-      "director": "Chloé Zhao",
-      "date": "2021-11-03",
-      "poster": "https://image.tmdb.org/t/p/w500/b6qUu00iIIkXX13szFy7d0CyNcg.jpg",
-      "overview": "Hace millones de años, los seres cósmicos conocidos como los Celestiales comenzaron a experimentar genéticamente con los humanos. Su intención era crear individuos superpoderosos que hicieran únicamente el bien, pero algo salió mal y aparecieron los Desviantes, destruyendo y creando el caos a su paso. Ambas razas se han enfrentado en una eterna lucha de poder a lo largo de la historia. En medio de esta guerra, Ikaris y Sersi tratarán de vivir su propia historia de amor.",
-      "genre": "Accion",
-      "trailer": "https://www.youtube.com/embed/x_me3xsvDgk",
-      "vote_average": 0,
-      "vote_count": 0
-    },
-    {
-      "id": 2,
-      "title": "Spider-Man: No Way Home",
-      "director": "Jon Watts",
-      "date": "2021-12-15",
-      "poster": "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
-      "overview": "Por primera vez en la historia cinematográfica de Spider-Man, nuestro héroe, vecino y amigo es desenmascarado, y por tanto, ya no es capaz de separar su vida normal de los enormes riesgos que conlleva ser un superhéroe. Cuando pide ayuda al Doctor Strange, los riesgos pasan a ser aún más peligrosos, obligándole a descubrir lo que realmente significa ser él.",
-      "genre": "Accion",
-      "trailer": "https://www.youtube.com/embed/JfVOs4VSpmA",
-      "vote_average": 0,
-      "vote_count": 0
-    },
-    {
-      "id": 3,
-      "title": "Dune",
-      "director": "Denis Villeneuve",
-      "date": "2021-09-15",
-      "poster": "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
-      "overview": "En un lejano futuro, la galaxia conocida es gobernada mediante un sistema feudal de casas nobles bajo el mandato del Emperador. Las alianzas y la política giran entorno a un pequeño planeta, Dune, del que extrae la 'especia melange', la materia prima que permite los viajes espaciales. La Casa Atreides, bajo el mandato del Duque Leto Atreides recibe el encargo de custodiar el planeta, relevando en la encomienda a sus históricos enemigos, los Harkonnen. Paul Atreides, hijo del duque, se verá atrapado en las intrigas políticas mientras descubre el destino que le deparan los desiertos de Dune.",
-      "genre": "Ciencia ficcion",
-      "trailer": "https://www.youtube.com/embed/8g18jFHCLXk"
-    },
-    {
-      "id": 4,
-      "title": "Interstellar",
-      "director": "Christopher Nolan",
-      "date": "2014-11-05",
-      "poster": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-      "overview": "Narra las aventuras de un grupo de exploradores que hacen uso de un agujero de gusano recientemente descubierto para superar las limitaciones de los viajes espaciales tripulados y vencer las inmensas distancias que tiene un viaje interestelar.",
-      "genre": "Ciencia ficcion",
-      "trailer": "https://www.youtube.com/embed/zSWdZVtXT7E"
-    },
-    {
-      "id": 5,
-      "title": "Don't Look Up",
-      "director": "Adam McKay",
-      "date": "2021-12-07",
-      "poster": "https://image.tmdb.org/t/p/w500/th4E1yqsE8DGpAseLiUrI60Hf8V.jpg",
-      "overview": "Kate Dibiasky, una estudiante de posgrado de Astronomía, y su profesor, el doctor Randall Mindy acaban de descubrir algo tan asombroso como peligroso. Un cometa en órbita se encuentra en el sistema solar y va directo a colisionar en la Tierra. A pesar de todos sus intentos por advertir al gobierno y la población, parece que la humanidad está dispuesta a tomárselo a broma. Con la ayuda del doctor Oglethorpe, Kate y Randall emprenderán una gira mediática que les llevará desde la Casa Blanca hasta el programa matinal más loco de la televisión para tratar de concenciar al mundo que está a punto de morir.",
-      "genre": "Comedia",
-      "trailer": "https://www.youtube.com/embed/RbIxYm3mKzI",
-      "vote_average": 0,
-      "vote_count": 0
-    },
-    {
-      "id": 6,
-      "title": "The Matrix Resurrections",
-      "director": "Lana Wachowski",
-      "date": "2021-12-16",
-      "poster": "https://image.tmdb.org/t/p/w500/8c4a8kE7PizaGQQnditMmI1xbRp.jpg",
-      "overview": "En un mundo compuesto por dos realidades, lo cotidiano y lo oculto tras ella, Thomas Anderson se ve obligado de nuevo a ir tras el conejo blanco. Dicha elección continúa siendo la vía de acceso a Matrix, que esta vez es más poderosa e intrincada que en ocasiones anteriores.",
-      "genre": "Ciencia ficcion",
-      "trailer": "https://www.youtube.com/embed/9ix7TUGVYIo",
-      "vote_average": 0,
-      "vote_count": 0
-    },
-    {
-      "id": 7,
-      "title": "The Last Duel",
-      "director": "Ridley Scott",
-      "date": "2021-10-13",
-      "poster": "https://image.tmdb.org/t/p/w500/zjrJE0fpzPvX8saJXj8VNfcjBoU.jpg",
-      "overview": "Ambientada en Francia, en 1386, Narra el enfrentamiento entre el caballero Jean de Carrouges (Matt Damon) y el escudero Jacques LeGris (Adam Driver), al acusar el primero al segundo de abusar de su esposa, Marguerite de Carrouges (Jodie Comer). El Rey Carlos VI decide que la mejor forma de solucionar el conflicto es un duelo a muerte. El que gane será el poseedor de la verdad y, en caso de que venza LeGris, la esposa del caballero será quemada como castigo por falsas acusaciones.",
-      "genre": "Drama",
-      "trailer": "https://www.youtube.com/embed/mgygUwPJvYk",
-      "vote_average": 0,
-      "vote_count": 0
-    },
-    {
-      "id": 8,
-      "title": "The Dark Knight",
-      "director": "Christopher Nolan",
-      "date": "2008-07-18",
-      "poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-      "overview": "Batman/Bruce Wayne regresa para continuar su guerra contra el crimen. Con la ayuda del teniente Jim Gordon y del Fiscal del Distrito Harvey Dent, Batman se propone destruir el crimen organizado en la ciudad de Gotham. El triunvirato demuestra su eficacia, pero, de repente, aparece Joker, un nuevo criminal que desencadena el caos y tiene aterrados a los ciudadanos.",
-      "genre": "Accion",
-      "trailer": "https://www.youtube.com/embed/EXeTwQWrcwY",
-      "vote_average": 0,
-      "vote_count": 0
-    },
-    {
-      "id": 9,
-      "title": "A Quiet Place Part II",
-      "director": "John Krasinski",
-      "date": "2021-05-21",
-      "poster": "https://image.tmdb.org/t/p/w500/4q2hz2m8hubgvijz8Ez0T2Os2Yv.jpg",
-      "overview": "Tras los fatales acontecimientos sucedidos en la primera parte, la familia Abbot (Emily Blunt, Millicent Simmonds y Noah Jupe) debe enfrentarse a los peligros del mundo exterior mientras luchan en silencio por sobrevivir. Forzados a aventurarse en lo desconocido, pronto se dan cuenta de que las criaturas que cazan orientadas por el sonido no son la única amenaza que acecha más allá del camino de arena. Secuela de 'Un lugar tranquilo' (A Quiet Place, 2018).",
-      "genre": "Horror",
-      "trailer": "https://www.youtube.com/embed/XH4ZCEgDny4",
-      "vote_average": 0,
-      "vote_count": 0
-    },
-    {
-      "id": 10,
-      "title": "Soul",
-      "director": "Pete Docter",
-      "date": "2020-12-25",
-      "poster": "https://image.tmdb.org/t/p/w500/hm58Jw4Lw8OIeECIq5qyPYhAeRJ.jpg",
-      "overview": "¿Alguna vez te has preguntado de dónde provienen tu pasión, tus sueños y tus intereses? ¿Qué es lo que te hace ser... tú? Pixar te lleva en un viaje desde las calles de Nueva York a los reinos cósmicos para descubrir las respuestas a las preguntas más importantes de la vida.",
-      "genre": "Animacion",
-      "trailer": "https://www.youtube.com/embed/xOsLIiBStEs",
-      "vote_average": 0,
-      "vote_count": 0
-    }
-  ]
+    "peliculas": [
+        {
+            "id": 1,
+            "title": "Eternals",
+            "director": "Chloé Zhao",
+            "date": "2021-11-03",
+            "poster": "https://image.tmdb.org/t/p/w500/b6qUu00iIIkXX13szFy7d0CyNcg.jpg",
+            "overview": "Hace millones de años, los seres cósmicos conocidos como los Celestiales comenzaron a experimentar genéticamente con los humanos. Su intención era crear individuos superpoderosos que hicieran únicamente el bien, pero algo salió mal y aparecieron los Desviantes, destruyendo y creando el caos a su paso. Ambas razas se han enfrentado en una eterna lucha de poder a lo largo de la historia. En medio de esta guerra, Ikaris y Sersi tratarán de vivir su propia historia de amor.",
+            "genre": "Accion",
+            "trailer": "https://www.youtube.com/embed/x_me3xsvDgk"
+        },
+        {
+            "id": 2,
+            "title": "Spider-Man: No Way Home",
+            "director": "Jon Watts",
+            "date": "2021-12-15",
+            "poster": "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
+            "overview": "Por primera vez en la historia cinematográfica de Spider-Man, nuestro héroe, vecino y amigo es desenmascarado, y por tanto, ya no es capaz de separar su vida normal de los enormes riesgos que conlleva ser un superhéroe. Cuando pide ayuda al Doctor Strange, los riesgos pasan a ser aún más peligrosos, obligándole a descubrir lo que realmente significa ser él.",
+            "genre": "Accion",
+            "trailer": "https://www.youtube.com/embed/JfVOs4VSpmA"
+        },
+        {
+            "id": 3,
+            "title": "Dune",
+            "director": "Denis Villeneuve",
+            "date": "2021-09-15",
+            "poster": "https://image.tmdb.org/t/p/w500/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
+            "overview": "En un lejano futuro, la galaxia conocida es gobernada mediante un sistema feudal de casas nobles bajo el mandato del Emperador. Las alianzas y la política giran entorno a un pequeño planeta, Dune, del que extrae la 'especia melange', la materia prima que permite los viajes espaciales. La Casa Atreides, bajo el mandato del Duque Leto Atreides recibe el encargo de custodiar el planeta, relevando en la encomienda a sus históricos enemigos, los Harkonnen. Paul Atreides, hijo del duque, se verá atrapado en las intrigas políticas mientras descubre el destino que le deparan los desiertos de Dune.",
+            "genre": "Ciencia ficcion",
+            "trailer": "https://www.youtube.com/embed/8g18jFHCLXk"
+        },
+        {
+            "id": 4,
+            "title": "Interstellar",
+            "director": "Christopher Nolan",
+            "date": "2014-11-05",
+            "poster": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+            "overview": "Narra las aventuras de un grupo de exploradores que hacen uso de un agujero de gusano recientemente descubierto para superar las limitaciones de los viajes espaciales tripulados y vencer las inmensas distancias que tiene un viaje interestelar.",
+            "genre": "Ciencia ficcion",
+            "trailer": "https://www.youtube.com/embed/zSWdZVtXT7E"
+        },
+        {
+            "id": 5,
+            "title": "Don't Look Up",
+            "director": "Adam McKay",
+            "date": "2021-12-07",
+            "poster": "https://image.tmdb.org/t/p/w500/th4E1yqsE8DGpAseLiUrI60Hf8V.jpg",
+            "overview": "Kate Dibiasky, una estudiante de posgrado de Astronomía, y su profesor, el doctor Randall Mindy acaban de descubrir algo tan asombroso como peligroso. Un cometa en órbita se encuentra en el sistema solar y va directo a colisionar en la Tierra. A pesar de todos sus intentos por advertir al gobierno y la población, parece que la humanidad está dispuesta a tomárselo a broma. Con la ayuda del doctor Oglethorpe, Kate y Randall emprenderán una gira mediática que les llevará desde la Casa Blanca hasta el programa matinal más loco de la televisión para tratar de concenciar al mundo que está a punto de morir.",
+            "genre": "Comedia",
+            "trailer": "https://www.youtube.com/embed/RbIxYm3mKzI"
+        },
+        {
+            "id": 6,
+            "title": "The Matrix Resurrections",
+            "director": "Lana Wachowski",
+            "date": "2021-12-16",
+            "poster": "https://image.tmdb.org/t/p/w500/8c4a8kE7PizaGQQnditMmI1xbRp.jpg",
+            "overview": "En un mundo compuesto por dos realidades, lo cotidiano y lo oculto tras ella, Thomas Anderson se ve obligado de nuevo a ir tras el conejo blanco. Dicha elección continúa siendo la vía de acceso a Matrix, que esta vez es más poderosa e intrincada que en ocasiones anteriores.",
+            "genre": "Ciencia ficcion",
+            "trailer": "https://www.youtube.com/embed/9ix7TUGVYIo"
+        },
+        {
+            "id": 7,
+            "title": "The Last Duel",
+            "director": "Ridley Scott",
+            "date": "2021-10-13",
+            "poster": "https://image.tmdb.org/t/p/w500/zjrJE0fpzPvX8saJXj8VNfcjBoU.jpg",
+            "overview": "Ambientada en Francia, en 1386, Narra el enfrentamiento entre el caballero Jean de Carrouges (Matt Damon) y el escudero Jacques LeGris (Adam Driver), al acusar el primero al segundo de abusar de su esposa, Marguerite de Carrouges (Jodie Comer). El Rey Carlos VI decide que la mejor forma de solucionar el conflicto es un duelo a muerte. El que gane será el poseedor de la verdad y, en caso de que venza LeGris, la esposa del caballero será quemada como castigo por falsas acusaciones.",
+            "genre": "Drama",
+            "trailer": "https://www.youtube.com/embed/mgygUwPJvYk"
+        },
+        {
+            "id": 8,
+            "title": "The Dark Knight",
+            "director": "Christopher Nolan",
+            "date": "2008-07-18",
+            "poster": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+            "overview": "Batman/Bruce Wayne regresa para continuar su guerra contra el crimen. Con la ayuda del teniente Jim Gordon y del Fiscal del Distrito Harvey Dent, Batman se propone destruir el crimen organizado en la ciudad de Gotham. El triunvirato demuestra su eficacia, pero, de repente, aparece Joker, un nuevo criminal que desencadena el caos y tiene aterrados a los ciudadanos.",
+            "genre": "Accion",
+            "trailer": "https://www.youtube.com/embed/EXeTwQWrcwY"
+        },
+        {
+            "id": 9,
+            "title": "A Quiet Place Part II",
+            "director": "John Krasinski",
+            "date": "2021-05-21",
+            "poster": "https://image.tmdb.org/t/p/w500/4q2hz2m8hubgvijz8Ez0T2Os2Yv.jpg",
+            "overview": "Tras los fatales acontecimientos sucedidos en la primera parte, la familia Abbot (Emily Blunt, Millicent Simmonds y Noah Jupe) debe enfrentarse a los peligros del mundo exterior mientras luchan en silencio por sobrevivir. Forzados a aventurarse en lo desconocido, pronto se dan cuenta de que las criaturas que cazan orientadas por el sonido no son la única amenaza que acecha más allá del camino de arena. Secuela de 'Un lugar tranquilo' (A Quiet Place, 2018).",
+            "genre": "Horror",
+            "trailer": "https://www.youtube.com/embed/XH4ZCEgDny4"
+        },
+        {
+            "id": 10,
+            "title": "Soul",
+            "director": "Pete Docter",
+            "date": "2020-12-25",
+            "poster": "https://image.tmdb.org/t/p/w500/hm58Jw4Lw8OIeECIq5qyPYhAeRJ.jpg",
+            "overview": "¿Alguna vez te has preguntado de dónde provienen tu pasión, tus sueños y tus intereses? ¿Qué es lo que te hace ser... tú? Pixar te lleva en un viaje desde las calles de Nueva York a los reinos cósmicos para descubrir las respuestas a las preguntas más importantes de la vida.",
+            "genre": "Animacion",
+            "trailer": "https://www.youtube.com/embed/xOsLIiBStEs"
+        }
+    ]
 }
