@@ -5,13 +5,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pelicula</title>
     <link rel="stylesheet" href="/static/css/pelicula_styles.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <header></header>
+    <header>
+        <div class="cont-header-izq">
+            <img src="../static/img/logo.png" alt="" class="img-logo">
+
+            <nav>
+                <ul class="nav-lista">
+                    <li class="nav-item"><a href="http://127.0.0.1:5000" class="nav-links">INICIO</a></li>
+                    <li class="nav-item"><a href="http://127.0.0.1:5000/peliculas" class="nav-links">PELICULAS</a></li>
+                    <li class="nav-item"><a href="http://127.0.0.1:5000/generos" class="nav-links">GENEROS</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="cont-iconos">
+            <a href="login"><i class="fas fa-sign-out-alt icono"></i></a>
+            <a href="subir_pelicula"><i class="fas fa-file-upload icono"></i></a>
+
+
+        </div>
+    </header>
 
     <main>
         <div class="cont-info" id="{{ id }}">
@@ -33,27 +54,30 @@
             <div class="cont-agregar-critica">
                 <h3>Tu critica</h3>
                 <div class="agregar-critica-inner">
-                    <div class="agregar-critica-texto">Escribe tu opinión y compartela con el resto de los usuarios.</div>
+                    <div class="agregar-critica-texto">Escribe tu opinión y compartela con el resto de los usuarios.
+                    </div>
                     <a href="/peliculas/{{ id }}/subir_critica" class="agregar-critica-link">Añadir crítica</a>
                 </div>
             </div>
-    
+
             <div id="cont-btn">
                 <button type="submit" id="btn-delete">Borrar</button>
-                <button type="submit" id="btn-edit"><a href="http://127.0.0.1:5000/peliculas/{{ id }}/editar">Editar</a></button>
+                <button type="submit" id="btn-edit"><a
+                        href="http://127.0.0.1:5000/peliculas/{{ id }}/editar">Editar</a></button>
             </div>
         </div>
-        
-        <div>
+
+        <div class="cont-criticas">
             <h3>Critica de usuarios</h3>
             <div id="cont-cards-criticas">
             </div>
         </div>
     </section>
 
-    
+
 
     <script src="/static/js/pelicula_info.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

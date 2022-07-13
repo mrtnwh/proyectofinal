@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/peliculas.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <title>Generos</title>
 </head>
+
 <body>
-    
+    <header>
+        <div class="cont-header-izq">
+            <img src="../static/img/logo.png" alt="" class="img-logo">
+
+            <nav>
+                <ul class="nav-lista">
+                    <li class="nav-item"><a href="http://127.0.0.1:5000" class="nav-links">INICIO</a></li>
+                    <li class="nav-item"><a href="http://127.0.0.1:5000/peliculas" class="nav-links">PELICULAS</a></li>
+                    <li class="nav-item"><a href="http://127.0.0.1:5000/generos" class="nav-links">GENEROS</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="cont-iconos">
+            <a href="login"><i class="fas fa-sign-out-alt icono"></i></a>
+            <a href="subir_pelicula"><i class="fas fa-file-upload icono"></i></a>
+
+
+        </div>
+    </header>
+
     <div id="container-peli-generos">
         <h3 id="{{ genero }}" class="titulo">Resultados de: {{ genero }}</h3>
         <div id="cont-cards-peli-generos">
@@ -16,5 +40,7 @@
     </div>
 
     <script src="../static/js/peliculas_genero.js"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -1,6 +1,53 @@
-body {
-  font-family: Arial,Sans-Serif;
+body,
+h1 {
   background-color: #2e5b6b;
+  margin: 0;
+  font-family: "Ubuntu", sans-serif;
+}
+
+header {
+  background-color: #121111;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.cont-header-izq {
+  align-items: center;
+  display: flex;
+}
+
+.img-logo {
+  height: 135px;
+}
+
+.nav-lista {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+
+.nav-item {
+  margin-left: 15px;
+}
+
+.nav-links:hover {
+  color: #fea47e;
+}
+
+.cont-iconos {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.icono {
+  font-size: 30px;
+  margin-left: 16px;
+}
+
+a {
+  text-decoration: none;
   color: white;
 }
 
@@ -37,7 +84,7 @@ body {
   display: flex;
 }
 
-  /* Agregar critica */
+/* Agregar critica */
 .cont-agregar-critica {
   margin-top: 30px;
   margin-bottom: 60px;
@@ -59,11 +106,11 @@ body {
   color: #005ea8;
 }
 
-.agregar-critica-link:hover{
+.agregar-critica-link:hover {
   color: #2c82c8;
 }
 
-  /* Criticas usuarios */
+/* Criticas usuarios */
 .card-criticas {
   background-color: white;
   color: black;
@@ -75,4 +122,109 @@ body {
 
 .card-criticas-titulo {
   margin: 10px 0px;
+}
+#cont-btn {
+  margin-left: -60px;
+}
+
+#btn-edit > a {
+  text-decoration: none;
+  color: black;
+}
+
+@media (max-width: 1630px) {
+  #row1,
+  #row2 {
+    margin-left: 100px;
+  }
+  #row2 > .sinopsis {
+    width: 300px;
+  }
+}
+
+@media (max-width: 1400px) {
+  #row1,
+  #row2 {
+    margin-left: 200px;
+  }
+  #row2 > .sinopsis {
+    width: 300px;
+  }
+}
+
+@media (max-width: 1160px) {
+  #cont-info-izq {
+    margin-top: 800px;
+  }
+  #cont-btn {
+    margin-top: -730px;
+  }
+  #row1,
+  #row2 {
+    margin-left: -330px;
+  }
+  #row2 > .sinopsis {
+    width: 650px;
+  }
+  .cont-criticas {
+    width: 1100px;
+  }
+}
+
+@media (max-width: 1085px) {
+  #row1,
+  #row2 {
+    margin-left: 1px;
+    margin-left: -300px;
+  }
+}
+
+@media (max-width: 940px) {
+  #row1,
+  #row2 {
+    margin-left: 1px;
+    margin-left: -270px;
+  }
+}
+
+@media (max-width: 845px) {
+  #row1,
+  #row2 {
+    margin-left: 1px;
+    margin-left: -230px;
+  }
+}
+
+@media (max-width: 720px) {
+  #row1,
+  #row2 {
+    margin-left: 1px;
+    margin-left: -200px;
+  }
+}
+
+@media (max-width: 700px) {
+  #row1,
+  #row2 {
+    margin-left: 1px;
+    margin-left: -190px;
+  }
+  #row2 > .sinopsis {
+    width: 500px;
+  }
+}
+
+@media (max-width: 630px) {
+  #row1,
+  #row2 {
+    margin-left: 1px;
+    margin-left: -170px;
+  }
+  #row2 > .sinopsis {
+    width: 500px;
+  }
+  .cont-criticas {
+    width: 1000px;
+    margin-left: -30px;
+  }
 }
