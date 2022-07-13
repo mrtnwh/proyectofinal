@@ -1,6 +1,5 @@
 from datetime import datetime
-from importlib.resources import path
-from flask import Flask, jsonify, render_template, request, session, redirect, url_for
+from flask import Flask, render_template, request, session
 from werkzeug.utils import secure_filename
 import json, urllib.request, os
 
@@ -54,7 +53,7 @@ def login():
                 return render_template("index.html")
     
     return render_template("login.html")
-
+  
 @app.route("/directores")
 def getDirectores():
     return getResponse(api, "/directores")
@@ -63,18 +62,18 @@ def getDirectores():
 def getGeneros():
     return getResponse(api, "/generos")
 
-@app.route("/directores/<nombre>")
+@app.route("/directores/<nombre>")  
 def peliculasXDirector(nombre):
     listaFiltradas = [peli for peli in listaPeliculas if nombre == peli["director"]]
 
-    return {"peliculas": listaFiltradas} #retornar jsonify????
+    return {"peliculas": listaFiltradas} 
 
 @app.route("/portadas")
 def peliculasConPortada():
     posterDefault = "https://i.ibb.co/5jXxMJ1/image-not-found.jpg"
     listaFiltradas = [peli for peli in listaPeliculas if posterDefault != peli["poster"]]
     
-    return {"peliculas": listaFiltradas} #retornar jsonify????
+    return {"peliculas": listaFiltradas} 
 
 def subir_poster():
     poster = request.files["poster"]
@@ -98,7 +97,12 @@ def subir_pelicula():
         if request.method == "POST":
             ultimoId = listaPeliculas[-1]["id"]
 
-            poster = subir_poster()
+            posterLink = request.form["poster-link"]
+
+            if posterLink != "":
+                poster = posterLink
+            else:
+                poster = subir_poster()
 
             pelicula = {
                 "id": ultimoId + 1,
@@ -132,7 +136,6 @@ def pelicula_info(id):
 
     if request.method == "DELETE":
         if not session.get('logeado'):
-            #redirect url ????
             return render_template("login.html") 
         else:
 
@@ -259,7 +262,7 @@ def peliPorGenero(genero):
     return render_template("peliculas_genero.html", genero = genero)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
 
 
 
