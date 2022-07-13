@@ -156,7 +156,6 @@ def pelicula_info(id):
 
                 #Elimino el poster de la carpeta poster_peliculas
                 if "https://i.ibb.co/5jXxMJ1/image-not-found.jpg" != peliculaEncontrada["poster"]:
-                    print("entra al if para buscar el poster y borrarlo")
                     print(peliculaEncontrada["poster"])
                     os.remove(peliculaEncontrada["poster"])
 
@@ -184,8 +183,6 @@ def editarPelicula(id):
                 "overview": request.form["overview"],
                 "genre": request.form["genre"],
                 "trailer": request.form["trailer"],
-                "vote_average": 0,
-                "vote_count": 0
         }
 
         for index, elem in enumerate(listaPeliculas):
