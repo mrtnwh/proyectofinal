@@ -1,12 +1,13 @@
 from datetime import datetime
-from flask import Flask, render_template, request, session
+from http import HTTPStatus
+from flask import Flask, render_template, request, session, redirect, url_for, jsonify
 from werkzeug.utils import secure_filename
 import json, urllib.request, os
 
 # API MOCKACHINO
-api = "https://www.mockachino.com/e87585d1-9630-4f"
+api_mocka = "https://www.mockachino.com/e87585d1-9630-4f"
 
-def getResponse(api, endpoint='/'):
+def get_response(api, endpoint='/'):
     handler = urllib.request.urlopen(api + endpoint)
     response = ''
 
@@ -16,7 +17,7 @@ def getResponse(api, endpoint='/'):
     return json.loads(response)
 
 # JSON
-def getJson(url):
+def get_json(url):
     with open(url, 'r') as file:
         data = json.load(file)
         return data
@@ -24,57 +25,178 @@ def getJson(url):
 rutaPeliculas = 'static/json/peliculas.json'
 rutaCriticas = 'static/json/criticas.json'
 
-jsonPeliculas = getJson(rutaPeliculas)
+jsonPeliculas = get_json(rutaPeliculas)
 listaPeliculas = jsonPeliculas["peliculas"]
-jsonCriticas = getJson(rutaCriticas)
+jsonCriticas = get_json(rutaCriticas)
 
-def dumpData(ruta, jsonData):
-    with open(ruta, 'w') as file:
+def dump_data(ruta, jsonData):
+    with open(ruta, 'w', encoding="utf-8") as file:
         json.dump(jsonData, file, ensure_ascii= False, indent=4)
 
 # FLASK
 app = Flask(__name__, static_url_path='/static')
 app.secret_key = 'C52zMh3cmKb5UvPg'
+# TODO: Borrar??
 app.config['UPLOAD_FOLDER'] = 'static/img/posters_peliculas'
 
+
+
+# RENDERS
 @app.route("/")
 def index():
     return render_template("index.html")
 
-@app.route("/login", methods=["POST", "GET"])
+@app.route("/login")
 def login():
-    listaUsuarios = getResponse(api, "/usuarios")["usuarios"]
-
-    if request.method == "POST":
-        for usr in listaUsuarios:
-            if request.form["email"] == usr["email"] and request.form["password"] == usr["password"]:
-                session['logeado'] = True
-                session['user'] = request.form["email"]
-                return render_template("index.html")
-    
     return render_template("login.html")
-  
-@app.route("/directores")
-def getDirectores():
-    return getResponse(api, "/directores")
 
-@app.route("/get-generos")
-def getGeneros():
-    return getResponse(api, "/generos")
+@app.route("/subir_pelicula")
+def subir_pelicula():
+    return render_template("subir_pelicula.html")
 
-@app.route("/directores/<nombre>")  
-def peliculasXDirector(nombre):
+@app.route("/peliculas")
+def peliculas():
+    return render_template("peliculas.html")
+
+@app.route("/peliculas/<id>")
+def pelicula_info(id):
+    return render_template("pelicula_info.html", id = id)
+
+@app.route("/peliculas/<id>/editar")
+def editar_pelicula(id):
+
+    # Devuelvo la pelicula que se quiere editar para que el usuario vea su informacion actual
+    pelicula = [peli for peli in listaPeliculas if id == str(peli["id"])]
+
+    return render_template("editar_pelicula.html", pelicula = pelicula, id = id)
+
+@app.route("/peliculas/<id>/subir_critica")
+def subir_critica(id):
+    return render_template("subir_critica.html", id = id)
+
+@app.route("/generos")
+def generos():
+    return render_template("generos.html")
+
+@app.route("/generos/<genero>")
+def peli_por_genero(genero):
+    genero = genero.capitalize()
+
+    if genero == "Ciencia%20ficcion":
+        genero = "Ciencia ficcion"
+
+    return render_template("peliculas_genero.html", genero = genero)
+
+
+
+#API
+@app.route('/api')
+def api():
+    #TODO: Documentacion postman
+    return redirect(url_for("index"))
+
+@app.route("/api/directores")
+def retornar_directores():
+    return get_response(api_mocka, "/directores")
+
+#TODO: Arreglar no reconoce el nombre por los espacios?
+@app.route("/api/directores/<nombre>")  
+def retornar_peli_por_director(nombre):
     listaFiltradas = [peli for peli in listaPeliculas if nombre == peli["director"]]
 
-    return {"peliculas": listaFiltradas} 
+    return jsonify(listaFiltradas)
 
-@app.route("/portadas")
-def peliculasConPortada():
+@app.route("/api/generos")
+def retornar_generos():
+    return get_response(api_mocka, "/generos")
+
+@app.route("/api/generos/<genero>")
+def retornar_peli_por_genero(genero):
+    listaFiltradas = [peli for peli in listaPeliculas if genero.capitalize() == peli["genre"]]
+
+    return jsonify(listaFiltradas)
+
+@app.route("/api/portadas")
+def retornar_peli_con_portada():
     posterDefault = "https://i.ibb.co/5jXxMJ1/image-not-found.jpg"
     listaFiltradas = [peli for peli in listaPeliculas if posterDefault != peli["poster"]]
     
-    return {"peliculas": listaFiltradas} 
+    return jsonify(listaFiltradas)
 
+@app.route("/api/criticas")
+def retornar_criticas():
+    return jsonify(jsonCriticas["criticas"])
+
+
+
+#USUARIOS
+@app.route("/api/usuarios")
+def retornar_usuarios():
+    return get_response(api_mocka, "/usuarios")
+
+@app.route("/api/login", methods=["POST"])
+def logearse():
+    listaUsuarios = get_response(api_mocka, "/usuarios")["usuarios"]
+    data = request.get_json() 
+
+    for usr in listaUsuarios:
+        if data["email"] == usr["email"] and data["password"] == usr["password"]:
+            session['logeado'] = True
+            session['user_name'] = usr["user"]
+            return jsonify(usr), HTTPStatus.OK
+            
+    return jsonify("Error de validacion."), HTTPStatus.UNAUTHORIZED
+
+
+#PELICULAS
+    #GET
+@app.route("/api/peliculas")
+def retornar_peliculas():
+    return jsonify(listaPeliculas)
+
+    #get peli info
+@app.route("/api/peliculas/<id>")
+def retornar_pelicula_info(id):
+    pelicula = [peli for peli in listaPeliculas if id == str(peli["id"])]
+    
+    return jsonify(pelicula)
+
+    #POST
+#TODO: Cuando se sube tiene que redireccionar a peliculas
+@app.route("/api/peliculas", methods=['POST'])
+def api_subir_pelicula():
+
+    if not session.get('logeado'):
+        return redirect(url_for("login"))
+    else:
+        ultimoId = listaPeliculas[-1]["id"]
+        posterLink = request.form["poster-link"]
+
+        if posterLink != "":
+            poster = posterLink
+        else:
+            poster = subir_poster()
+
+        pelicula = {
+            "id": ultimoId + 1,
+            "title": request.form["title"],
+            "director": request.form["director"],
+            "date": request.form["date"],
+            "poSter": poster,
+            "overview": request.form["overview"],
+            "genre": request.form["genre"],
+            "trailer": request.form["trailer"]
+        }
+
+        #return redirect(url_for("peliculas")) SEGUNDO ELSE
+
+        listaPeliculas.append(pelicula)
+        dump_data(rutaPeliculas, jsonPeliculas)                                 
+
+    return jsonify(pelicula)
+
+#TODO: Borrar? creo que se borro la funcion de subir un poster desde pc
+# Función Auxiliar
 def subir_poster():
     poster = request.files["poster"]
             
@@ -84,179 +206,116 @@ def subir_poster():
         posterNombre = secure_filename(poster.filename)
         poster.save(os.path.join(app.config['UPLOAD_FOLDER'], posterNombre))
         poster = app.config['UPLOAD_FOLDER'] + '/' + poster.filename
-
     return poster
 
-@app.route("/subir_pelicula", methods=["POST", "GET"])
-def subir_pelicula():
+
+    #PUT
+@app.route("/api/peliculas/<id>", methods=['PUT'])
+def api_editar_pelicula(id):
 
     if not session.get('logeado'):
-        return render_template("login.html")
+        return redirect(url_for("login"))
     else:
+        data = request.get_json()
 
-        if request.method == "POST":
-            ultimoId = listaPeliculas[-1]["id"]
-
-            posterLink = request.form["poster-link"]
-
-            if posterLink != "":
-                poster = posterLink
-            else:
-                poster = subir_poster()
-
-            pelicula = {
-                "id": ultimoId + 1,
-                "title": request.form["title"],
-                "director": request.form["director"],
-                "date": request.form["date"],
-                "poster": poster,
-                "overview": request.form["overview"],
-                "genre": request.form["genre"],
-                "trailer": request.form["trailer"],
-                "vote_average": 0,
-                "vote_count": 0
-            }
-
-            listaPeliculas.append(pelicula)
-
-            dumpData(rutaPeliculas, jsonPeliculas)
-
-            return render_template("peliculas.html")
-
-        return render_template("subir_pelicula.html")
-
-@app.route("/peliculas")
-def peliculas():
-    return render_template("peliculas.html")
-
-@app.route("/peliculas/<id>",  methods=["GET","DELETE"])
-def pelicula_info(id):
-
-    id = int(id)
-
-    if request.method == "DELETE":
-        if not session.get('logeado'):
-            return render_template("login.html") 
-        else:
-
-            peliculaEncontrada = []
-            sePuedeBorrar = True
-
-            for elemPelicula in listaPeliculas:
-                if id == elemPelicula["id"]:
-                    peliculaEncontrada = elemPelicula
-                    id = id
-
-            for elemCritica in jsonCriticas["criticas"]:
-                if id == elemCritica["id"]:
-                    sePuedeBorrar = False
-                    break
-            
-            if sePuedeBorrar:
-
-                #Elimino el poster de la carpeta poster_peliculas
-                if "https://i.ibb.co/5jXxMJ1/image-not-found.jpg" != peliculaEncontrada["poster"]:
-                    print(peliculaEncontrada["poster"])
-                    os.remove(peliculaEncontrada["poster"])
-
-                listaPeliculas.remove(elemPelicula)
-
-                dumpData(rutaPeliculas, jsonPeliculas)
-
-    return render_template("pelicula_info.html", id = id)
-
-@app.route("/peliculas/<id>/editar",  methods=["GET","POST"])
-def editarPelicula(id):
-
-    pelicula = [peli for peli in listaPeliculas if id == str(peli["id"])]
-
-    if request.method == "POST":
-
-        poster = subir_poster()
+        pelicula = [peli for peli in listaPeliculas if id == str(peli["id"])]
+        #poster = subir_poster()
 
         peliculaMod = {
-                "id": int(id),
-                "title": request.form["title"],
-                "director": request.form["director"],
-                "date": request.form["date"],
-                "poster": poster,
-                "overview": request.form["overview"],
-                "genre": request.form["genre"],
-                "trailer": request.form["trailer"],
+            "id": int(id),
+            "title": data["title"],
+            "director": data["director"],
+            "date": data["date"],
+            "poster": data["poster"],
+            "overview": data["overview"],
+            "genre": data["genre"],
+            "trailer": data["trailer"]
         }
 
+        #Actualizo la informacion
         for index, elem in enumerate(listaPeliculas):
-            if elem == pelicula[0]:
-                listaPeliculas[index] = peliculaMod
+                if elem == pelicula[0]:
+                    listaPeliculas[index] = peliculaMod
+                    break
 
-        dumpData(rutaPeliculas, jsonPeliculas)
-        
-    pelicula = json.dumps(pelicula, ensure_ascii= False) #es necesario para convertir las comillas simples a dobles
+        dump_data(rutaPeliculas, jsonPeliculas)
 
-    return render_template("editar_pelicula.html", pelicula = pelicula, id = id)
+    return jsonify(peliculaMod)
 
-
-@app.route("/peliculas/<id>/subir_critica" , methods=["POST", "GET"])
-def subir_critica(id):
-
+    #DELETE
+@app.route("/api/peliculas/<id>",  methods=["DELETE"])
+def borrar_pelicula(id):
     id = int(id)
-    dia = datetime.today().strftime('%d-%m-%Y')
-    listaUsuarios = getResponse(api, "/usuarios")["usuarios"]
 
     if not session.get('logeado'):
-        return render_template("login.html") 
+        return redirect(url_for("login"))
     else:
-        if request.method == "POST":
+        peliculaEncontrada = []
+        sePuedeBorrar = True
 
-            for usr in listaUsuarios:
-                if session.get('user') == usr["email"]:
-                    nombreUser = usr["user"]
+        for elemPelicula in listaPeliculas:
+            if id == elemPelicula["id"]:
+                peliculaEncontrada = elemPelicula
+                id = id
+                break
 
-            dictPelicula = {
-                "id": id,
-                "reviews": []
-            } 
+        for elemCritica in jsonCriticas["criticas"]:
+            if id == elemCritica["id"]:
+                sePuedeBorrar = False
+                break
+                
+        if sePuedeBorrar:
+            #TODO: Borrar carpeta img/poster_peliculas
+            listaPeliculas.remove(peliculaEncontrada)
+            dump_data(rutaPeliculas, jsonPeliculas)
 
-            dictCritica = {
-                "user": nombreUser,
-                "review_title": request.form["title"], 
-                "review_text": request.form["review"],
-                "date": dia
-            }
+            return jsonify("Pelicula borrada exitosamente."), HTTPStatus.OK
 
-            def agregarCritica():
-                existePelicula = False
-                for peli in jsonCriticas["criticas"]:
-                    if id == peli["id"]:
-                        peli["reviews"].append(dictCritica)
-                        existePelicula = True
-                        break
-                return (jsonCriticas["criticas"], existePelicula)
-            
-            jsonCriticas["criticas"], existePelicula = agregarCritica()
+    return jsonify("No se puede borrar. Hay criticas de usuarios."), HTTPStatus.FORBIDDEN
 
-            if existePelicula == False:
-                jsonCriticas["criticas"].append(dictPelicula)
-                agregarCritica()
 
-            dumpData(rutaCriticas, jsonCriticas)
-            
-            return render_template("pelicula_info.html", id = id)
+@app.route("/api/peliculas/<id>/subir_critica" , methods=["POST"])
+def api_subir_critica(id):
 
-        return render_template("subir_critica.html", id = id)       
+    data = request.get_json()
+    id = int(id)
+    dia = datetime.today().strftime('%d-%m-%Y')
 
-@app.route("/generos")
-def generos():
-    return render_template("generos.html")
+    if not session.get('logeado'):
+        print("hay que logearse")
+        return url_for("login")
+    else:
+        dictPelicula = {
+            "id": id,
+            "reviews": []
+        } 
 
-@app.route("/generos/<genero>")
-def peliPorGenero(genero):
-    genero = genero.capitalize()
+        dictCritica = {
+            "user": session.get('user_name'),
+            "review_title": data["review_title"],  
+            "review_text": data["review_text"],
+            "date": dia
+        }
 
-    if genero == "Ciencia%20ficcion":
-        genero = "Ciencia ficcion"
+        def agregarCritica():
+            existePelicula = False
+            for peli in jsonCriticas["criticas"]:
+                if id == peli["id"]:
+                    peli["reviews"].append(dictCritica)
+                    existePelicula = True
+                    break
+            return (jsonCriticas["criticas"], existePelicula)
+                
+        jsonCriticas["criticas"], existePelicula = agregarCritica()
 
-    return render_template("peliculas_genero.html", genero = genero)
+        if existePelicula == False:
+            jsonCriticas["criticas"].append(dictPelicula)
+            agregarCritica()
+
+        dump_data(rutaCriticas, jsonCriticas)
+
+    return jsonify(dictCritica), HTTPStatus.OK       
+
 
 if __name__ == "__main__":
     app.run()
