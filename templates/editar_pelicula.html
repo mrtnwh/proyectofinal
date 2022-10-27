@@ -35,7 +35,7 @@
         <div class="container" data-pelicula="{{ pelicula }}">
             <!-- Formulario -->
 
-            <form action="/peliculas/{{ id }}/editar" method="POST" class="formulario" enctype="multipart/form-data">
+            <form id="form-editar">
                 <!-- Cargar imagen  -->
                 <div class="row-1">
                     <img alt="" id="img-poster">
@@ -43,13 +43,14 @@
                     <p>Subir el poster de la pelicula (500x800)
                     </p>
                     (Opcional)
-
+                    <!--
                     <label for="imagen" class="btn-img">Subir Foto</label>
                     <input name="poster" id="imagen" type="file" accept="image/*">
 
                     <p>O</p>
+                    -->
 
-                    <input name="poster-link" id="poster-link" type="text" placeholder="Link Poster">
+                    <input name="poster" id="poster-link" type="text" placeholder="Link Poster">
 
                 </div>
 
@@ -92,12 +93,12 @@
                 <!-- FILA 1: SINOPSIS -->
                 <div class="row-3">
                     <label for="sinopsis">Sinopsis</label>
-                    <textarea name="overview" id="sinopsis" required></textarea>
+                    <textarea name="overview" id="sinopsis" required value></textarea>
                 </div>
 
                 <!-- ENVIAR FORMULARIO  -->
                 <div class="cont-btn">
-                    <button type="submit" id="btn-send">Subir</button>
+                    <button type="submit">Subir</button>
                 </div>
 
             </form>

@@ -3,10 +3,10 @@ var contInfoDcha = document.getElementById("cont-info-dcha");
 var row1 = document.getElementById("row1");
 var row2 = document.getElementById("row2");
 
-fetch("/static/json/peliculas.json")
+fetch("/api/peliculas")
   .then((response) => response.json())
   .then((data) =>
-    data.peliculas.forEach((peli) => {
+    data.forEach((peli) => {
       if (peli.id == idPelicula) {
         contInfoDcha.innerHTML += `
                     <img src="${peli.poster}" class="poster" alt="Poster de pelicula: ${peli.title}"> `;
@@ -31,10 +31,10 @@ fetch("/static/json/peliculas.json")
 
 var contCriticas = document.getElementById("cont-cards-criticas");
 
-fetch("/static/json/criticas.json")
+fetch("/api/criticas")
   .then((response) => response.json())
   .then((data) =>
-    data.criticas.slice().reverse().forEach((peli) => {
+    data.slice().reverse().forEach((peli) => {
       if (peli.id == idPelicula) {
         peli.reviews.forEach((critica) => {
           contCriticas.innerHTML += `
@@ -57,12 +57,15 @@ btnDelete.addEventListener('click', (e) => {
   let clickDelete = e.target.id == "btn-delete"
 
   if (clickDelete) {
-      fetch(`http://127.0.0.1:5000/peliculas/${idPelicula}`, {
+      fetch(`/api/peliculas/${idPelicula}`, {
           method: 'DELETE'
       })
       .then(response => {
         if (response.ok) {
-          window.location.href= "http://127.0.0.1:5000/peliculas"
+          window.location.href= "/peliculas";
+        }
+        else{
+          alert("No se puede borrar. Hay criticas de usuarios.");
         }
       })
   }
