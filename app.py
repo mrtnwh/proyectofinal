@@ -148,6 +148,7 @@ def logearse():
     return jsonify("Error de validacion."), HTTPStatus.UNAUTHORIZED
 
 
+
 #PELICULAS
     #GET
 @app.route("/api/peliculas")
@@ -162,38 +163,38 @@ def retornar_pelicula_info(id):
     return jsonify(pelicula)
 
     #POST
-#TODO: Cuando se sube tiene que redireccionar a peliculas
+#TODO: Cuando se sube tiene que redireccionar a peliculas. ERROR 400 BAD REQUEST.
 @app.route("/api/peliculas", methods=['POST'])
 def api_subir_pelicula():
+    data = request.get_json()
 
     if not session.get('logeado'):
         return redirect(url_for("login"))
     else:
         ultimoId = listaPeliculas[-1]["id"]
-        posterLink = request.form["poster-link"]
+
+        posterLink = data["poster"]
 
         if posterLink != "":
             poster = posterLink
         else:
-            poster = subir_poster()
+            poster = "https://i.ibb.co/5jXxMJ1/image-not-found.jpg"
 
         pelicula = {
             "id": ultimoId + 1,
-            "title": request.form["title"],
-            "director": request.form["director"],
-            "date": request.form["date"],
-            "poSter": poster,
-            "overview": request.form["overview"],
-            "genre": request.form["genre"],
-            "trailer": request.form["trailer"]
+            "title": data["title"],
+            "director": data["director"],
+            "date": data["date"],
+            "poster": poster,
+            "overview": data["overview"],
+            "genre": data["genre"],
+            "trailer": data["trailer"]
         }
-
-        #return redirect(url_for("peliculas")) SEGUNDO ELSE
 
         listaPeliculas.append(pelicula)
         dump_data(rutaPeliculas, jsonPeliculas)                                 
 
-    return jsonify(pelicula)
+    return jsonify(pelicula), HTTPStatus.OK
 
 #TODO: Borrar? creo que se borro la funcion de subir un poster desde pc
 # Función Auxiliar
