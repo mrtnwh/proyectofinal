@@ -1,46 +1,28 @@
-const cargarGeneros = async() => {
-    try {
-        const responseGeneros = await fetch('https://www.mockachino.com/e87585d1-9630-4f/generos');
-        let selector = document.getElementById('nombre-generos'); 
+const form = document.getElementById('form-subir');
 
-        if(responseGeneros.status === 200){
-            const jsonGeneros = await responseGeneros.json();
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
 
-            jsonGeneros.generos.forEach(genero => {
-                var nombre = genero.name;
-                opcion = new Option(nombre, nombre);
+    let data = {
+        title: form.elements["title"].value,
+        director: form.elements["director"].value,
+        date: form.elements["date"].value,
+        poster: form.elements["poster-link"].value,
+        overview: form.elements["overview"].value,
+        genre: form.elements["genre"].value,
+        trailer: form.elements["trailer"].value
+    }
 
-                selector.insertAdjacentElement("beforeend", opcion);
-            }); 
+    console.log(data);
+
+    fetch('/api/peliculas', {
+        method: 'POST', 
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (response.ok){
+            window.location.href= '/peliculas'
         }
-    }
-    catch(error) {
-        console.log(error);
-    }
-}
-
-const cargarDirectores = async() => {
-    try {
-        const responseDirectores = await fetch('https://www.mockachino.com/e87585d1-9630-4f/directores');
-        let selector = document.getElementById('nombre-directores'); 
-
-        if(responseDirectores.status === 200){
-            const jsonDirectores = await responseDirectores.json();
-
-            jsonDirectores.directores.forEach(director => {
-                var nombre = director.name;
-                opcion = new Option(nombre, nombre);
-
-                selector.insertAdjacentElement("beforeend", opcion);
-            }); 
-        }
-    }
-    catch(error) {
-        console.log(error);
-    }
-}
-
-
-
-
-
+    })
+})

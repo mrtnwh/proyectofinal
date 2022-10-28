@@ -15,8 +15,7 @@
         <div class="cont-log-in">
             <div class="izquierda-log-in"></div>
 
-            <form action="/login" method="post" class="form-log-in">
-                <!-- cambiar nivel de titulo para darle continuidad al index-->
+            <form class="form-log-in" id="form-login">
                 <h3>Bienvenido</h3>
                 <p>Inicia sesión para disfrutar al máximo de <strong>Zona Films</strong>!</p>
 
@@ -26,15 +25,17 @@
                 <div class="cont-input">
                     <input type="password" name="password" placeholder="Contraseña" required>
                 </div>
+                
+                <div id="mensaje-error"></div>
 
                 <button type="submit" class="ingresar">Ingresar</button>
             </form>
-            <a href="/"><button type="sumbit" class="guest"> Continuar como
-                    invitado</button></a>
+            <a href="/"><button type="sumbit" class="guest"> Continuar como invitado</button></a>
         </div>
 
     </div>
 
+    <script src="/static/js/login.js"></script>
 </body>
 
 </html>

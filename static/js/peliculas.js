@@ -1,11 +1,10 @@
 let container = document.getElementById('container');
 
-// No pude linkearlo de otra forma
-fetch('/static/json/peliculas.json')
+fetch('/api/peliculas')
     .then(response => response.json())
     .then(data => {
         // Hago una copia del array y lo recorro inversamente para mostrar las ultimas peliculas agregadas primero.
-        data.peliculas.slice().reverse().forEach(peli =>
+        data.slice().reverse().forEach(peli =>
             container.innerHTML += `
                 <div class="card-container">
                 <div class="card-img" style="background-image: url(${peli.poster});"></div>
@@ -32,7 +31,7 @@ fetch('/static/json/peliculas.json')
                     </div>
 
                     <div class="col1">
-                        <button><a href="peliculas/${peli.id}">Ver mas</a></button>
+                        <button><a href="/peliculas/${peli.id}">Ver mas</a></button>
                     </div> 
                 </div>
             </div>

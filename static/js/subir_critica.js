@@ -1,9 +1,23 @@
 var idPelicula = document.getElementsByClassName("container")[0].id;
-console.log(idPelicula);
 
-var urlCritica = `/peliculas/${idPelicula}/subir_critica`
+const form = document.getElementById('form-critica');
 
-document.getElementById("formCritica").action = urlCritica;
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    
+    let data = {
+        review_title: form.elements["titulo"].value,
+        review_text: form.elements["review"].value
+    }
 
-console.log(urlCritica);
-console.log(document.getElementById("formCritica"));
+    fetch(`/api/peliculas/${idPelicula}/subir_critica`, {
+        method: 'POST', 
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (response.ok){
+            window.location.href= `/peliculas/${idPelicula}`
+        }
+    })
+})
