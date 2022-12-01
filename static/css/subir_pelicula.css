@@ -145,7 +145,7 @@ button {
 #anio,
 #sinopsis,
 #nombre-directores,
-#nombre-generos, 
+#nombre-generos,
 #poster-link {
   outline: none;
   box-sizing: border-box;
@@ -226,4 +226,16 @@ button {
 
 .row-1 > #link-imagen {
   width: 250px;
+}
+
+#nombre-generos {
+  margin-right: 30px;
+}
+
+#textohola {
+  margin-left: 60px;
+}
+
+#director-custom {
+  width: 135px;
 }

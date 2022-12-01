@@ -38,6 +38,7 @@
             <form id="form-subir">
                 <!-- Cargar imagen  -->
                 <div class="row-1">
+                    <!--
                     <img src="https://incubaweb.com/wp-content/uploads/2016/09/upload.png" alt="">
 
                     <p>Subir el poster de la pelicula (500x800)
@@ -46,12 +47,17 @@
 
                     <label for="imagen" class="btn-img">Subir Foto</label>
                     <input name="poster" id="imagen" type="file" accept="image/*">
-                    
+
+                    <form enctype="multipart/form-data" action="uploader.php" method="POST">
+                        <input name="uploadedfile" type="file" accept="image/*" />
+                        <input type="submit" value="Subir foto" />
+                    </form>
+
                     <p>O</p>
 
                     <input name="poster-link" id="poster-link" type="text" placeholder="Link Poster">
-
-                </div>      
+                -->
+                </div>
 
                 <!-- FILA 1: TITULO Y GENEROS -->
                 <div class="row-2">
@@ -70,15 +76,18 @@
                 <!-- FILA 2: ANIO Y DIRECTORES -->
                 <div class="row-2">
                     <div>
-                        <label for="anio" class="label-text">Año</label>
+                        <label for="anio" class="label-text">AÃ±o</label>
                         <input name="date" id="anio" type="date" required>
                     </div>
 
-
                     <div>
-                        <select name="director" id="nombre-directores" required>
-                            <option value="" selected disabled hidden>Seleccionar director</option>
+                        <select name="director" id="nombre-directores">
+                            <option value="">Seleccionar director</option>
                         </select>
+
+                        <p id="textOption">O</p>
+
+                        <input name="director-custom" id="director-custom" type="text" placeholder="Director">
                     </div>
                 </div>
 
@@ -97,8 +106,6 @@
                     <textarea name="overview" id="sinopsis" required></textarea>
                 </div>
 
-
-
                 <!-- ENVIAR FORMULARIO  -->
                 <div class="cont-btn">
                     <button type="submit">Subir</button>
@@ -106,7 +113,6 @@
 
             </form>
     </main>
-
     <script src="../static/js/cargar_dir_generos.js"></script>
     <script src="../static/js/subir_pelicula.js"> </script>
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
