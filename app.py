@@ -1,3 +1,4 @@
+import webbrowser
 from datetime import datetime
 from http import HTTPStatus
 from flask import Flask, render_template, request, redirect, url_for, jsonify
@@ -98,7 +99,7 @@ def peli_por_genero(genero):
 #API
 @app.route('/api')
 def api():
-    #TODO: Documentacion postman
+    webbrowser.open("https://documenter.getpostman.com/view/17933955/2s8YzP14aB")
     return redirect(url_for("index"))
 
 @app.route("/api/directores")
@@ -163,11 +164,13 @@ def retornar_peliculas():
 @app.route("/api/peliculas/<id>")
 def retornar_pelicula_info(id):
     pelicula = [peli for peli in listaPeliculas if id == str(peli["id"])]
+
+    if pelicula == []:
+        return jsonify({ "status": 404, "message": "Pelicula no encontrada"}), HTTPStatus.NOT_FOUND
     
-    return jsonify(pelicula)
+    return jsonify(pelicula[0]), HTTPStatus.OK
 
     #POST
-#TODO: Aplicar verificacion login
 @app.route("/api/peliculas", methods=['POST'])
 @jwt_required()
 def api_subir_pelicula():
@@ -197,7 +200,7 @@ def api_subir_pelicula():
     listaPeliculas.append(pelicula)
     dump_data(rutaPeliculas, jsonPeliculas)                                 
 
-    return jsonify(pelicula), HTTPStatus.OK
+    return jsonify(pelicula), HTTPStatus.CREATED
 
 #TODO: Borrar? creo que se borro la funcion de subir un poster desde pc
 # Función Auxiliar
@@ -218,13 +221,17 @@ def subir_poster():
 @jwt_required()
 def api_editar_pelicula(id):
 
+    id = int(id)
     data = request.get_json()
 
-    pelicula = [peli for peli in listaPeliculas if id == str(peli["id"])]
+    pelicula = [peli for peli in listaPeliculas if id == peli["id"]]
         #poster = subir_poster()
 
+    if pelicula == []:
+        return jsonify({ "status": 404, "message": "Pelicula no encontrada"}), HTTPStatus.NOT_FOUND
+
     peliculaMod = {
-        "id": int(id),
+        "id": id,
         "title": data["title"],
         "director": data["director"],
         "date": data["date"],
@@ -242,22 +249,20 @@ def api_editar_pelicula(id):
 
     dump_data(rutaPeliculas, jsonPeliculas)
 
-    return jsonify(peliculaMod)
+    return jsonify(peliculaMod), HTTPStatus.OK
+
 
     #DELETE
 @app.route("/api/peliculas/<id>",  methods=["DELETE"])
 @jwt_required()
 def borrar_pelicula(id):
     id = int(id)
-
-    peliculaEncontrada = []
     sePuedeBorrar = True
 
-    for elemPelicula in listaPeliculas:
-        if id == elemPelicula["id"]:
-            peliculaEncontrada = elemPelicula
-            id = id
-            break
+    pelicula = [peli for peli in listaPeliculas if id == peli["id"]]
+
+    if pelicula == []:
+        return jsonify({ "status": 404, "message": "Pelicula no encontrada"}), HTTPStatus.NOT_FOUND
 
     for elemCritica in jsonCriticas["criticas"]:
         if id == elemCritica["id"]:
@@ -266,20 +271,21 @@ def borrar_pelicula(id):
                 
     if sePuedeBorrar:
         #TODO: Borrar carpeta img/poster_peliculas
-        listaPeliculas.remove(peliculaEncontrada)
+        listaPeliculas.remove(pelicula[0])
         dump_data(rutaPeliculas, jsonPeliculas)
 
-        return jsonify("Pelicula borrada exitosamente."), HTTPStatus.OK
+        return jsonify({ "status": 200, "message": "Pelicula borrada exitosamente"}), HTTPStatus.OK
 
-    return jsonify("No se puede borrar. Hay criticas de usuarios."), HTTPStatus.FORBIDDEN
+    return jsonify({"status": 403, "message": "No se puede borrar. Hay criticas de usuarios."}), HTTPStatus.FORBIDDEN
 
 
 @app.route("/api/peliculas/<id>/subir_critica" , methods=["POST"])
 @jwt_required()
 def api_subir_critica(id):
 
-    data = request.get_json()
     id = int(id)
+
+    data = request.get_json()
     dia = datetime.today().strftime('%d-%m-%Y')
 
     dictPelicula = {
@@ -311,7 +317,7 @@ def api_subir_critica(id):
 
     dump_data(rutaCriticas, jsonCriticas)
 
-    return jsonify(dictCritica), HTTPStatus.OK       
+    return jsonify(dictCritica), HTTPStatus.CREATED       
 
 
 if __name__ == "__main__":
