@@ -10,6 +10,8 @@ document.querySelector("#sinopsis").innerHTML =`${dataPelicula.overview}`;
 const idPelicula = dataPelicula.id;
 const form = document.getElementById('form-editar');
 
+const token = localStorage.getItem('token');
+
 form.addEventListener('submit', (e) => {
     e.preventDefault()
 
@@ -25,12 +27,18 @@ form.addEventListener('submit', (e) => {
 
     fetch(`/api/peliculas/${dataPelicula.id}`, {
         method: 'PUT', 
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify(data)
     })
     .then(response => {
         if (response.ok){
             window.location.href= `/peliculas/${dataPelicula.id}`
+        }
+        else{
+            window.location.href = '/login'
         }
     })
 })

@@ -2,6 +2,7 @@ var idPelicula = document.getElementsByClassName("cont-info")[0].id;
 var contInfoDcha = document.getElementById("cont-info-dcha");
 var row1 = document.getElementById("row1");
 var row2 = document.getElementById("row2");
+const token = localStorage.getItem('token')
 
 fetch("/api/peliculas")
   .then((response) => response.json())
@@ -58,7 +59,8 @@ btnDelete.addEventListener('click', (e) => {
 
   if (clickDelete) {
       fetch(`/api/peliculas/${idPelicula}`, {
-          method: 'DELETE'
+          method: 'DELETE',
+          headers: {'Authorization': `Bearer ${token}`}
       })
       .then(response => {
         if (response.ok) {

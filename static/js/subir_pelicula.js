@@ -1,8 +1,5 @@
-const form = document.getElementById("form-subir");
-var imageUrl;
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+const form = document.getElementById('form-subir');
+const token = localStorage.getItem('token');
 
   const options = {
     method: "GET",
@@ -20,27 +17,34 @@ form.addEventListener("submit", (e) => {
     .then(() => console.log(imageUrl))
     .catch((err) => console.error(err));
 
+  
+form.addEventListener('submit', (e) => {
+  e.preventDefault()
+
   var data = {
     title: form.elements["title"].value,
-    director:
-      form.elements["director"].value || form.elements["director-custom"].value,
+    director: form.elements["director"].value || form.elements["director-custom"].value,
     date: form.elements["date"].value,
     poster: imageUrl,
     overview: form.elements["overview"].value,
     genre: form.elements["genre"].value,
-    trailer: form.elements["trailer"].value,
+    trailer: form.elements["trailer"].value
   };
 
-  /*
-  fetch("/api/peliculas", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  }).then((response) => {
-    if (response.ok) {
-      window.location.href = "/peliculas";
-    }
-  });
-  */
-  console.log(data);
-});
+    fetch('/api/peliculas', {
+        method: 'POST', 
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (response.ok){
+            window.location.href= '/peliculas'
+        }
+        else{
+          window.location.href = '/login'
+      }
+    })
+})

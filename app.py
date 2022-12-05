@@ -1,6 +1,8 @@
+import webbrowser
 from datetime import datetime
 from http import HTTPStatus
-from flask import Flask, render_template, request, session, redirect, url_for, jsonify
+from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from werkzeug.utils import secure_filename
 import json, urllib.request, os
 
@@ -39,12 +41,15 @@ app.secret_key = 'C52zMh3cmKb5UvPg'
 # TODO: Borrar??
 app.config['UPLOAD_FOLDER'] = 'static/img/posters_peliculas'
 
-
+# JWT
+app.config["JWT_SECRET_KEY"] = 'dxM4-BL1CPeHYIMmXNQevdlsvhI'
+jwt = JWTManager(app)
 
 # RENDERS
 @app.route("/")
 def index():
     return render_template("index.html")
+
 
 @app.route("/login")
 def login():
@@ -68,7 +73,9 @@ def editar_pelicula(id):
     # Devuelvo la pelicula que se quiere editar para que el usuario vea su informacion actual
     pelicula = [peli for peli in listaPeliculas if id == str(peli["id"])]
 
-    return render_template("editar_pelicula.html", pelicula = pelicula, id = id)
+    pelicula = json.dumps(pelicula, ensure_ascii= False) #es necesario para convertir las comillas simples a dobles
+
+    return render_template("editar_pelicula.html", pelicula = pelicula)
 
 @app.route("/peliculas/<id>/subir_critica")
 def subir_critica(id):
@@ -92,14 +99,13 @@ def peli_por_genero(genero):
 #API
 @app.route('/api')
 def api():
-    #TODO: Documentacion postman
+    webbrowser.open("https://documenter.getpostman.com/view/17933955/2s8YzP14aB")
     return redirect(url_for("index"))
 
 @app.route("/api/directores")
 def retornar_directores():
     return get_response(api_mocka, "/directores")
 
-#TODO: Arreglar no reconoce el nombre por los espacios?
 @app.route("/api/directores/<nombre>")  
 def retornar_peli_por_director(nombre):
     listaFiltradas = [peli for peli in listaPeliculas if nombre == peli["director"]]
@@ -141,9 +147,8 @@ def logearse():
 
     for usr in listaUsuarios:
         if data["email"] == usr["email"] and data["password"] == usr["password"]:
-            session['logeado'] = True
-            session['user_name'] = usr["user"]
-            return jsonify(usr), HTTPStatus.OK
+            token = create_access_token(identity=usr["user"])
+            return jsonify({"token": token}), HTTPStatus.OK
             
     return jsonify("Error de validacion."), HTTPStatus.UNAUTHORIZED
 
@@ -159,42 +164,43 @@ def retornar_peliculas():
 @app.route("/api/peliculas/<id>")
 def retornar_pelicula_info(id):
     pelicula = [peli for peli in listaPeliculas if id == str(peli["id"])]
+
+    if pelicula == []:
+        return jsonify({ "status": 404, "message": "Pelicula no encontrada"}), HTTPStatus.NOT_FOUND
     
-    return jsonify(pelicula)
+    return jsonify(pelicula[0]), HTTPStatus.OK
 
     #POST
-#TODO: Cuando se sube tiene que redireccionar a peliculas. ERROR 400 BAD REQUEST.
 @app.route("/api/peliculas", methods=['POST'])
+@jwt_required()
 def api_subir_pelicula():
     data = request.get_json()
 
-    if not session.get('logeado'):
-        return redirect(url_for("login"))
+    ultimoId = listaPeliculas[-1]["id"]
+    '''
+    posterLink = data["poster"]
+
+    if posterLink != "":
+        poster = posterLink
     else:
-        ultimoId = listaPeliculas[-1]["id"]
+        poster = "https://i.ibb.co/5jXxMJ1/image-not-found.jpg"
+    '''
+    pelicula = {
+        "id": ultimoId + 1,
+        "title": data["title"],
+        "director": data["director"],
+        "date": data["date"],
+        #"poster": poster,
+        "poster": data["poster"],
+        "overview": data["overview"],
+        "genre": data["genre"],
+        "trailer": data["trailer"]
+    }
 
-        posterLink = data["poster"]
+    listaPeliculas.append(pelicula)
+    dump_data(rutaPeliculas, jsonPeliculas)                                 
 
-        if posterLink != "":
-            poster = posterLink
-        else:
-            poster = "https://i.ibb.co/5jXxMJ1/image-not-found.jpg"
-
-        pelicula = {
-            "id": ultimoId + 1,
-            "title": data["title"],
-            "director": data["director"],
-            "date": data["date"],
-            "poster": poster,
-            "overview": data["overview"],
-            "genre": data["genre"],
-            "trailer": data["trailer"]
-        }
-
-        listaPeliculas.append(pelicula)
-        dump_data(rutaPeliculas, jsonPeliculas)                                 
-
-    return jsonify(pelicula), HTTPStatus.OK
+    return jsonify(pelicula), HTTPStatus.CREATED
 
 #TODO: Borrar? creo que se borro la funcion de subir un poster desde pc
 # Función Auxiliar
@@ -212,114 +218,110 @@ def subir_poster():
 
     #PUT
 @app.route("/api/peliculas/<id>", methods=['PUT'])
+@jwt_required()
 def api_editar_pelicula(id):
 
-    if not session.get('logeado'):
-        return redirect(url_for("login"))
-    else:
-        data = request.get_json()
+    id = int(id)
+    data = request.get_json()
 
-        pelicula = [peli for peli in listaPeliculas if id == str(peli["id"])]
+    pelicula = [peli for peli in listaPeliculas if id == peli["id"]]
         #poster = subir_poster()
 
-        peliculaMod = {
-            "id": int(id),
-            "title": data["title"],
-            "director": data["director"],
-            "date": data["date"],
-            "poster": data["poster"],
-            "overview": data["overview"],
-            "genre": data["genre"],
-            "trailer": data["trailer"]
-        }
+    if pelicula == []:
+        return jsonify({ "status": 404, "message": "Pelicula no encontrada"}), HTTPStatus.NOT_FOUND
+
+    peliculaMod = {
+        "id": id,
+        "title": data["title"],
+        "director": data["director"],
+        "date": data["date"],
+        "poster": data["poster"],
+        "overview": data["overview"],
+        "genre": data["genre"],
+        "trailer": data["trailer"]
+    }
 
         #Actualizo la informacion
-        for index, elem in enumerate(listaPeliculas):
-                if elem == pelicula[0]:
-                    listaPeliculas[index] = peliculaMod
-                    break
+    for index, elem in enumerate(listaPeliculas):
+        if elem == pelicula[0]:
+            listaPeliculas[index] = peliculaMod
+            break
 
-        dump_data(rutaPeliculas, jsonPeliculas)
+    dump_data(rutaPeliculas, jsonPeliculas)
 
-    return jsonify(peliculaMod)
+    return jsonify(peliculaMod), HTTPStatus.OK
+
 
     #DELETE
 @app.route("/api/peliculas/<id>",  methods=["DELETE"])
+@jwt_required()
 def borrar_pelicula(id):
     id = int(id)
+    sePuedeBorrar = True
 
-    if not session.get('logeado'):
-        return redirect(url_for("login"))
-    else:
-        peliculaEncontrada = []
-        sePuedeBorrar = True
+    pelicula = [peli for peli in listaPeliculas if id == peli["id"]]
 
-        for elemPelicula in listaPeliculas:
-            if id == elemPelicula["id"]:
-                peliculaEncontrada = elemPelicula
-                id = id
-                break
+    if pelicula == []:
+        return jsonify({ "status": 404, "message": "Pelicula no encontrada"}), HTTPStatus.NOT_FOUND
 
-        for elemCritica in jsonCriticas["criticas"]:
-            if id == elemCritica["id"]:
-                sePuedeBorrar = False
-                break
+    for elemCritica in jsonCriticas["criticas"]:
+        if id == elemCritica["id"]:
+            sePuedeBorrar = False
+            break
                 
-        if sePuedeBorrar:
-            #TODO: Borrar carpeta img/poster_peliculas
-            listaPeliculas.remove(peliculaEncontrada)
-            dump_data(rutaPeliculas, jsonPeliculas)
+    if sePuedeBorrar:
+        #TODO: Borrar carpeta img/poster_peliculas
+        listaPeliculas.remove(pelicula[0])
+        dump_data(rutaPeliculas, jsonPeliculas)
 
-            return jsonify("Pelicula borrada exitosamente."), HTTPStatus.OK
+        return jsonify({ "status": 200, "message": "Pelicula borrada exitosamente"}), HTTPStatus.OK
 
-    return jsonify("No se puede borrar. Hay criticas de usuarios."), HTTPStatus.FORBIDDEN
+    return jsonify({"status": 403, "message": "No se puede borrar. Hay criticas de usuarios."}), HTTPStatus.FORBIDDEN
 
 
 @app.route("/api/peliculas/<id>/subir_critica" , methods=["POST"])
+@jwt_required()
 def api_subir_critica(id):
 
-    data = request.get_json()
     id = int(id)
+
+    data = request.get_json()
     dia = datetime.today().strftime('%d-%m-%Y')
 
-    if not session.get('logeado'):
-        print("hay que logearse")
-        return url_for("login")
-    else:
-        dictPelicula = {
-            "id": id,
-            "reviews": []
-        } 
+    dictPelicula = {
+        "id": id,
+        "reviews": []
+    } 
 
-        dictCritica = {
-            "user": session.get('user_name'),
-            "review_title": data["review_title"],  
-            "review_text": data["review_text"],
-            "date": dia
-        }
+    dictCritica = {
+        "user": get_jwt_identity(),
+        "review_title": data["review_title"],  
+        "review_text": data["review_text"],
+        "date": dia
+    }
 
-        def agregarCritica():
-            existePelicula = False
-            for peli in jsonCriticas["criticas"]:
-                if id == peli["id"]:
-                    peli["reviews"].append(dictCritica)
-                    existePelicula = True
-                    break
-            return (jsonCriticas["criticas"], existePelicula)
+    def agregarCritica():
+        existePelicula = False
+        for peli in jsonCriticas["criticas"]:
+            if id == peli["id"]:
+                peli["reviews"].append(dictCritica)
+                existePelicula = True
+                break
+        return (jsonCriticas["criticas"], existePelicula)
                 
-        jsonCriticas["criticas"], existePelicula = agregarCritica()
+    jsonCriticas["criticas"], existePelicula = agregarCritica()
 
-        if existePelicula == False:
-            jsonCriticas["criticas"].append(dictPelicula)
-            agregarCritica()
+    if existePelicula == False:
+        jsonCriticas["criticas"].append(dictPelicula)
+        agregarCritica()
 
-        dump_data(rutaCriticas, jsonCriticas)
+    dump_data(rutaCriticas, jsonCriticas)
 
-    return jsonify(dictCritica), HTTPStatus.OK       
+    return jsonify(dictCritica), HTTPStatus.CREATED       
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
 
 
 

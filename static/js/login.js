@@ -15,12 +15,17 @@ form.addEventListener('submit', (e) => {
     })
     .then(response => {
         if (response.ok){
-            window.location.href= '/'
             console.log("Ingreso exitoso");
+            window.location.href= '/'
         }
         else{
-            console.log("Ingreso fallido");
-            document.getElementById('mensaje-error').innerHTML = 'Error al ingresar. Vuelva a intentarlo'
+            document.getElementById('mensaje-error').innerHTML = 'Error al ingresar. Vuelva a intentarlo';
         }
+
+        return response.json()
     })
+    .then(data => {
+        localStorage.setItem("token", data.token);
+    })
+
 })
