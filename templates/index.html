@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina inicial</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header_footer.css') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}" />
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
 </head>
@@ -14,12 +16,12 @@
 <body>
     <header>
         <div class="cont-header-izq">
-            <img src="../static/img/logo.png" alt="" class="img-logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" class="img-logo">
 
             <nav>
                 <ul class="nav-lista">
                     <li class="nav-item"><a href="http://127.0.0.1:5000/index" class="nav-links">INICIO</a></li>
-                    <li class="nav-item"><a href="http://127.0.0.1:5000/peliculas" nav-links>PELICULAS</a></li>
+                    <li class="nav-item"><a href="http://127.0.0.1:5000/peliculas" class="nav-links">PELICULAS</a></li>
                     <li class="nav-item"><a href="http://127.0.0.1:5000/generos" class="nav-links">GENEROS</a></li>
                 </ul>
             </nav>
@@ -78,7 +80,7 @@
     </div>
 
     <section>
-        <h2>Generos Populares</h2>
+        <h2 class="generos-titulo">Generos Populares</h2>
         <div class="generos">
             <div class="genero-card genero-accion">
                 <a href="generos/Accion">
@@ -113,8 +115,30 @@
         </div>
     </section>
 
-    <script src="/static/js/carrousel.js"></script>
-    <script src="/static/json/peliculas.json"></script>
+    <footer>
+        <div class="footer">
+            <div class="footer-row">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+            </div>
+
+            <div class="footer-row">
+                <ul>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div> 
+
+            <div class="footer-row">
+                Copyright © 2022 All Rights Reserved || Designed By: Martin Lagonegro & Tatiana Gutiérrez
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/carrousel.js') }}"></script>
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 
