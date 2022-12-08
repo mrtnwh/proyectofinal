@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/peliculas.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/peliculas.css') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
@@ -18,7 +19,7 @@
 
     <header>
         <div class="cont-header-izq">
-            <img src="../static/img/logo.png" alt="" class="img-logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="" class="img-logo">
 
             <nav>
                 <ul class="nav-lista">
@@ -41,7 +42,7 @@
         </div>
     </main>
 
-    <script src="../static/js/peliculas.js"></script>
+    <script src="{{ url_for('static', filename='/js/peliculas.js') }}"></script>
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 

@@ -5,53 +5,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subir critica</title>
-    <link rel="stylesheet" href="/static/css/subir_critica.css">
+    <title>Subir crítica</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/subir_critica.css') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}" />
 </head>
 
 <body>
+
+    <header>
+        <div class="cont-header-izq">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="" class="img-logo">
+
+            <nav>
+                <ul class="nav-lista">
+                    <li class="nav-item"><a href="http://127.0.0.1:5000/index" class="nav-links">INICIO</a></li>
+                    <li class="nav-item"><a href="http://127.0.0.1:5000/peliculas" class="nav-links">PELICULAS</a></li>
+                    <li class="nav-item"><a href="http://127.0.0.1:5000/generos" class="nav-links">GENEROS</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="cont-iconos">
+            <a href="http://127.0.0.1:5000/login"><i class="fas fa-sign-out-alt icono"></i></a>
+            <a href="http://127.0.0.1:5000/subir_pelicula"><i class="fas fa-file-upload icono"></i></a>
+
+
+        </div>
+    </header>
+
     <main>
         <div class="container" id="{{ id }}">
             <form id="form-critica"> 
 
                 <!-- queda a definir -->
                 <div class="row-1">
-                    <h3>Subi tu critica</h3>
+                    <h3>Subi tu crítica</h3>
                 </div>
 
                 <!-- Titulo de la critica -->
                 <div class="row-2">
+                    <div class="texto-input">Titulo</div>
                     <div>
-                        <div>Titulo de la critica</div>
-                        <div>
-                            <br>
-                            <input name="title" id="titulo" type="text" class="barra">
-                        </div>
+                        <input name="title" id="titulo-input" type="text">
                     </div>
                 </div>
 
                 <!-- Critica texto -->
                 <div class="row-2">
+                    <div class="texto-input">Tu crítica</div>
                     <div>
-                        <br>
-                        <div>Tu critica</div>
-                        <div>
-                            <br>
-                            <textarea name="review" rows="10" class="critica"></textarea>
-                        </div>
+                        <textarea name="review" rows="10" class="critica"></textarea>
                     </div>
                 </div>
 
                 <!-- BOTON -->
                 <div class="cont-btn">
-                    <button type="submit" class="boton">Enviar critica</button>
+                    <button type="submit" class="boton">Enviar</button>
                 </div>
 
             </form>
         </div>
     </main>
 
-    <script src="/static/js/subir_critica.js"></script>
+    <script src="{{ url_for('static', filename='js/subir_critica.js') }}"></script>
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
