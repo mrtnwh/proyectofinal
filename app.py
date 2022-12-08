@@ -3,8 +3,7 @@ from datetime import datetime
 from http import HTTPStatus
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
-from werkzeug.utils import secure_filename
-import json, urllib.request, os
+import json, urllib.request
 
 # API MOCKACHINO
 api_mocka = "https://www.mockachino.com/e87585d1-9630-4f"
@@ -38,8 +37,6 @@ def dump_data(ruta, jsonData):
 # FLASK
 app = Flask(__name__, static_url_path='/static')
 app.secret_key = 'C52zMh3cmKb5UvPg'
-# TODO: Borrar??
-app.config['UPLOAD_FOLDER'] = 'static/img/posters_peliculas'
 
 # JWT
 app.config["JWT_SECRET_KEY"] = 'dxM4-BL1CPeHYIMmXNQevdlsvhI'
@@ -150,9 +147,7 @@ def logearse():
             token = create_access_token(identity=usr["user"])
             return jsonify({"token": token}), HTTPStatus.OK
             
-    return jsonify("Error de validacion."), HTTPStatus.UNAUTHORIZED
-
-
+    return jsonify({"status": 401, "message":"Error de validacion."}), HTTPStatus.UNAUTHORIZED
 
 #PELICULAS
     #GET
@@ -170,28 +165,28 @@ def retornar_pelicula_info(id):
     
     return jsonify(pelicula[0]), HTTPStatus.OK
 
+
+def asignarPoster(poster):
+    if poster == "":
+        poster = "https://i.ibb.co/5jXxMJ1/image-not-found.jpg"
+    
+    return poster
+
     #POST
 @app.route("/api/peliculas", methods=['POST'])
 @jwt_required()
 def api_subir_pelicula():
     data = request.get_json()
-
     ultimoId = listaPeliculas[-1]["id"]
-    '''
-    posterLink = data["poster"]
 
-    if posterLink != "":
-        poster = posterLink
-    else:
-        poster = "https://i.ibb.co/5jXxMJ1/image-not-found.jpg"
-    '''
+    poster = asignarPoster(data["poster"])
+
     pelicula = {
         "id": ultimoId + 1,
         "title": data["title"],
         "director": data["director"],
         "date": data["date"],
-        #"poster": poster,
-        "poster": data["poster"],
+        "poster": poster,
         "overview": data["overview"],
         "genre": data["genre"],
         "trailer": data["trailer"]
@@ -201,19 +196,6 @@ def api_subir_pelicula():
     dump_data(rutaPeliculas, jsonPeliculas)                                 
 
     return jsonify(pelicula), HTTPStatus.CREATED
-
-#TODO: Borrar? creo que se borro la funcion de subir un poster desde pc
-# Función Auxiliar
-def subir_poster():
-    poster = request.files["poster"]
-            
-    if poster.filename == "":
-        poster = "https://i.ibb.co/5jXxMJ1/image-not-found.jpg" 
-    else:
-        posterNombre = secure_filename(poster.filename)
-        poster.save(os.path.join(app.config['UPLOAD_FOLDER'], posterNombre))
-        poster = app.config['UPLOAD_FOLDER'] + '/' + poster.filename
-    return poster
 
 
     #PUT
@@ -225,17 +207,18 @@ def api_editar_pelicula(id):
     data = request.get_json()
 
     pelicula = [peli for peli in listaPeliculas if id == peli["id"]]
-        #poster = subir_poster()
 
     if pelicula == []:
         return jsonify({ "status": 404, "message": "Pelicula no encontrada"}), HTTPStatus.NOT_FOUND
+
+    poster = asignarPoster(data["poster"])
 
     peliculaMod = {
         "id": id,
         "title": data["title"],
         "director": data["director"],
         "date": data["date"],
-        "poster": data["poster"],
+        "poster": poster,
         "overview": data["overview"],
         "genre": data["genre"],
         "trailer": data["trailer"]
@@ -270,7 +253,6 @@ def borrar_pelicula(id):
             break
                 
     if sePuedeBorrar:
-        #TODO: Borrar carpeta img/poster_peliculas
         listaPeliculas.remove(pelicula[0])
         dump_data(rutaPeliculas, jsonPeliculas)
 
