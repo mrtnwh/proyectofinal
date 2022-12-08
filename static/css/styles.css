@@ -5,61 +5,11 @@ h1 {
   font-family: "Ubuntu", sans-serif;
 }
 
-/******** 
-  Header 
-*********/
-
-header {
-  background-color: #121111;
-  display: flex;
-  justify-content: space-around;
-}
-
-.cont-header-izq {
-  align-items: center;
-  display: flex;
-}
-
-.img-logo {
-  height: 135px;
-}
-
-/* Nav */
-.nav-lista {
-  display: flex;
-  list-style: none;
-  justify-content: center;
-}
-
-.nav-item {
-  margin-left: 15px;
-}
-
-.nav-links:hover {
-  color: #fea47e;
-}
-
-.cont-iconos {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-}
-
-.icono {
-  font-size: 30px;
-  margin-left: 16px;
-}
-
 .titulo {
   height: 5px;
   margin-bottom: -10px;
   width: 170px;
   margin-left: 90px;
-}
-
-a {
-  text-decoration: none;
-  color: white;
 }
 
 .plantilla_contornos {
@@ -132,6 +82,9 @@ a {
 }
 
 /* GENEROS */
+.generos-titulo {
+  margin-left: 24px;
+}
 
 .generos {
   display: flex;
@@ -216,7 +169,10 @@ a {
 
 .cont-iconos > a {
   margin-left: 20px;
+  padding:30px 0px;
+  text-align:center;
 }
+
 
 /* Responsive */
 

@@ -5,52 +5,6 @@ h1 {
   font-family: "Ubuntu", sans-serif;
 }
 
-header {
-  background-color: #121111;
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 30px;
-}
-
-.cont-header-izq {
-  align-items: center;
-  display: flex;
-}
-
-.img-logo {
-  height: 135px;
-}
-
-.nav-lista {
-  display: flex;
-  list-style: none;
-  justify-content: center;
-}
-
-.nav-item {
-  margin-left: 15px;
-}
-
-.nav-links:hover {
-  color: #fea47e;
-}
-
-.cont-iconos {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-}
-
-.icono {
-  font-size: 30px;
-  margin-left: 16px;
-}
-
-a {
-  text-decoration: none;
-  color: white;
-}
-
 /* Colores */
 .light-gray {
   color: #979797;
@@ -113,6 +67,11 @@ a {
 }
 
 /* Criticas usuarios */
+
+.cont-criticas {
+  margin-bottom: 70px;
+}
+
 .card-criticas {
   background-color: white;
   color: black;
