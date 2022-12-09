@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina inicial</title>
-    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header_footer.css') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}" />
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
 </head>
@@ -14,12 +16,12 @@
 <body>
     <header>
         <div class="cont-header-izq">
-            <img src="../static/img/logo.png" alt="" class="img-logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo" class="img-logo">
 
             <nav>
                 <ul class="nav-lista">
                     <li class="nav-item"><a href="http://127.0.0.1:5000/index" class="nav-links">INICIO</a></li>
-                    <li class="nav-item"><a href="http://127.0.0.1:5000/peliculas" nav-links>PELICULAS</a></li>
+                    <li class="nav-item"><a href="http://127.0.0.1:5000/peliculas" class="nav-links">PELICULAS</a></li>
                     <li class="nav-item"><a href="http://127.0.0.1:5000/generos" class="nav-links">GENEROS</a></li>
                 </ul>
             </nav>
@@ -37,18 +39,11 @@
         <aside>
             <h2 class="titulo"> Nuevos trailers </h2>
             <div class="plantilla_contornos">
-                <h2 id="batman">Batman</h2>
-                <a href="https://www.youtube.com/watch?v=fWQrd6cwJ0A"> <img
-                        src="https://hbomax-images.warnermediacdn.com/images/GXdkpqAvyDaXCPQEAADdn/tileburnedin?size=1280x720&partner=hbomaxcom&language=es-419&v=07895d4c61f6b6747d622ad3f1b5e61b&host=art-gallery-latam.api.hbo.com&w=Infinity"
-                        alt="" style="width: 320px; height: 190px;"></a>
-                <h2 id="jackass">Jackass por siempre</h2>
-                <a href="https://www.youtube.com/watch?v=iAShnxV0eP8"> <img
-                        src="https://media.filmelier.com/noticias/mx/2021/07/jackass-por-siempre.jpeg" alt=""
-                        style="width: 320px; height: 190px;"></a>
-                <h2 id="sonic">Sonic 2</h2>
-                <a href="https://www.youtube.com/watch?v=2OMixTIRQcY"> <img
-                        src="https://i.blogs.es/527495/sonic2222/450_1000.jpeg" alt=""
-                        style="width: 320px; height: 190px;"></a>
+                <a href="https://www.youtube.com/watch?v=fWQrd6cwJ0A"> <iframe width="350" height="215" src="https://www.youtube.com/embed/fWQrd6cwJ0A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </a>
+                
+                <a href="https://www.youtube.com/watch?v=iAShnxV0eP8"> <iframe width="350" height="215" src="https://www.youtube.com/embed/uoga3wlZgaU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </a>
+
+                <a href="https://www.youtube.com/watch?v=2OMixTIRQcY"> <iframe width="350" height="215" src="https://www.youtube.com/embed/WWWDskI46Js" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> </a>
             </div>
         </aside>
 
@@ -78,7 +73,7 @@
     </div>
 
     <section>
-        <h2>Generos Populares</h2>
+        <h2 class="generos-titulo">Generos Populares</h2>
         <div class="generos">
             <div class="genero-card genero-accion">
                 <a href="generos/Accion">
@@ -113,8 +108,30 @@
         </div>
     </section>
 
-    <script src="/static/js/carrousel.js"></script>
-    <script src="/static/json/peliculas.json"></script>
+    <footer>
+        <div class="footer">
+            <div class="footer-row">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+            </div>
+
+            <div class="footer-row">
+                <ul>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div> 
+
+            <div class="footer-row">
+                Copyright © 2022 All Rights Reserved || Designed By: Martin Lagonegro & Tatiana Gutiérrez
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/carrousel.js') }}"></script>
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 

@@ -19,7 +19,7 @@ form.addEventListener('submit', (e) => {
             window.location.href= '/'
         }
         else{
-            document.getElementById('mensaje-error').innerHTML = 'Error al ingresar. Vuelva a intentarlo';
+            document.getElementById('mensaje-error').innerHTML = 'Error al ingresar.';
         }
 
         return response.json()

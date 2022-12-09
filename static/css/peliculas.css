@@ -9,51 +9,6 @@ h1 {
   font-family: "Ubuntu", sans-serif;
 }
 
-header {
-  background-color: #121111;
-  display: flex;
-  justify-content: space-around;
-}
-
-.cont-header-izq {
-  align-items: center;
-  display: flex;
-}
-
-.img-logo {
-  height: 135px;
-}
-
-.nav-lista {
-  display: flex;
-  list-style: none;
-  justify-content: center;
-}
-
-.nav-item {
-  margin-left: 15px;
-}
-
-.nav-links:hover {
-  color: #fea47e;
-}
-
-.cont-iconos {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-}
-
-.icono {
-  font-size: 30px;
-  margin-left: 16px;
-}
-
-a {
-  text-decoration: none;
-  color: #fff;
-}
-
 h1,
 h4,
 h5 {
@@ -68,6 +23,7 @@ h1 {
   margin-top: 13px;
 }
 
+
 #container,
 #cont-cards-peli-generos {
   width: 90%;
@@ -80,6 +36,11 @@ h1 {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
     */
+}
+
+#container {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 /* TARJETA PELICULA */
@@ -191,3 +152,6 @@ button {
 }
 
 /* PELICULAS_GENERO.HTML */
+#container-peli-generos {
+  margin-bottom: 50px;
+}

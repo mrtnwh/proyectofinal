@@ -66,9 +66,14 @@ input:hover {
   border: 2px solid rgb(104, 103, 103);
 }
 
+#mensaje-error {
+  display: contents;
+  color: red;
+}
+
 .ingresar {
   padding: 10px 20px;
-  margin-top: 6px;
+  margin-top: 3px;
   margin-left: auto;
   border-radius: 30px;
   background-color: #270856;
@@ -83,7 +88,7 @@ input:hover {
   padding: 10px 17px;
   font-size: 15px;
   margin-left: -200px;
-  margin-top: 385px;
+  margin-top: 393px;
 }
 
 button:hover {

@@ -31,12 +31,16 @@ fetch("/api/peliculas")
   );
 
 var contCriticas = document.getElementById("cont-cards-criticas");
+var msjNoCriticas = document.getElementById("no-hay-criticas");
 
 fetch("/api/criticas")
   .then((response) => response.json())
   .then((data) =>
     data.slice().reverse().forEach((peli) => {
       if (peli.id == idPelicula) {
+
+        msjNoCriticas.remove()
+
         peli.reviews.forEach((critica) => {
           contCriticas.innerHTML += `
             <div class="card-criticas">

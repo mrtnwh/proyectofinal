@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pelicula</title>
-    <link rel="stylesheet" href="/static/css/pelicula_styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pelicula_styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header_footer.css') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}" />
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
 </head>
@@ -15,7 +17,7 @@
 
     <header>
         <div class="cont-header-izq">
-            <img src="../static/img/logo.png" alt="" class="img-logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="" class="img-logo">
 
             <nav>
                 <ul class="nav-lista">
@@ -68,13 +70,37 @@
 
         <div class="cont-criticas">
             <h3>Critica de usuarios</h3>
+            <div id="no-hay-criticas">
+                <div>No hay criticas. ¡Se el primero!</div>
+            </div>
             <div id="cont-cards-criticas"></div>
         </div>
     </section>
 
+    <footer>
+        <div class="footer">
+            <div class="footer-row">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+            </div>
 
+            <div class="footer-row">
+                <ul>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div> 
 
-    <script src="/static/js/pelicula_info.js"></script>
+            <div class="footer-row">
+                Copyright © 2022 All Rights Reserved || Designed By: Martin Lagonegro & Tatiana Gutiérrez
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/pelicula_info.js') }}"></script>
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
 </body>
 
