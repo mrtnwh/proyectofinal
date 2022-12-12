@@ -13,10 +13,10 @@ fetch("/api/peliculas")
                     <img src="${peli.poster}" class="poster" alt="Poster de pelicula: ${peli.title}"> `;
 
         row1.innerHTML += `
-                    <h2>${peli.title}</h2>
+                    <h1 style="color: snow;">${peli.title}</h1>
                     <div>
-                        <p>Fecha de estreno: ${peli.date} </p>
-                        <p>Genero: <b> ${peli.genre} </b> </p>
+                        <p><b>Fecha de estreno</b>: ${peli.date} </p>
+                        <p><b>Genero</b>: ${peli.genre} </p>
                     </div> `;
 
         row2.innerHTML += `

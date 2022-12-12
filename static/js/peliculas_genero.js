@@ -46,8 +46,11 @@ fetch('/static/json/peliculas.json')
 
         if (resultado === false) {
             container.innerHTML += 
-            `
-                <h1 style="color: black;">No se encontró ningun resultado :(</h1>
+            `   
+            <div id="cont-not-found">
+                <img src="/static/img/no-result-found.png" id="img-not-found">
+                <h1 id="msj-not-found">No se encontró ningún resultado.</h1>
+            </div>
             `
         }
     }    

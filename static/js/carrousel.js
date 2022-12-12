@@ -16,7 +16,6 @@ function agregarPeliculas() {
           const pelis = document.createElement("div");
           pelis.innerHTML += `
         <a href="http://127.0.0.1:5000/peliculas/${pelicula.id}">
-        <br>
         <p class="pelicula-titulo" style="text-align: center; color:white;"> ${pelicula.title} </p> <img src="${pelicula.poster}" class="image">
         </a>
 `;
