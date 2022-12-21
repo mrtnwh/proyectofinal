@@ -4,11 +4,10 @@ var row1 = document.getElementById("row1");
 var row2 = document.getElementById("row2");
 const token = localStorage.getItem('token')
 
-fetch("/api/peliculas")
+fetch(`/api/peliculas/${idPelicula}`)
   .then((response) => response.json())
-  .then((data) =>
-    data.forEach((peli) => {
-      if (peli.id == idPelicula) {
+  .then((peli) =>
+      {
         contInfoDcha.innerHTML += `
                     <img src="${peli.poster}" class="poster" alt="Poster de pelicula: ${peli.title}"> `;
 
@@ -27,8 +26,7 @@ fetch("/api/peliculas")
                     <h3>Trailer</h3>
                     <iframe width="560" height="315" src="${peli.trailer}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
       }
-    })
-  );
+    )
 
 var contCriticas = document.getElementById("cont-cards-criticas");
 var msjNoCriticas = document.getElementById("no-hay-criticas");
@@ -67,8 +65,13 @@ btnDelete.addEventListener('click', (e) => {
           headers: {'Authorization': `Bearer ${token}`}
       })
       .then(response => {
+        console.log(response);
         if (response.ok) {
           window.location.href= "/peliculas";
+        }
+        
+        else if (response.status === 401){
+          window.location.href= "/login";
         }
         else{
           alert("No se puede borrar. Hay criticas de usuarios.");

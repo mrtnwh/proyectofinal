@@ -2,13 +2,12 @@ var idPelicula = document.getElementsByClassName("container")[0].id;
 const form = document.getElementById('form-critica');
 
 const token = localStorage.getItem('token');
-console.log(localStorage.getItem("token"));
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
-    
+
     let data = {
-        review_title: form.elements["titulo"].value,
+        review_title: form.elements["title"].value,
         review_text: form.elements["review"].value
     }
 
@@ -25,8 +24,7 @@ form.addEventListener('submit', (e) => {
             window.location.href= `/peliculas/${idPelicula}`
         }
         else{
-            //window.location.href = '/login'
-            console.log(localStorage.getItem("token"));
+            window.location.href = '/login'
         }
     })
 })
