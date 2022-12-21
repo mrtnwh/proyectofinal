@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/subir_pelicula.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header_footer.css') }}">
     <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
@@ -39,25 +40,12 @@
             <form id="form-subir">
                 <!-- Cargar imagen  -->
                 <div class="row-1">
-                    <!--
                     <img src="https://incubaweb.com/wp-content/uploads/2016/09/upload.png" alt="">
 
-                    <p>Subir el poster de la pelicula (500x800)
-                    </p>
-                    (Opcional)
-
-                    <label for="imagen" class="btn-img">Subir Foto</label>
-                    <input name="poster" id="imagen" type="file" accept="image/*">
-
-                    <form enctype="multipart/form-data" action="uploader.php" method="POST">
-                        <input name="uploadedfile" type="file" accept="image/*" />
-                        <input type="submit" value="Subir foto" />
-                    </form>
-
-                    <p>O</p>
+                    <p>Subir el poster de la pelicula (500x800)</p>
+                    <p>(Opcional)</p>
 
                     <input name="poster-link" id="poster-link" type="text" placeholder="Link Poster">
-                -->
                 </div>
 
                 <!-- FILA 1: TITULO Y GENEROS -->
@@ -77,18 +65,14 @@
                 <!-- FILA 2: ANIO Y DIRECTORES -->
                 <div class="row-2">
                     <div>
-                        <label for="anio" class="label-text">AÃ±o</label>
+                        <label for="anio" class="label-text">Año</label>
                         <input name="date" id="anio" type="date" required>
                     </div>
 
                     <div>
                         <select name="director" id="nombre-directores">
-                            <option value="">Seleccionar director</option>
+                            <option value="" selected disabled hidden>Seleccionar director</option>
                         </select>
-
-                        <p id="textOption">O</p>
-
-                        <input name="director-custom" id="director-custom" type="text" placeholder="Director">
                     </div>
                 </div>
 
@@ -99,7 +83,6 @@
                         placeholder="Link embed, ej: https://www.youtube.com/embed/fWQrd6cwJ0A" required>
 
                 </div>
-
                 <!-- FILA 1: SINOPSIS -->
                 <div class="row-3">
                     <label for="sinopsis">Sinopsis</label>
@@ -114,6 +97,30 @@
 
             </form>
     </main>
+
+    <footer>
+        <div class="footer">
+            <div class="footer-row">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+            </div>
+
+            <div class="footer-row">
+                <ul>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div> 
+
+            <div class="footer-row">
+                Copyright © 2022 All Rights Reserved || Designed By: Martin Lagonegro & Tatiana Gutiérrez
+            </div>
+        </div>
+    </footer>
+
     <script src="{{ url_for('static', filename='js/cargar_dir_generos.js') }}"></script>
     <script src="{{ url_for('static', filename='js/subir_pelicula.js') }}"></script>
     <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>

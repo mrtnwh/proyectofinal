@@ -7,7 +7,7 @@ h1 {
 .generos {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  margin-left: 5%;
 }
 
 .genero-card {

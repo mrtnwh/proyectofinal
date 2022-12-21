@@ -30,12 +30,6 @@ h1 {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-
-  /*  display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-    */
 }
 
 #container {
@@ -47,6 +41,7 @@ h1 {
 .card-container {
   width: 348px;
   margin: 16px 0px;
+  margin-left: 4%;
   border-radius: 4px;
   background: #0f2027; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -152,6 +147,34 @@ button {
 }
 
 /* PELICULAS_GENERO.HTML */
+#body-peli-generos {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
 #container-peli-generos {
   margin-bottom: 50px;
+  justify-content: center;
+}
+
+#cont-not-found {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+
+#img-not-found {
+  height: 235px;
+}
+
+#msj-not-found {
+  color: lavender;
+  margin-left: 0.5em;
+  margin-top: 3%;
+}
+
+#footer-peli-generos {
+  margin-top: auto;
 }

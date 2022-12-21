@@ -5,11 +5,16 @@ h1 {
   font-family: "Ubuntu", sans-serif;
 }
 
+aside {
+  margin-left: 2em;
+}
+
 .titulo {
   height: 5px;
-  margin-bottom: -10px;
   width: 170px;
+  margin-top: 1.5em;
   margin-left: 90px;
+  color: white;
 }
 
 .plantilla_contornos {
@@ -60,11 +65,11 @@ h1 {
 }
 
 .image {
-  margin-right: 50px;
+  margin-right: 60px;
 }
 
 .peliculas-recomendadas .contenedor-principal .flecha-derecha {
-  right: 114px;
+  right: 174px;
   margin-top: 300px;
 }
 
@@ -84,12 +89,14 @@ h1 {
 /* GENEROS */
 .generos-titulo {
   margin-left: 24px;
+  color: white;
 }
 
 .generos {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  margin-bottom: 60px;
 }
 
 .genero-card {

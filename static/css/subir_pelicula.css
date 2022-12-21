@@ -53,7 +53,6 @@ a {
 
 .container {
   width: 85%;
-  /* height: 100vh ; */
   margin: 0 auto;
   background-color: white;
 }
@@ -76,7 +75,7 @@ img {
   display: none;
 }
 
-.btn-img {
+#btn-img {
   padding: 10px 20px;
   background-color: #1c4ec2;
   color: white;
@@ -232,10 +231,3 @@ button {
   margin-right: 30px;
 }
 
-#textohola {
-  margin-left: 60px;
-}
-
-#director-custom {
-  width: 135px;
-}

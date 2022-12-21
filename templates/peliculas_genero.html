@@ -8,12 +8,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/peliculas.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header_footer.css') }}">
     <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='img/logo.png') }}" />
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
     <title>Generos</title>
 </head>
 
-<body>
+<body id="body-peli-generos">
     <header>
         <div class="cont-header-izq">
             <img src="{{ url_for('static', filename='img/logo.png') }}" alt="" class="img-logo">
@@ -41,7 +40,7 @@
         </div>
     </div>
 
-    <footer>
+    <footer id="footer-peli-generos">
         <div class="footer">
             <div class="footer-row">
                 <a href="#"><i class="fa fa-facebook"></i></a>
